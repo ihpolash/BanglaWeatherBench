@@ -12,7 +12,7 @@ itself is a source of leakage \citep{meyer2026leakage}; our design follows both 
 \paragraph{Weather benchmarks.} WeatherBench 2 \citep{rasp2024weatherbench2} and ChaosBench
 \citep{nathaniel2024chaosbench} score against reanalysis; ExtremeWeatherBench \citep{mcgovern2026ewb} scores
 against event catalogues; WeatherReal \citep{jin2024weatherreal} and WEATHER-5K \citep{han2026weather5k} score against
-station observations. WEATHER-5K is the closest in spirit --- thousands of global stations, hourly --- but carries
+station observations. WEATHER-5K is the closest in spirit (thousands of global stations, hourly), but carries
 neither precipitation nor humidity, which are the variables at issue here, and reports global aggregates rather
 than climatic strata. None of these evaluates time-series foundation models on a tropical station network.
 
@@ -26,7 +26,7 @@ observations, including rainfall.
 
 \paragraph{South Asian monsoon and AI models.} \citet{gupta2026mausam} assess seven global AI weather-prediction
 models against South Asian observations during the monsoon, reporting errors 15--45\% larger than against
-reanalysis --- the precedent for our observation-versus-reanalysis contrast, transferred here to a different model
+reanalysis, the precedent for our observation-versus-reanalysis contrast, transferred here to a different model
 class. \citet{luitel2026ism} evaluate GraphCast over the Indian summer monsoon against ERA5 and IMERG, and
 \citet{aitken2026monsoon} build decision-oriented probabilistic onset forecasts for Indian farmers from AI weather
 models. All three concern gridded NWP-style emulators and onset or seasonal-mean skill rather than zero-shot
@@ -41,7 +41,7 @@ and releases no shared tasks: \citet{joy2026bangladesh} is representative, train
 temperature and rainfall. No published work evaluates pretrained foundation models on Bangladeshi station data, and
 no Bangladesh weather benchmark with fixed splits and a leaderboard exists.
 
-\paragraph{Position.} The intersection --- current time-series foundation models, on tropical station observations
-including precipitation, stratified by monsoon regime, with a matched temperate control and a significance protocol
---- is, to our knowledge, unoccupied. We claim novelty only at that intersection, and cite the neighbours above for
+\paragraph{Position.} The intersection is, to our knowledge, unoccupied: current time-series foundation models, on
+tropical station observations including precipitation, stratified by monsoon regime, with a matched temperate
+control and a significance protocol. We claim novelty only at that intersection, and cite the neighbours above for
 each component individually.

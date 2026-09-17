@@ -5,8 +5,8 @@
 summary is accurate and is the point. The zero-shot claim is usually evidenced on aggregate leaderboards without
 significance testing; when the same models are scored on a tropical station network with the forecast origin as the
 unit of resampling and a correction across 48 comparisons, most margins on observations become indistinguishable
-from a well-built baseline. The models are not weak --- six of eight outrank every trained baseline, and 272 of 432
-skill intervals exclude climatology --- but the size of the advantage on real station data is smaller than the
+from a well-built baseline. The models are not weak: six of eight outrank every trained baseline, and 272 of 432
+skill intervals exclude climatology. But the size of the advantage on real station data is smaller than the
 literature's framing implies.
 
 \paragraph{Why rainfall is different.} The rainfall result is not a modelling failure so much as a property of the
@@ -18,7 +18,7 @@ the operational value of these models would be judged in Bangladesh.
 
 \paragraph{Why regime stratification matters.} The spell result is the clearest argument against aggregate
 reporting. The same models are strongly skilful during break spells and significantly worse than climatology during
-active spells --- a reversal that vanishes in a seasonal average. A plausible mechanism, which we do not test, is
+active spells, a reversal that vanishes in a seasonal average. A plausible mechanism, which we do not test, is
 that long-context models extrapolate the persistent warm, dry break state, which pays off while a break continues
 and fails when an active spell arrives. Whatever the cause, a benchmark that reports only aggregate skill would
 certify these models as adequate for exactly the situation in which they are least reliable.
@@ -27,8 +27,8 @@ certify these models as adequate for exactly the situation in which they are lea
 done. Scoring against reanalysis inflates apparent skill and, more subtly, inflates the \emph{margin} between model
 classes, so reanalysis-only benchmarks are not a neutral convenience. Stratifying by a physically defined regime
 exposes failures that aggregates hide. And a context-availability control changes the interpretation of a
-geographic gap: without masking the trained baseline identically, our own earlier reading --- that longer context
-dissolves the tropical deficit --- did not survive.
+geographic gap: without masking the trained baseline identically, our own earlier reading, that longer context
+dissolves the tropical deficit, did not survive.
 
 \paragraph{Affordability.} The entire zero-shot leaderboard reproduces in 4.16 GPU-hours on free hardware, and the
 strongest classical baseline we ran costs about five times that in CPU time. For the research communities this

@@ -12,29 +12,29 @@ skewed in two ways at once. Geographically, general time-series suites treat wea
 draw it overwhelmingly from mid-latitude sources \citep{godahewa2021monash,aksu2024gifteval,qiu2024tfb,li2025tsfmbench};
 across seven widely used benchmark papers, the words ``monsoon'' and ``Bangladesh'' do not appear. Representationally,
 the weather benchmarks that \emph{are} globally comprehensive score against reanalysis
-\citep{rasp2024weatherbench2,nathaniel2024chaosbench} --- a physically consistent reconstruction that is smoother
+\citep{rasp2024weatherbench2,nathaniel2024chaosbench}, a physically consistent reconstruction that is smoother
 than the station record it interpolates, and smoothest exactly where stations are sparsest. Observation-based
 evaluation exists for numerical and AI weather-prediction models \citep{jin2024weatherreal,gupta2026mausam}, but the
 corresponding question for zero-shot time-series models has not been asked.
 
 Bangladesh makes the question concrete. Its weather is governed by the South Asian summer monsoon, whose defining
-feature --- the alternation of active and break spells inside the rainy season --- has no temperate analogue. In the
+feature, the alternation of active and break spells inside the rainy season, has no temperate analogue. In the
 35-station record we build on, median July rainfall reaches \SI{457}{\milli\metre} per station-month against
 \SI{0}{\milli\metre} in January, \SI{67.6}{\percent} of station-days are dry, and the wet-day 99th percentile is
 \SI{143}{\milli\metre}; the 2016--2023 test period alone contains 432 cyclone station-days across 14 storms. The
 record that would support decisions here is thin: over the same period the ten Bangladeshi stations in GHCN-Daily
 are about \SI{65}{\percent} complete, with 2021 almost entirely absent, against \SI{99}{\percent} at the European
-stations we use as a reference. That asymmetry is not only a property of some pretraining corpus --- it sits inside
+stations we use as a reference. That asymmetry is not only a property of some pretraining corpus: it sits inside
 the model's input window at forecast time.
 
 We introduce \textbf{BanglaWeatherBench}, a benchmark designed so that its headline number is not the only thing it
-produces. It defines 16 daily forecasting tasks over 170{,}571 rolling-origin windows across four tracks --- 35
+produces. It defines 16 daily forecasting tasks over 170{,}571 rolling-origin windows across four tracks: 35
 Bangladesh Meteorological Department stations, 10 co-located GHCN-Daily stations, 32 European GHCN-Daily stations
-as a temperate reference, and NASA POWER reanalysis at all 77 station coordinates --- plus an independent CHIRPS
+as a temperate reference, and NASA POWER reanalysis at all 77 station coordinates, plus an independent CHIRPS
 dekadal rainfall task over 64 districts. Three controls answer the confounds that would otherwise make a tropical
 result unreadable: a same-network temperate reference isolating climatic regime, a reanalysis track at identical
-coordinates isolating the effect of the scoring target, and a gap-matched context control --- applied to the
-trained baselines as well as the foundation models --- isolating data availability from climate. Scoring is
+coordinates isolating the effect of the scoring target, and a gap-matched context control, applied to the
+trained baselines as well as the foundation models, isolating data availability from climate. Scoring is
 stratified by monsoon phase and by active/break spell.
 
 Two commitments shape what we are willing to claim. First, significance: a 7-day stride with a 30-day horizon
@@ -53,7 +53,7 @@ think is more useful than either a triumphal or a dismissive one.
     observations it wins 3 of 24, all at a one-day lead, against 11 of 24 on reanalysis. The six leading models and
     PatchTST sit within one critical difference.
   \item \textbf{Nothing beats climatology on tropical rainfall} beyond a one-day lead at the BMD stations, or at
-    any horizon on dekadal rainfall --- a concrete boundary on the ``forecast anything'' claim.
+    any horizon on dekadal rainfall, a concrete boundary on the ``forecast anything'' claim.
   \item \textbf{Reanalysis flatters models} relative to the stations it represents, in 78 of 108 comparisons.
   \item \textbf{The tropical temperature deficit is narrow and mostly about data.} At a 30-day lead 4 of 8 models
     lose significantly more skill than a like-for-like control; about \SI{60}{\percent} of the raw penalty is
@@ -62,9 +62,9 @@ think is more useful than either a triumphal or a dismissive one.
     spells, in 61 of 72 tests.
 \end{enumerate}
 
-We state finding 4 carefully because it is easy to misreport. The evidence supports a specific claim --- for
+We state finding 4 carefully because it is easy to misreport. The evidence supports a specific claim: for
 temperature at long horizons, half the roster loses significantly more skill on Bangladeshi stations than trained
-baselines do, most of it traceable to sparser context --- and does not support a blanket claim that foundation
+baselines do, most of it traceable to sparser context. It does not support a blanket claim that foundation
 models fail in the Global South. Stated correctly it is also the more actionable result: much of the deficit is a
 data-availability problem that observation programmes and gap-tolerant architectures can address.
 

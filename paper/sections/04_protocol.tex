@@ -4,14 +4,14 @@
 \subsection{Splits and windows}
 
 Temporal splits are fixed for every track: training up to 2010-12-31, validation 2011--2015, and a 2016--2023 test
-period common to all tracks. Anything estimated from data --- climatologies, percentile thresholds, the spell
-reference cycle, and model fitting --- uses the training split only.
+period common to all tracks. Anything estimated from data (climatologies, percentile thresholds, the spell
+reference cycle, and model fitting) uses the training split only.
 
 Evaluation is rolling-origin with a 7-day stride and horizons of 1, 3, 7, 14 and 30 days. A window is scored when
 its 30-day target lies entirely inside the test split, is complete and unflagged, and at least 365 days of history
 precede the origin. Context is deliberately \emph{not} required to be complete: a 90\%-complete-context rule leaves
-zero admissible GHCN-Bangladesh rainfall windows, which would silently delete the sparsest --- and most
-representative --- part of the problem. Models therefore receive contexts containing real gaps, and each window
+zero admissible GHCN-Bangladesh rainfall windows, which would silently delete the sparsest and most
+representative part of the problem. Models therefore receive contexts containing real gaps, and each window
 records its context completeness so that skill can be stratified by it. This yields 170{,}571 daily windows and
 18{,}112 dekadal windows.
 
@@ -35,8 +35,8 @@ correlation is absorbed rather than counted as extra samples.
 
 Pairwise comparisons use Diebold--Mariano on the paired loss differential, with a Newey--West HAC variance at lag
 $h-1$ and the Harvey--Leybourne--Newbold small-sample correction, referred to a $t$ distribution. Interval
-estimates come from a moving-block bootstrap over origins (block 8 origins, 2{,}000 resamples); paired series --- a
-model, its climatology reference and the control baseline --- are resampled with the same blocks, so a
+estimates come from a moving-block bootstrap over origins (block 8 origins, 2{,}000 resamples); paired series (a
+model, its climatology reference and the control baseline) are resampled with the same blocks, so a
 difference-in-differences interval carries the control's uncertainty rather than treating it as fixed. Rankings use
 Friedman with the Nemenyi critical difference from the studentized range. All 48 task-and-lead comparisons are
 Holm--Bonferroni corrected, and we report the corrected values.
@@ -51,8 +51,8 @@ temperature (reference 0.863). Crucially the mask is applied to the trained base
 models, so the control is like-for-like; masking only the model understates the remaining effect.
 
 \paragraph{Leakage audit.} Every model's pretraining corpus was checked against its technical report rather than
-its model card. No corpus names GHCN-Daily, BMD or any Bangladesh source. The station corpora that do appear ---
-USHCN and SubseasonalClimateUSA --- are United States only, and our temperate reference is entirely European, so
+its model card. No corpus names GHCN-Daily, BMD or any Bangladesh source. The station corpora that do appear,
+USHCN and SubseasonalClimateUSA, are United States only, and our temperate reference is entirely European, so
 neither side of the tropical-versus-temperate contrast is contaminated. Leakage-free zero-shot evaluation is not
 itself novel \citep{qiao2026time}; what matters here is that it is a precondition for reading a geographic
 contrast as a geographic effect.

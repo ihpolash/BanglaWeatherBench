@@ -1,8 +1,8 @@
 \section{Results}
 \label{sec:results}
 
-We evaluate 8 zero-shot foundation models --- Chronos-2 \citep{ansari2026chronos2}, Chronos-Bolt, TimesFM 2.5,
-Toto-2.0, TiRex, Moirai-2, Granite TTM r2 and Sundial --- against 10 trained and statistical baselines on
+We evaluate 8 zero-shot foundation models (Chronos-2 \citep{ansari2026chronos2}, Chronos-Bolt, TimesFM 2.5,
+Toto-2.0, TiRex, Moirai-2, Granite TTM r2 and Sundial) against 10 trained and statistical baselines on
 identical windows. \tk{add the remaining seven model citations once each technical report is opened.} All models see a
 1{,}024-day context except TTM, whose daily variants cap at 512.
 
@@ -20,8 +20,8 @@ foundation models together with PatchTST fall inside one critical difference of 
 Pairwise, the picture is more sober still. Comparing the best foundation model with the best baseline for each task
 and lead, and correcting across all 48 comparisons, the foundation model is significantly better in 14, worse in 5,
 and statistically indistinguishable in 29. The 14 wins concentrate at a one-day lead and on the smooth reanalysis
-tracks: partitioned by track type, foundation models win 3 of 24 comparisons on station observations --- all at
-lead 1 --- against 11 of 24 on reanalysis at the same coordinates. Of 432 model-task-lead skill intervals,
+tracks: partitioned by track type, foundation models win 3 of 24 comparisons on station observations, all at
+lead 1, against 11 of 24 on reanalysis at the same coordinates. Of 432 model-task-lead skill intervals,
 272 exclude climatology.
 
 \begin{figure}[htbp]
@@ -51,13 +51,13 @@ smaller 10-station GHCN-Bangladesh track the best foundation model does hold pos
     \toprule
     Model & Lead 1 & Lead 2 & Lead 3 & Lead 6 & Best, 1{,}024 dekads \\
     \midrule
-    Climatology        & \num{0.000} & \num{0.000} & \num{0.000} & \num{0.000} & --- \\
+    Climatology        & \num{0.000} & \num{0.000} & \num{0.000} & \num{0.000} & n/a \\
     Chronos-2          & \num{-0.063} & \num{-0.083} & \num{-0.080} & \num{-0.086} & \num{-0.001} \\
     Toto-2.0           & \num{-0.086} & \num{-0.115} & \num{-0.114} & \num{-0.113} & \num{-0.004} \\
     TimesFM 2.5        & \num{-0.162} & \num{-0.150} & \num{-0.137} & \num{-0.135} & \num{-0.055} \\
     TiRex              & \num{-0.169} & \num{-0.219} & \num{-0.257} & \num{-0.323} & \num{-0.030} \\
     Moirai-2           & \num{-0.196} & \num{-0.290} & \num{-0.347} & \num{-0.504} & \num{-0.073} \\
-    Persistence        & \num{-0.478} & \num{-0.635} & \num{-0.763} & \num{-1.158} & --- \\
+    Persistence        & \num{-0.478} & \num{-0.635} & \num{-0.763} & \num{-1.158} & n/a \\
     TTM r2 (point only)& \num{-0.682} & \num{-0.868} & \num{-1.002} & \num{-1.529} & \num{-0.846} \\
     \bottomrule
   \end{tabular}
@@ -68,7 +68,7 @@ smaller 10-station GHCN-Bangladesh track the best foundation model does hold pos
 Scoring the same models on NASA POWER and at the co-located stations, skill is significantly higher on reanalysis
 in 78 of 108 model-variable-lead comparisons (Figure~\ref{fig:obsrean}). The gap is largest for humidity
 (significant at every lead for all nine models tested) and rainfall (all nine at leads 1 and 30), smaller for
-temperature, and weakest for sunshine against radiation --- two quantities that are not physically identical, which
+temperature, and weakest for sunshine against radiation, two quantities that are not physically identical, which
 is why we do not lean on that row. The effect holds across model families, so it is a property of the target rather
 than of any architecture. A benchmark built on reanalysis therefore overstates both absolute skill and the margin
 foundation models hold over baselines: at a 7-day lead the best foundation model's advantage over the best trained
@@ -92,8 +92,8 @@ $+0.043$ once both sides face the same gaps, so roughly \SI{60}{\percent} of the
 sparser station context rather than to the tropics (Figure~\ref{fig:did}). At a one-day lead no model shows a
 significant penalty.
 
-Two scope markers matter. First, masking only the model --- as an ablation applied to the foundation models alone
-would --- \emph{understates} the effect, because the control also degrades on gappy contexts; the like-for-like
+Two scope markers matter. First, masking only the model, as an ablation applied to the foundation models alone
+would, \emph{understates} the effect, because the control also degrades on gappy contexts; the like-for-like
 comparison raises the median from $+0.022$ to $+0.043$ and returns TiRex to significance. Second, rainfall shows no
 systematic penalty at any lead: where results are significant at lead 1 the sign is reversed, with four models
 performing relatively \emph{better} in Bangladesh than at temperate stations, and the single exception is Toto-2.0
@@ -101,7 +101,7 @@ at lead 7 ($+0.028$, CI $0.005$ to $0.053$).
 
 Longer context does not dissolve what remains. Repeating the contrast with 2{,}048 days of history and the control
 masked identically leaves the median penalty at $+0.052$, unchanged from 1{,}024 days; Chronos-2 ($+0.059$) and
-TiRex ($+0.052$) stay significant, while TimesFM's penalty --- which was genuinely context-related --- disappears.
+TiRex ($+0.052$) stay significant, while TimesFM's penalty, which was genuinely context-related, disappears.
 An unmasked comparison would have suggested the opposite, because without masking the median halves from $+0.080$
 to $+0.043$ as context doubles. That apparent context effect is mostly the missingness effect in disguise.
 
@@ -118,7 +118,7 @@ to $+0.043$ as context doubles. That apparent context effect is mostly the missi
 
 Aggregate leaderboards hide the benchmark's sharpest result. Stratifying July--August targets by spell, and
 blocking intervals by spell \emph{event} rather than station-day, 61 of 72 contrasts are significant. During break
-spells every model beats climatology and the foundation models lead by a wide margin --- Chronos-Bolt reaches
+spells every model beats climatology and the foundation models lead by a wide margin: Chronos-Bolt reaches
 $+0.440$ on temperature at a 30-day lead against PatchTST's $+0.106$. During active spells every model is
 significantly \emph{worse} than climatology at 7- and 30-day leads, and the foundation models lose most:
 Chronos-Bolt falls to $-0.989$, against PatchTST's $-0.193$. Humidity repeats the pattern. Skill is therefore at
@@ -134,7 +134,7 @@ samples), the output shape matches the documented layout, and the trajectory spr
 against the model's own RMSE of \SI{1.51}{\celsius}.
 
 The whole zero-shot leaderboard is cheap to reproduce. Every model fits in \SI{4.2}{\gibi\byte} of GPU memory, and
-all 8 models over all 16 tasks cost 4.16 GPU-hours on a free Tesla T4 --- from 0.6 minutes for TTM r2 to 130
+all 8 models over all 16 tasks cost 4.16 GPU-hours on a free Tesla T4, from 0.6 minutes for TTM r2 to 130
 minutes for Sundial. By contrast AutoARIMA alone costs about 20.7 CPU-hours. Accuracy does not track size: TiRex
 ranks second overall with 35.3M parameters and \SI{568}{\mebi\byte}, while Toto-2.0 (312.7M) ranks fourth and
 Sundial (128.3M) eleventh (Figure~\ref{fig:pareto}).
