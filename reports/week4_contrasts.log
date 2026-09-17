@@ -1,0 +1,161 @@
+models present: FMs=['chronos2', 'chronos_bolt', 'timesfm25', 'toto2', 'tirex', 'moirai2', 'ttm_r2', 'sundial'] | trained baselines=['AutoETS', 'AutoTheta', 'AutoARIMA', 'lightgbm', 'NHITS', 'DLinear', 'PatchTST']
+
+A. Equity test (gap = temperate - Bangladesh CRPSS; control = best trained baseline gap)
+     var  lead        model  family  skill_bangladesh  skill_temperate    gap  control_gap_best_trained  DiD_vs_control  gap_gapmatched
+Rainfall     1      AutoETS trained            -0.254           -0.275 -0.021                    -0.044           0.023             NaN
+Rainfall     1    AutoTheta trained            -0.292           -0.337 -0.045                    -0.044          -0.001             NaN
+Rainfall     1    AutoARIMA trained            -0.180           -0.247 -0.067                    -0.044          -0.023             NaN
+Rainfall     1     lightgbm trained            -0.132           -0.346 -0.213                    -0.044          -0.170             NaN
+Rainfall     1        NHITS trained             0.060            0.016 -0.044                    -0.044           0.000             NaN
+Rainfall     1      DLinear trained            -0.119           -0.191 -0.073                    -0.044          -0.029             NaN
+Rainfall     1     PatchTST trained             0.043           -0.009 -0.052                    -0.044          -0.009             NaN
+Rainfall     1     chronos2      FM             0.086            0.024 -0.062                    -0.044          -0.019          -0.066
+Rainfall     1 chronos_bolt      FM             0.063            0.017 -0.046                    -0.044          -0.002          -0.048
+Rainfall     1    timesfm25      FM             0.052            0.008 -0.044                    -0.044           0.000          -0.063
+Rainfall     1        toto2      FM             0.095            0.030 -0.065                    -0.044          -0.021          -0.072
+Rainfall     1        tirex      FM             0.090            0.031 -0.059                    -0.044          -0.015          -0.091
+Rainfall     1      moirai2      FM             0.079            0.025 -0.054                    -0.044          -0.010          -0.063
+Rainfall     1       ttm_r2      FM            -0.322           -0.512 -0.190                    -0.044          -0.146          -0.155
+Rainfall     1      sundial      FM            -0.023           -0.148 -0.125                    -0.044          -0.081          -0.134
+Rainfall     7      AutoETS trained            -0.383           -0.261  0.122                    -0.035           0.157             NaN
+Rainfall     7    AutoTheta trained            -0.394           -0.288  0.106                    -0.035           0.141             NaN
+Rainfall     7    AutoARIMA trained            -0.191           -0.228 -0.037                    -0.035          -0.002             NaN
+Rainfall     7     lightgbm trained            -0.116           -0.332 -0.217                    -0.035          -0.181             NaN
+Rainfall     7        NHITS trained             0.009           -0.026 -0.035                    -0.035           0.000             NaN
+Rainfall     7      DLinear trained            -0.126           -0.207 -0.081                    -0.035          -0.046             NaN
+Rainfall     7     PatchTST trained            -0.056           -0.070 -0.014                    -0.035           0.021             NaN
+Rainfall     7     chronos2      FM             0.017           -0.014 -0.031                    -0.035           0.004          -0.035
+Rainfall     7 chronos_bolt      FM             0.010           -0.016 -0.025                    -0.035           0.010          -0.031
+Rainfall     7    timesfm25      FM             0.001           -0.018 -0.019                    -0.035           0.016          -0.027
+Rainfall     7        toto2      FM            -0.003           -0.015 -0.012                    -0.035           0.023          -0.019
+Rainfall     7        tirex      FM            -0.011           -0.011 -0.000                    -0.035           0.035          -0.020
+Rainfall     7      moirai2      FM            -0.002           -0.017 -0.015                    -0.035           0.020          -0.025
+Rainfall     7       ttm_r2      FM            -0.421           -0.535 -0.115                    -0.035          -0.080          -0.068
+Rainfall     7      sundial      FM            -0.129           -0.191 -0.061                    -0.035          -0.026          -0.067
+Rainfall    30      AutoETS trained            -0.491           -0.301  0.190                    -0.015           0.205             NaN
+Rainfall    30    AutoTheta trained            -0.453           -0.302  0.151                    -0.015           0.166             NaN
+Rainfall    30    AutoARIMA trained            -0.236           -0.260 -0.024                    -0.015          -0.009             NaN
+Rainfall    30     lightgbm trained            -0.175           -0.366 -0.191                    -0.015          -0.176             NaN
+Rainfall    30        NHITS trained            -0.022           -0.037 -0.015                    -0.015           0.000             NaN
+Rainfall    30      DLinear trained            -0.155           -0.225 -0.070                    -0.015          -0.056             NaN
+Rainfall    30     PatchTST trained            -0.076           -0.065  0.011                    -0.015           0.026             NaN
+Rainfall    30     chronos2      FM             0.019           -0.013 -0.032                    -0.015          -0.017          -0.034
+Rainfall    30 chronos_bolt      FM             0.011           -0.017 -0.028                    -0.015          -0.013          -0.031
+Rainfall    30    timesfm25      FM            -0.011           -0.011 -0.001                    -0.015           0.014          -0.009
+Rainfall    30        toto2      FM            -0.006           -0.014 -0.009                    -0.015           0.006          -0.017
+Rainfall    30        tirex      FM            -0.023           -0.009  0.014                    -0.015           0.029          -0.010
+Rainfall    30      moirai2      FM            -0.028           -0.018  0.010                    -0.015           0.025           0.001
+Rainfall    30       ttm_r2      FM            -0.481           -0.580 -0.099                    -0.015          -0.084          -0.039
+Rainfall    30      sundial      FM            -0.164           -0.207 -0.042                    -0.015          -0.027          -0.052
+    Tavg     1      AutoETS trained             0.276            0.383  0.107                     0.117          -0.009             NaN
+    Tavg     1    AutoTheta trained             0.272            0.378  0.105                     0.117          -0.012             NaN
+    Tavg     1    AutoARIMA trained             0.317            0.434  0.117                     0.117           0.000             NaN
+    Tavg     1     lightgbm trained             0.142            0.395  0.253                     0.117           0.136             NaN
+    Tavg     1        NHITS trained             0.246            0.418  0.172                     0.117           0.055             NaN
+    Tavg     1      DLinear trained             0.206            0.308  0.102                     0.117          -0.015             NaN
+    Tavg     1     PatchTST trained             0.287            0.415  0.129                     0.117           0.012             NaN
+    Tavg     1     chronos2      FM             0.317            0.432  0.115                     0.117          -0.002           0.107
+    Tavg     1 chronos_bolt      FM             0.316            0.432  0.116                     0.117          -0.001           0.104
+    Tavg     1    timesfm25      FM             0.327            0.435  0.108                     0.117          -0.009           0.098
+    Tavg     1        toto2      FM             0.183            0.437  0.254                     0.117           0.137           0.216
+    Tavg     1        tirex      FM             0.328            0.441  0.113                     0.117          -0.004           0.100
+    Tavg     1      moirai2      FM             0.301            0.432  0.131                     0.117           0.014           0.104
+    Tavg     1       ttm_r2      FM             0.089            0.193  0.104                     0.117          -0.013           0.106
+    Tavg     1      sundial      FM             0.252            0.368  0.116                     0.117          -0.001           0.107
+    Tavg     7      AutoETS trained            -0.198           -0.232 -0.035                    -0.011          -0.024             NaN
+    Tavg     7    AutoTheta trained            -0.205           -0.241 -0.036                    -0.011          -0.025             NaN
+    Tavg     7    AutoARIMA trained             0.064            0.057 -0.007                    -0.011           0.004             NaN
+    Tavg     7     lightgbm trained             0.040            0.039 -0.001                    -0.011           0.010             NaN
+    Tavg     7        NHITS trained            -0.016            0.011  0.028                    -0.011           0.038             NaN
+    Tavg     7      DLinear trained            -0.029           -0.068 -0.039                    -0.011          -0.028             NaN
+    Tavg     7     PatchTST trained             0.072            0.061 -0.011                    -0.011           0.000             NaN
+    Tavg     7     chronos2      FM             0.066            0.076  0.010                    -0.011           0.020           0.003
+    Tavg     7 chronos_bolt      FM             0.011            0.074  0.062                    -0.011           0.073           0.049
+    Tavg     7    timesfm25      FM             0.025            0.070  0.045                    -0.011           0.055           0.014
+    Tavg     7        toto2      FM            -0.087            0.047  0.134                    -0.011           0.144           0.076
+    Tavg     7        tirex      FM             0.026            0.073  0.046                    -0.011           0.057           0.018
+    Tavg     7      moirai2      FM            -0.054            0.063  0.117                    -0.011           0.128           0.047
+    Tavg     7       ttm_r2      FM            -0.333           -0.218  0.115                    -0.011           0.125           0.099
+    Tavg     7      sundial      FM            -0.045           -0.034  0.011                    -0.011           0.022          -0.001
+    Tavg    30      AutoETS trained            -0.443           -0.733 -0.290                     0.011          -0.302             NaN
+    Tavg    30    AutoTheta trained            -0.475           -0.781 -0.306                     0.011          -0.317             NaN
+    Tavg    30    AutoARIMA trained             0.046            0.037 -0.009                     0.011          -0.020             NaN
+    Tavg    30     lightgbm trained             0.031            0.012 -0.019                     0.011          -0.031             NaN
+    Tavg    30        NHITS trained            -0.047           -0.002  0.046                     0.011           0.034             NaN
+    Tavg    30      DLinear trained            -0.064           -0.088 -0.024                     0.011          -0.035             NaN
+    Tavg    30     PatchTST trained             0.027            0.057  0.030                     0.011           0.019             NaN
+    Tavg    30     chronos2      FM             0.038            0.067  0.029                     0.011           0.017           0.015
+    Tavg    30 chronos_bolt      FM            -0.079            0.060  0.139                     0.011           0.128           0.116
+    Tavg    30    timesfm25      FM            -0.072            0.058  0.130                     0.011           0.119           0.058
+    Tavg    30        toto2      FM            -0.277            0.025  0.301                     0.011           0.290           0.131
+    Tavg    30        tirex      FM            -0.045            0.059  0.104                     0.011           0.092           0.054
+    Tavg    30      moirai2      FM            -0.244            0.046  0.290                     0.011           0.278           0.114
+    Tavg    30       ttm_r2      FM            -0.515           -0.239  0.275                     0.011           0.264           0.244
+    Tavg    30      sundial      FM            -0.118           -0.051  0.067                     0.011           0.055           0.030
+
+B. Reanalysis minus observation skill (positive = reanalysis looks more predictable)
+model             AutoARIMA  AutoETS  AutoTheta  DLinear  NHITS  PatchTST  chronos2  chronos_bolt  lightgbm  moirai2  sundial  timesfm25  tirex  toto2  ttm_r2
+var         lead                                                                                                                                              
+Humidity    1         0.319    0.341      0.342    0.348  0.320     0.329     0.334         0.333     0.266    0.331    0.356      0.330  0.332  0.451   0.416
+            7         0.308    0.382      0.382    0.370  0.305     0.323     0.344         0.352     0.272    0.365    0.361      0.347  0.345  0.470   0.449
+            30        0.194    0.357      0.362    0.276  0.212     0.250     0.294         0.293     0.220    0.343    0.308      0.308  0.288  0.406   0.361
+Rainfall    1         0.459    0.424      0.457    0.495  0.253     0.302     0.290         0.267     0.351    0.283    0.388      0.304  0.299  0.303   0.484
+            7         0.175    0.003      0.033    0.316  0.092     0.067     0.129         0.125     0.268    0.120    0.200      0.123  0.127  0.126   0.263
+            30        0.200   -0.101     -0.073    0.333  0.083     0.088     0.127         0.110     0.268    0.093    0.210      0.116  0.122  0.123   0.293
+Sunshine    1         0.037    0.030      0.026    0.056  0.008     0.014     0.051         0.062    -0.007    0.066    0.066      0.060  0.057  0.062   0.090
+            7        -0.008   -0.144     -0.153    0.027 -0.079     0.012     0.006         0.018    -0.006    0.065    0.037      0.015  0.004  0.004   0.035
+            30       -0.019   -0.320     -0.356    0.008 -0.072     0.002     0.000         0.026    -0.016    0.109    0.021      0.009 -0.003 -0.001   0.061
+Temperature 1         0.183    0.203      0.203    0.160  0.149     0.172     0.178         0.181     0.164    0.176    0.201      0.179  0.180  0.246   0.263
+            7         0.042    0.158      0.161    0.085 -0.036     0.039     0.097         0.077     0.060    0.072    0.102      0.089  0.086  0.154   0.072
+            30       -0.074    0.127      0.140    0.019 -0.076     0.002     0.031        -0.063     0.007   -0.079    0.021      0.019  0.016  0.061  -0.099
+
+C. Best baseline per task
+                     track               var  lead best_baseline  best_baseline_CRPSS   best_fm  best_fm_CRPSS fm_beats_best_baseline
+                       bmd          Humidity     1     AutoARIMA                0.289 timesfm25          0.294                   True
+                       bmd          Humidity     7      PatchTST                0.054  chronos2          0.064                   True
+                       bmd          Humidity    30      PatchTST                0.047  chronos2          0.053                   True
+                       bmd          Rainfall     1         NHITS                0.017     tirex          0.028                   True
+                       bmd          Rainfall     7   climatology                0.000     tirex         -0.014                  False
+                       bmd          Rainfall    30   climatology                0.000     tirex         -0.004                  False
+                       bmd          Sunshine     1         NHITS                0.162  chronos2          0.178                   True
+                       bmd          Sunshine     7      PatchTST                0.030  chronos2          0.034                   True
+                       bmd          Sunshine    30      lightgbm                0.027  chronos2          0.040                   True
+                       bmd       Temperature     1     AutoARIMA                0.347     tirex          0.361                   True
+                       bmd       Temperature     7      PatchTST                0.065 timesfm25          0.057                  False
+                       bmd       Temperature    30     AutoARIMA                0.023  chronos2          0.034                   True
+           ghcn_bangladesh          Rainfall     1         NHITS                0.060     toto2          0.095                   True
+           ghcn_bangladesh          Rainfall     7         NHITS                0.009  chronos2          0.017                   True
+           ghcn_bangladesh          Rainfall    30   climatology                0.000  chronos2          0.019                   True
+           ghcn_bangladesh              Tavg     1     AutoARIMA                0.317     tirex          0.328                   True
+           ghcn_bangladesh              Tavg     7      PatchTST                0.072  chronos2          0.066                  False
+           ghcn_bangladesh              Tavg    30     AutoARIMA                0.046  chronos2          0.038                  False
+            ghcn_temperate          Rainfall     1         NHITS                0.016     tirex          0.031                   True
+            ghcn_temperate          Rainfall     7   climatology                0.000     tirex         -0.011                  False
+            ghcn_temperate          Rainfall    30   climatology                0.000     tirex         -0.009                  False
+            ghcn_temperate              Tavg     1     AutoARIMA                0.434     tirex          0.441                   True
+            ghcn_temperate              Tavg     7      PatchTST                0.061  chronos2          0.076                   True
+            ghcn_temperate              Tavg    30      PatchTST                0.057  chronos2          0.067                   True
+            nasa_power_bmd ALLSKY_SFC_SW_DWN     1     AutoARIMA                0.181     toto2          0.238                   True
+            nasa_power_bmd ALLSKY_SFC_SW_DWN     7      PatchTST                0.041   moirai2          0.049                   True
+            nasa_power_bmd ALLSKY_SFC_SW_DWN    30      PatchTST                0.021   moirai2          0.041                   True
+            nasa_power_bmd       PRECTOTCORR     1         NHITS                0.270     toto2          0.327                   True
+            nasa_power_bmd       PRECTOTCORR     7         NHITS                0.070     tirex          0.113                   True
+            nasa_power_bmd       PRECTOTCORR    30         NHITS                0.053     tirex          0.118                   True
+            nasa_power_bmd              RH2M     1      PatchTST                0.612     toto2          0.625                   True
+            nasa_power_bmd              RH2M     7      PatchTST                0.378     toto2          0.410                   True
+            nasa_power_bmd              RH2M    30      PatchTST                0.298   moirai2          0.357                   True
+            nasa_power_bmd               T2M     1     AutoARIMA                0.530     toto2          0.542                   True
+            nasa_power_bmd               T2M     7      PatchTST                0.104  chronos2          0.153                   True
+            nasa_power_bmd               T2M    30      lightgbm                0.021  chronos2          0.065                   True
+nasa_power_ghcn_bangladesh       PRECTOTCORR     1      PatchTST                0.284     toto2          0.312                   True
+nasa_power_ghcn_bangladesh       PRECTOTCORR     7         NHITS                0.020     tirex          0.094                   True
+nasa_power_ghcn_bangladesh       PRECTOTCORR    30         NHITS                0.044     tirex          0.108                   True
+nasa_power_ghcn_bangladesh               T2M     1     AutoARIMA                0.525     toto2          0.535                   True
+nasa_power_ghcn_bangladesh               T2M     7      PatchTST                0.118  chronos2          0.148                   True
+nasa_power_ghcn_bangladesh               T2M    30      lightgbm                0.021  chronos2          0.061                   True
+ nasa_power_ghcn_temperate       PRECTOTCORR     1         NHITS                0.064     tirex          0.077                   True
+ nasa_power_ghcn_temperate       PRECTOTCORR     7   climatology                0.000     tirex         -0.010                  False
+ nasa_power_ghcn_temperate       PRECTOTCORR    30   climatology                0.000     tirex         -0.013                  False
+ nasa_power_ghcn_temperate               T2M     1     AutoARIMA                0.465     tirex          0.471                   True
+ nasa_power_ghcn_temperate               T2M     7     AutoARIMA                0.063  chronos2          0.079                   True
+ nasa_power_ghcn_temperate               T2M    30     AutoARIMA                0.041  chronos2          0.057                   True

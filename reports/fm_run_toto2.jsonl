@@ -1,0 +1,16 @@
+{"model": "toto2", "track": "bmd", "var": "Rainfall", "windows": 14412, "seconds": 110.2, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "bmd", "var": "Temperature", "windows": 13461, "seconds": 106.7, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "bmd", "var": "Humidity", "windows": 11103, "seconds": 88.0, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "bmd", "var": "Sunshine", "windows": 13454, "seconds": 106.8, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "ghcn_bangladesh", "var": "Rainfall", "windows": 1154, "seconds": 9.2, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "ghcn_bangladesh", "var": "Tavg", "windows": 1478, "seconds": 11.8, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "ghcn_temperate", "var": "Rainfall", "windows": 9855, "seconds": 78.3, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "ghcn_temperate", "var": "Tavg", "windows": 12918, "seconds": 102.7, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "nasa_power_bmd", "var": "PRECTOTCORR", "windows": 14490, "seconds": 114.6, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "nasa_power_bmd", "var": "T2M", "windows": 14490, "seconds": 115.0, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "nasa_power_bmd", "var": "RH2M", "windows": 14490, "seconds": 114.7, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "nasa_power_bmd", "var": "ALLSKY_SFC_SW_DWN", "windows": 14490, "seconds": 114.6, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "nasa_power_ghcn_bangladesh", "var": "PRECTOTCORR", "windows": 4140, "seconds": 32.9, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "nasa_power_ghcn_bangladesh", "var": "T2M", "windows": 4140, "seconds": 32.8, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "nasa_power_ghcn_temperate", "var": "PRECTOTCORR", "windows": 13248, "seconds": 105.0, "context": 1024, "nan_policy": "native"}
+{"model": "toto2", "track": "nasa_power_ghcn_temperate", "var": "T2M", "windows": 13248, "seconds": 105.2, "context": 1024, "nan_policy": "native"}

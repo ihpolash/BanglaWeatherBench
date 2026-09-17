@@ -1,0 +1,437 @@
+n_windows check (per track/var, unique):
+                                                min    max
+track                      var                            
+bmd                        Humidity           11103  11103
+                           Rainfall           14412  14412
+                           Sunshine           13454  13454
+                           Temperature        13461  13461
+ghcn_bangladesh            Rainfall            1154   1154
+                           Tavg                1478   1478
+ghcn_temperate             Rainfall            9855   9855
+                           Tavg               12918  12918
+nasa_power_bmd             ALLSKY_SFC_SW_DWN  14490  14490
+                           PRECTOTCORR        14490  14490
+                           RH2M               14490  14490
+                           T2M                14490  14490
+nasa_power_ghcn_bangladesh PRECTOTCORR         4140   4140
+                           T2M                 4140   4140
+nasa_power_ghcn_temperate  PRECTOTCORR        13248  13248
+                           T2M                13248  13248
+n_models_compared: [np.int64(18), np.int64(26)]
+
+Mean CRPSS vs climatology over 16 tasks, and mean rank (of 17)
+lead                1      7     30  rank_mean  wins_l1  wins_l7  wins_l30
+model                                                                     
+chronos2        0.296  0.081  0.063       2.77      1.0      7.0       8.0
+tirex           0.304  0.073  0.045       2.90      7.0      2.0       2.0
+timesfm25       0.290  0.073  0.048       4.19      1.0      0.0       0.0
+toto2           0.283  0.051  0.011       5.38      7.0      1.0       0.0
+moirai2         0.292  0.056  0.005       6.02      0.0      1.0       2.0
+chronos_bolt    0.286  0.062  0.017       6.06      0.0      0.0       0.0
+PatchTST        0.270  0.044  0.018       6.96      0.0      2.0       0.0
+AutoARIMA       0.203 -0.018 -0.053       8.38      0.0      0.0       1.0
+NHITS           0.266  0.010 -0.011       8.65      0.0      0.0       0.0
+lightgbm        0.145 -0.010 -0.037       9.92      0.0      0.0       0.0
+climatology     0.000  0.000  0.000      10.12      0.0      3.0       3.0
+sundial         0.218 -0.029 -0.055      10.69      0.0      0.0       0.0
+DLinear         0.145 -0.065 -0.091      12.25      0.0      0.0       0.0
+AutoETS         0.157 -0.218 -0.472      13.96      0.0      0.0       0.0
+AutoTheta       0.137 -0.228 -0.483      14.67      0.0      0.0       0.0
+naive           0.123 -0.361 -0.651      15.48      0.0      0.0       0.0
+ttm_r2         -0.003 -0.310 -0.387      15.85      0.0      0.0       0.0
+seasonal_naive -0.366 -0.377 -0.366      16.77      0.0      0.0       0.0
+
+By track group, mean CRPSS all leads 1/7/30 (obs tracks vs reanalysis tracks)
+grp            observations               reanalysis              
+lead                     1      7      30         1      7      30
+model                                                             
+chronos2              0.212  0.035  0.028      0.379  0.128  0.097
+chronos_bolt          0.204  0.016 -0.008      0.368  0.108  0.041
+timesfm25             0.204  0.024  0.007      0.376  0.121  0.089
+toto2                 0.177 -0.015 -0.047      0.390  0.117  0.070
+tirex                 0.218  0.025  0.007      0.390  0.121  0.083
+moirai2               0.208  0.003 -0.040      0.377  0.110  0.050
+ttm_r2               -0.127 -0.374 -0.436      0.122 -0.246 -0.337
+sundial               0.117 -0.088 -0.108      0.320  0.031 -0.003
+AutoETS               0.052 -0.255 -0.479      0.263 -0.180 -0.464
+AutoTheta             0.027 -0.268 -0.491      0.247 -0.188 -0.474
+AutoARIMA             0.097 -0.062 -0.082      0.308  0.025 -0.024
+lightgbm              0.053 -0.063 -0.084      0.238  0.042  0.010
+NHITS                 0.190 -0.002 -0.016      0.342  0.023 -0.006
+DLinear               0.044 -0.126 -0.141      0.247 -0.005 -0.042
+PatchTST              0.184  0.009 -0.005      0.356  0.080  0.041
+seasonal_naive       -0.407 -0.406 -0.410     -0.325 -0.348 -0.321
+naive                -0.018 -0.444 -0.672      0.263 -0.278 -0.631
+
+Rainfall-only / temperature-like-only mean CRPSS (obs tracks)
+vk            other                 rain              
+lead             1      7      30     1      7      30
+model                                                 
+chronos2      0.313  0.059  0.046  0.044 -0.005 -0.002
+chronos_bolt  0.308  0.033 -0.010  0.031 -0.011 -0.005
+timesfm25     0.316  0.048  0.018  0.017 -0.015 -0.012
+toto2         0.253 -0.018 -0.069  0.050 -0.011 -0.010
+tirex         0.319  0.047  0.019  0.049 -0.012 -0.012
+moirai2       0.307  0.012 -0.053  0.042 -0.013 -0.018
+ttm_r2        0.064 -0.296 -0.374 -0.445 -0.504 -0.541
+sundial       0.246 -0.040 -0.066 -0.099 -0.168 -0.178
+AutoETS       0.261 -0.203 -0.528 -0.297 -0.341 -0.396
+AutoTheta     0.255 -0.211 -0.560 -0.353 -0.364 -0.377
+AutoARIMA     0.306  0.047  0.028 -0.252 -0.242 -0.266
+lightgbm      0.234  0.039  0.025 -0.250 -0.232 -0.265
+NHITS         0.286  0.004 -0.008  0.031 -0.013 -0.030
+DLinear       0.193 -0.071 -0.086 -0.205 -0.217 -0.231
+PatchTST      0.298  0.057  0.034 -0.004 -0.069 -0.070
+
+80% interval coverage (mean over tasks, leads 1/7/30) — nominal 0.80
+grp             observations  reanalysis  rain_obs    min    max
+model                                                           
+chronos2               0.732       0.748     0.629  0.424  0.852
+chronos_bolt           0.781       0.807     0.740  0.584  0.866
+timesfm25              0.831       0.827     0.854  0.777  0.879
+toto2                  0.826       0.810     0.853  0.777  0.871
+tirex                  0.797       0.810     0.784  0.673  0.847
+moirai2                0.756       0.780     0.641  0.465  0.875
+ttm_r2                 0.001       0.002     0.004  0.000  0.016
+sundial                0.323       0.349     0.231  0.162  0.460
+AutoETS                0.902       0.911     0.911  0.788  0.999
+AutoTheta              0.903       0.916     0.902  0.806  0.999
+AutoARIMA              0.843       0.855     0.915  0.761  0.934
+lightgbm               0.735       0.735     0.637  0.367  0.835
+NHITS                  0.763       0.694     0.807  0.476  0.849
+DLinear                0.388       0.389     0.507  0.274  0.593
+PatchTST               0.822       0.810     0.833  0.723  0.879
+naive                  0.786       0.772     0.742  0.615  0.853
+seasonal_naive         0.785       0.772     0.735  0.576  0.859
+climatology            0.838       0.798     0.897  0.698  0.927
+
+FM family vs trained family: reanalysis minus obs skill (contrast B), mean over 4 vars
+               mean  median    min    max
+family  lead                             
+FM      1     0.238   0.265  0.051  0.484
+        7     0.162   0.122  0.004  0.470
+        30    0.123   0.101 -0.099  0.406
+trained 1     0.229   0.228 -0.007  0.495
+        7     0.123   0.076 -0.153  0.382
+        30    0.073   0.051 -0.356  0.362
+family          FM  trained
+var                        
+Humidity     0.355    0.308
+Rainfall     0.209    0.214
+Sunshine     0.038   -0.046
+Temperature  0.094    0.090
+
+Equity DiD summary: FM mean/median DiD by var x lead (main and gap-matched DiD using same control)
+                 gap        DiD_vs_control        gap_gapmatched        DiD_gm       
+                mean median           mean median           mean median   mean median
+var      lead                                                                        
+Rainfall 1    -0.080 -0.061         -0.037 -0.017         -0.087 -0.069 -0.043 -0.025
+         7    -0.035 -0.022          0.000  0.013         -0.037 -0.029 -0.002  0.006
+         30   -0.023 -0.018         -0.008 -0.003         -0.024 -0.024 -0.009 -0.009
+Tavg     1     0.132  0.116          0.015 -0.001          0.118  0.105  0.001 -0.012
+         7     0.067  0.054          0.078  0.065          0.038  0.033  0.049  0.043
+         30    0.167  0.135          0.155  0.123          0.095  0.086  0.084  0.075
+                 gap        DiD_vs_control       
+                mean median           mean median
+var      lead                                    
+Rainfall 1    -0.074 -0.052         -0.030 -0.009
+         7    -0.022 -0.035          0.013  0.000
+         30    0.008 -0.015          0.022  0.000
+Tavg     1     0.141  0.117          0.024  0.000
+         7    -0.014 -0.011         -0.004  0.000
+         30   -0.082 -0.019         -0.093 -0.031
+
+phase n:
+lead                           1       7       30
+var         monsoon_phase                        
+Humidity    dry            3147.0  3104.0  2964.0
+            onset           492.0   527.0   486.0
+            peak           3719.0  3728.0  3871.0
+            pre_monsoon    2955.0  2955.0  2943.0
+            withdrawal      790.0   789.0   839.0
+Rainfall    dry            4091.0  4092.0  4128.0
+            onset           590.0   627.0   595.0
+            peak           4875.0  4841.0  4885.0
+            pre_monsoon    3668.0  3668.0  3630.0
+            withdrawal     1188.0  1184.0  1174.0
+Sunshine    dry            3819.0  3790.0  3756.0
+            onset           474.0   535.0   581.0
+            peak           4597.0  4537.0  4488.0
+            pre_monsoon    3518.0  3537.0  3520.0
+            withdrawal     1046.0  1055.0  1109.0
+Temperature dry            3751.0  3736.0  3704.0
+            onset           568.0   605.0   566.0
+            peak           4659.0  4636.0  4677.0
+            pre_monsoon    3452.0  3444.0  3388.0
+            withdrawal     1031.0  1040.0  1126.0
+
+BMD Rainfall lead 1: CRPSS vs climatology by phase of target day
+monsoon_phase     dry  onset   peak  pre_monsoon  withdrawal
+model                                                       
+chronos2       -0.087  0.019  0.040       -0.015       0.002
+chronos_bolt   -0.084  0.009  0.025       -0.014      -0.026
+timesfm25      -0.146 -0.008  0.011       -0.046      -0.065
+toto2          -0.061  0.019  0.041       -0.029       0.035
+tirex          -0.044  0.016  0.046       -0.021       0.022
+moirai2        -0.067  0.010  0.041       -0.015      -0.026
+ttm_r2         -3.057 -0.272 -0.377       -0.664      -0.904
+sundial        -0.656 -0.063 -0.072       -0.263      -0.225
+AutoETS        -5.614 -0.128 -0.163       -0.498      -0.710
+AutoTheta      -6.883 -0.123 -0.177       -0.605      -0.967
+AutoARIMA      -5.328 -0.073 -0.128       -0.521      -0.620
+lightgbm       -1.338 -0.184 -0.239       -0.288      -0.356
+NHITS          -0.117  0.030  0.043       -0.060       0.005
+DLinear        -0.430 -0.225 -0.289       -0.409      -0.258
+PatchTST       -0.606 -0.002  0.000       -0.162      -0.061
+seasonal_naive -2.285 -0.283 -0.730       -1.099      -0.446
+
+BMD Rainfall lead 30: CRPSS vs climatology by phase of target day
+monsoon_phase     dry  onset   peak  pre_monsoon  withdrawal
+model                                                       
+chronos2       -0.034 -0.009 -0.014        0.001      -0.016
+chronos_bolt   -0.026 -0.010 -0.009       -0.008      -0.012
+timesfm25      -0.083 -0.011 -0.000       -0.024      -0.021
+toto2          -0.018 -0.015 -0.011       -0.010      -0.003
+tirex          -0.025 -0.002 -0.005        0.003      -0.004
+moirai2        -0.036 -0.002 -0.000       -0.012      -0.020
+ttm_r2         -2.436 -0.305 -0.444       -0.392      -0.667
+sundial        -0.277 -0.183 -0.137       -0.200      -0.147
+AutoETS        -2.155 -0.196 -0.255       -0.396      -0.275
+AutoTheta      -2.155 -0.160 -0.237       -0.373      -0.253
+AutoARIMA      -1.703 -0.193 -0.186       -0.295      -0.212
+lightgbm       -0.426 -0.313 -0.273       -0.199      -0.118
+NHITS          -0.138 -0.028 -0.018       -0.031      -0.027
+DLinear        -0.135 -0.419 -0.381       -0.238      -0.121
+PatchTST       -0.211 -0.078 -0.058       -0.077      -0.037
+seasonal_naive -0.443 -0.924 -0.761       -0.550      -0.408
+
+BMD Temperature lead 1: CRPSS vs climatology by phase of target day
+monsoon_phase     dry  onset   peak  pre_monsoon  withdrawal
+model                                                       
+chronos2        0.372  0.201  0.371        0.309       0.384
+chronos_bolt    0.375  0.214  0.350        0.323       0.376
+timesfm25       0.400  0.237  0.375        0.319       0.383
+toto2           0.348  0.227  0.306        0.256       0.256
+tirex           0.403  0.237  0.371        0.322       0.384
+moirai2         0.393  0.232  0.362        0.312       0.390
+ttm_r2          0.124 -0.049  0.124        0.072       0.132
+sundial         0.343  0.107  0.285        0.239       0.325
+AutoETS         0.347  0.194  0.306        0.278       0.337
+AutoTheta       0.339  0.195  0.300        0.275       0.321
+AutoARIMA       0.383  0.231  0.356        0.316       0.364
+lightgbm        0.307  0.189  0.251        0.246       0.230
+NHITS           0.369  0.191  0.333        0.302       0.343
+DLinear         0.252  0.091  0.270        0.184       0.244
+PatchTST        0.369  0.208  0.356        0.315       0.362
+seasonal_naive -0.242 -0.303 -0.144       -0.415      -0.156
+
+BMD Temperature lead 30: CRPSS vs climatology by phase of target day
+monsoon_phase     dry  onset   peak  pre_monsoon  withdrawal
+model                                                       
+chronos2       -0.013 -0.006  0.147       -0.040       0.051
+chronos_bolt   -0.114 -0.054  0.050       -0.138      -0.004
+timesfm25      -0.029 -0.028  0.145       -0.028       0.024
+toto2          -0.168 -0.095  0.069       -0.104      -0.086
+tirex          -0.087 -0.052  0.148       -0.052       0.038
+moirai2        -0.091 -0.013  0.117       -0.080       0.027
+ttm_r2         -0.696 -0.432 -0.349       -0.600      -0.329
+sundial        -0.137 -0.123  0.043       -0.144      -0.008
+AutoETS        -0.626 -0.804 -0.763       -0.559      -0.737
+AutoTheta      -0.666 -0.854 -0.827       -0.595      -0.778
+AutoARIMA       0.000 -0.046  0.084       -0.010       0.023
+lightgbm        0.022 -0.022  0.043       -0.022       0.023
+NHITS          -0.064 -0.140  0.067       -0.115      -0.018
+DLinear        -0.114 -0.192 -0.013       -0.177      -0.054
+PatchTST        0.001 -0.007  0.080       -0.020      -0.013
+seasonal_naive -0.257 -0.236 -0.133       -0.471      -0.177
+
+BMD Humidity lead 1: CRPSS vs climatology by phase of target day
+monsoon_phase     dry  onset   peak  pre_monsoon  withdrawal
+model                                                       
+chronos2        0.297  0.206  0.287        0.290       0.314
+chronos_bolt    0.295  0.192  0.278        0.289       0.304
+timesfm25       0.300  0.208  0.290        0.297       0.328
+toto2           0.157  0.073  0.196        0.183       0.185
+tirex           0.300  0.208  0.287        0.293       0.320
+moirai2         0.298  0.217  0.283        0.285       0.324
+ttm_r2          0.061 -0.053  0.048        0.065       0.044
+sundial         0.239  0.127  0.216        0.236       0.276
+AutoETS         0.254  0.181  0.234        0.239       0.306
+AutoTheta       0.247  0.178  0.224        0.238       0.295
+AutoARIMA       0.301  0.195  0.280        0.290       0.338
+lightgbm        0.276  0.191  0.243        0.250       0.290
+NHITS           0.278  0.220  0.273        0.276       0.310
+DLinear         0.198  0.076  0.185        0.159       0.220
+PatchTST        0.295  0.220  0.266        0.286       0.331
+seasonal_naive -0.346 -0.335 -0.255       -0.320      -0.125
+
+BMD Humidity lead 30: CRPSS vs climatology by phase of target day
+monsoon_phase     dry  onset   peak  pre_monsoon  withdrawal
+model                                                       
+chronos2        0.044 -0.008  0.088        0.033       0.068
+chronos_bolt    0.016 -0.037  0.076        0.022       0.013
+timesfm25       0.040  0.009  0.085        0.020       0.076
+toto2          -0.083 -0.120 -0.011       -0.082      -0.056
+tirex           0.024 -0.029  0.081        0.020       0.050
+moirai2         0.010 -0.061  0.039       -0.003       0.047
+ttm_r2         -0.272 -0.329 -0.220       -0.269      -0.210
+sundial        -0.019 -0.095  0.014       -0.049       0.010
+AutoETS        -0.474 -0.613 -0.670       -0.448      -0.431
+AutoTheta      -0.515 -0.655 -0.719       -0.473      -0.474
+AutoARIMA       0.037 -0.061  0.024        0.013       0.091
+lightgbm        0.060  0.010  0.045        0.015       0.068
+NHITS           0.035  0.010  0.029        0.008       0.082
+DLinear        -0.057 -0.125 -0.045       -0.115       0.019
+PatchTST        0.044  0.009  0.060        0.028       0.118
+seasonal_naive -0.343 -0.260 -0.220       -0.329      -0.223
+
+BMD Sunshine lead 1: CRPSS vs climatology by phase of target day
+monsoon_phase     dry  onset   peak  pre_monsoon  withdrawal
+model                                                       
+chronos2        0.260  0.188  0.123        0.158       0.244
+chronos_bolt    0.253  0.180  0.104        0.144       0.215
+timesfm25       0.254  0.183  0.107        0.143       0.212
+toto2           0.257  0.198  0.118        0.152       0.262
+tirex           0.266  0.174  0.111        0.157       0.252
+moirai2         0.249  0.150  0.105        0.141       0.222
+ttm_r2          0.012 -0.141 -0.199       -0.122      -0.095
+sundial         0.189  0.112  0.044        0.074       0.143
+AutoETS         0.136  0.196  0.066        0.069       0.130
+AutoTheta       0.122  0.196  0.070        0.058       0.114
+AutoARIMA       0.203  0.182  0.109        0.124       0.172
+lightgbm        0.192  0.113  0.073        0.107       0.130
+NHITS           0.247  0.168  0.105        0.154       0.187
+DLinear         0.164  0.016 -0.031        0.032       0.063
+PatchTST        0.248  0.176  0.099        0.151       0.208
+seasonal_naive -0.362 -0.372 -0.301       -0.256      -0.329
+
+BMD Sunshine lead 30: CRPSS vs climatology by phase of target day
+monsoon_phase     dry  onset   peak  pre_monsoon  withdrawal
+model                                                       
+chronos2        0.118 -0.069  0.003        0.053      -0.029
+chronos_bolt    0.102 -0.150 -0.052        0.014      -0.131
+timesfm25       0.103 -0.098 -0.014        0.049      -0.046
+toto2           0.111 -0.046 -0.004        0.039      -0.014
+tirex           0.118 -0.086 -0.009        0.044      -0.020
+moirai2         0.037 -0.377 -0.143        0.003      -0.131
+ttm_r2         -0.197 -0.560 -0.380       -0.317      -0.542
+sundial         0.034 -0.199 -0.102       -0.066      -0.213
+AutoETS        -0.313 -0.256 -0.229       -0.309      -0.250
+AutoTheta      -0.307 -0.243 -0.217       -0.304      -0.243
+AutoARIMA       0.071 -0.067 -0.031        0.026      -0.043
+lightgbm        0.105 -0.031 -0.021        0.041      -0.024
+NHITS           0.076 -0.061 -0.013        0.021      -0.002
+DLinear         0.014 -0.232 -0.200       -0.083      -0.160
+PatchTST        0.068 -0.027 -0.016        0.042      -0.033
+seasonal_naive -0.220 -0.268 -0.284       -0.290      -0.429
+cache columns: ['window_id', 'lead', 'mean', 'q0.1', 'q0.2', 'q0.3', 'q0.4', 'q0.5', 'q0.6', 'q0.7', 'q0.8', 'q0.9']
+interval columns: q0.1 q0.9
+             mean_minus_median                         width80_mean                         
+var                   Rainfall       Temperature           Rainfall        Temperature      
+lead                        1     30          1     30           1      30          1     30
+model                                                                                       
+NHITS                     0.00  0.00        0.00  0.00        18.27  19.50        2.58  3.10
+PatchTST                  0.00  0.00        0.00  0.00        17.08  17.40        2.75  3.96
+chronos2                  0.00  0.00        0.00  0.00        17.84  19.00        2.72  4.00
+chronos_bolt              0.01  0.00        0.00  0.00        14.05  19.25        2.70  4.62
+climatology               5.41  5.42        0.13  0.13        18.92  18.96        4.35  4.34
+moirai2                   0.00  0.00        0.00  0.00        15.33  15.94        3.02  4.62
+sundial                   1.72  1.82        0.03  0.05         8.96   9.47        0.78  1.70
+timesfm25                 2.16  4.00        0.09  0.17        10.13  16.15        2.66  4.36
+tirex                     0.00  0.00        0.00  0.00        16.32  19.30        2.54  4.53
+toto2                     0.00  0.00        0.00  0.00        17.11  18.85        2.60  4.64
+ttm_r2                    0.00  0.00        0.00  0.00         0.00   0.00        0.00  0.00
+
+Point skill (MAE of median vs climatology) at lead 1 / 30, BMD + GHCN tracks
+lead                                    1                                              30                                      
+model                             PatchTST chronos2  naive sundial  tirex ttm_r2 PatchTST chronos2  naive sundial  tirex ttm_r2
+track           var                                                                                                            
+bmd             Humidity             0.286    0.290  0.245   0.294  0.294  0.259    0.048    0.045 -0.371   0.041  0.031  0.015
+                Rainfall            -0.063    0.014 -0.393  -0.092  0.015 -0.298   -0.076   -0.009 -0.604  -0.143 -0.007 -0.372
+                Sunshine             0.182    0.184  0.109   0.181  0.180  0.155    0.018    0.031 -0.322   0.007  0.023 -0.026
+                Temperature          0.349    0.350  0.330   0.365  0.368  0.301    0.021    0.031 -0.971   0.015  0.010 -0.184
+ghcn_bangladesh Rainfall             0.022    0.056 -0.244  -0.015  0.051 -0.164   -0.097   -0.002 -0.725  -0.152 -0.024 -0.305
+                Tavg                 0.297    0.314  0.292   0.324  0.330  0.279    0.046    0.045 -0.732  -0.031 -0.031 -0.179
+ghcn_temperate  Rainfall            -0.009    0.010 -0.447  -0.124  0.014 -0.339   -0.067   -0.006 -0.714  -0.199 -0.005 -0.409
+                Tavg                 0.426    0.436  0.398   0.438  0.445  0.374    0.062    0.070 -0.663   0.044  0.064  0.042
+nasa_power_bmd  ALLSKY_SFC_SW_DWN    0.166    0.238  0.171   0.231  0.240  0.200    0.023    0.038 -0.410   0.010  0.026 -0.005
+                PRECTOTCORR          0.227    0.283  0.211   0.267  0.293  0.129    0.016    0.100 -0.366   0.064  0.101 -0.095
+                RH2M                 0.618    0.624  0.605   0.627  0.626  0.583    0.289    0.337  0.034   0.342  0.319  0.300
+                T2M                  0.523    0.531  0.521   0.551  0.548  0.508    0.025    0.063 -1.088   0.032  0.031 -0.269
+
+spell values: {'': 464443, 'normal': 44241, 'break': 22843, 'active': 12312}
+score columns: ['window_id', 'lead', 'y', 'abs_err', 'sq_err', 'crps', 'hit80', 'scale', 'ase', 'scaled_crps']
+lead                    1       7       30
+var         spell                         
+Humidity    active   302.0   314.0   342.0
+            break    589.0   511.0   708.0
+            normal   991.0  1079.0   938.0
+Rainfall    active   381.0   378.0   414.0
+            break    726.0   653.0   862.0
+            normal  1315.0  1389.0  1171.0
+Sunshine    active   348.0   328.0   345.0
+            break    705.0   632.0   774.0
+            normal  1250.0  1319.0  1047.0
+Temperature active   367.0   360.0   397.0
+            break    699.0   627.0   824.0
+            normal  1245.0  1327.0  1122.0
+
+BMD Rainfall: CRPSS vs climatology by spell of target day (Jul-Aug)
+spell        active                break               normal              
+lead             1      7      30     1      7      30     1      7      30
+model                                                                      
+NHITS         0.101  0.028  0.003  0.058 -0.057 -0.015 -0.011 -0.015 -0.010
+PatchTST      0.095 -0.032 -0.007 -0.041 -0.110 -0.077 -0.047 -0.045 -0.044
+chronos2      0.124  0.002  0.009  0.047 -0.041 -0.016 -0.041 -0.010 -0.041
+chronos_bolt  0.031 -0.065 -0.059  0.176  0.130  0.118 -0.014 -0.023 -0.021
+climatology   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+moirai2       0.091 -0.040 -0.036  0.090  0.072  0.120 -0.013 -0.015 -0.016
+sundial       0.093 -0.044 -0.035 -0.201 -0.387 -0.257 -0.142 -0.100 -0.126
+timesfm25     0.027 -0.073 -0.054  0.146  0.132  0.138 -0.059 -0.019 -0.010
+tirex         0.114 -0.029 -0.018  0.102  0.033  0.069 -0.037 -0.014 -0.028
+toto2         0.112 -0.029 -0.021  0.091  0.050  0.053 -0.049 -0.012 -0.021
+
+BMD Temperature: CRPSS vs climatology by spell of target day (Jul-Aug)
+spell        active                break               normal              
+lead             1      7      30     1      7      30     1      7      30
+model                                                                      
+NHITS         0.121 -0.213 -0.580  0.536  0.194  0.199  0.205 -0.008  0.003
+PatchTST      0.145 -0.204 -0.193  0.538  0.293  0.106  0.233  0.100  0.064
+chronos2      0.083 -0.380 -0.518  0.580  0.369  0.379  0.287  0.110  0.098
+chronos_bolt  0.120 -0.652 -0.997  0.571  0.445  0.447  0.234  0.047 -0.050
+climatology   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+moirai2       0.121 -0.340 -0.383  0.572  0.339  0.291  0.232  0.057  0.023
+sundial       0.105 -0.446 -0.548  0.497  0.225  0.232  0.155  0.034  0.038
+timesfm25     0.117 -0.442 -0.600  0.587  0.406  0.383  0.254  0.079  0.079
+tirex         0.108 -0.431 -0.444  0.587  0.380  0.336  0.246  0.077  0.095
+toto2         0.151 -0.580 -0.370  0.496  0.290  0.252  0.049  0.023 -0.028
+
+BMD Humidity: CRPSS vs climatology by spell of target day (Jul-Aug)
+spell        active                break               normal              
+lead             1      7      30     1      7      30     1      7      30
+model                                                                      
+NHITS         0.243 -0.135 -0.121  0.448  0.122  0.082  0.201  0.028 -0.018
+PatchTST      0.278 -0.061 -0.110  0.431  0.167  0.117  0.189  0.037  0.012
+chronos2      0.299 -0.143 -0.150  0.433  0.192  0.215  0.229  0.059  0.013
+chronos_bolt  0.304 -0.219 -0.253  0.439  0.222  0.243  0.215  0.036 -0.012
+climatology   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+moirai2       0.275 -0.141 -0.202  0.450  0.230  0.195  0.230  0.004 -0.045
+sundial       0.208 -0.305 -0.369  0.398  0.136  0.149  0.169 -0.007 -0.044
+timesfm25     0.294 -0.159 -0.188  0.464  0.235  0.227  0.237  0.060  0.015
+tirex         0.298 -0.206 -0.211  0.451  0.230  0.250  0.233  0.051 -0.011
+toto2         0.260 -0.335 -0.412  0.424  0.240  0.215  0.082  0.004 -0.105
+
+BMD Sunshine: CRPSS vs climatology by spell of target day (Jul-Aug)
+spell        active                break               normal              
+lead             1      7      30     1      7      30     1      7      30
+model                                                                      
+NHITS         0.159  0.006  0.027  0.191 -0.076 -0.003  0.026  0.000 -0.021
+PatchTST      0.253  0.043  0.039  0.177 -0.036 -0.065 -0.020  0.016 -0.008
+chronos2      0.297 -0.074  0.030  0.203  0.036  0.014  0.013 -0.035 -0.020
+chronos_bolt  0.185 -0.353 -0.287  0.225  0.121  0.066  0.006 -0.053 -0.140
+climatology   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+moirai2       0.201 -0.457 -0.505  0.234  0.200 -0.001 -0.009 -0.121 -0.289
+sundial       0.203 -0.246 -0.193  0.144 -0.085 -0.099 -0.063 -0.127 -0.100
+timesfm25     0.275 -0.106 -0.044  0.206  0.034 -0.014 -0.006 -0.034 -0.043
+tirex         0.282 -0.145 -0.057  0.201  0.099  0.038 -0.016 -0.040 -0.036
+toto2         0.324 -0.091 -0.029  0.196  0.056  0.022  0.001 -0.027 -0.027

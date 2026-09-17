@@ -1,0 +1,4 @@
+{"model": "sundial_ctx36", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 683.6, "context": 36, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 1658.8, "gpu": "Tesla T4", "params": 128329680}
+{"model": "sundial_ctx72", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 681.0, "context": 72, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 1696.5, "gpu": "Tesla T4", "params": 128329680}
+{"model": "sundial", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 683.6, "context": 144, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 1771.8, "gpu": "Tesla T4", "params": 128329680}
+{"model": "sundial_ctx1024", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 755.3, "context": 1024, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 2802.6, "gpu": "Tesla T4", "params": 128329680}

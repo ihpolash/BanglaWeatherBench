@@ -1,0 +1,2 @@
+{"model": "chronos_bolt_gapmatched", "track": "ghcn_temperate", "var": "Rainfall", "windows": 9855, "seconds": 49.7, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt_gapmatched", "track": "ghcn_temperate", "var": "Tavg", "windows": 12918, "seconds": 65.5, "context": 1024, "nan_policy": "native"}

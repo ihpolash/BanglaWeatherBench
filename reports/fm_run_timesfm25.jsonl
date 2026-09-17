@@ -1,0 +1,16 @@
+{"model": "timesfm25", "track": "bmd", "var": "Rainfall", "windows": 14412, "seconds": 175.0, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "bmd", "var": "Temperature", "windows": 13461, "seconds": 176.7, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "bmd", "var": "Humidity", "windows": 11103, "seconds": 151.4, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "bmd", "var": "Sunshine", "windows": 13454, "seconds": 184.6, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "ghcn_bangladesh", "var": "Rainfall", "windows": 1154, "seconds": 17.1, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "ghcn_bangladesh", "var": "Tavg", "windows": 1478, "seconds": 20.7, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "ghcn_temperate", "var": "Rainfall", "windows": 9855, "seconds": 134.9, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "ghcn_temperate", "var": "Tavg", "windows": 12918, "seconds": 174.8, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "nasa_power_bmd", "var": "PRECTOTCORR", "windows": 14490, "seconds": 189.3, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "nasa_power_bmd", "var": "T2M", "windows": 14490, "seconds": 187.8, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "nasa_power_bmd", "var": "RH2M", "windows": 14490, "seconds": 187.7, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "nasa_power_bmd", "var": "ALLSKY_SFC_SW_DWN", "windows": 14490, "seconds": 187.4, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "nasa_power_ghcn_bangladesh", "var": "PRECTOTCORR", "windows": 4140, "seconds": 55.7, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "nasa_power_ghcn_bangladesh", "var": "T2M", "windows": 4140, "seconds": 55.8, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "nasa_power_ghcn_temperate", "var": "PRECTOTCORR", "windows": 13248, "seconds": 171.3, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25", "track": "nasa_power_ghcn_temperate", "var": "T2M", "windows": 13248, "seconds": 171.8, "context": 1024, "nan_policy": "interpolate"}

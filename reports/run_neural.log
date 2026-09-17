@@ -1,0 +1,233 @@
+Seed set to 0
+Seed set to 0
+Seed set to 0
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type          | Params | Mode 
+--------------------------------------------------------------
+0 | loss                | MQLoss        | 9      | train
+1 | hist_cat_embeddings | ModuleList    | 0      | train
+2 | futr_cat_embeddings | ModuleList    | 0      | train
+3 | stat_cat_embeddings | ModuleList    | 0      | train
+4 | padder_train        | ConstantPad1d | 0      | train
+5 | scaler              | TemporalNorm  | 0      | train
+6 | blocks              | ModuleList    | 3.5 M  | train
+--------------------------------------------------------------
+3.5 M     Trainable params
+9         Non-trainable params
+3.5 M     Total params
+14.166    Total estimated model params size (MB)
+37        Modules in train mode
+0         Modules in eval mode
+`Trainer.fit` stopped: `max_steps=1000` reached.
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type          | Params | Mode 
+--------------------------------------------------------------
+0 | loss                | MQLoss        | 9      | train
+1 | hist_cat_embeddings | ModuleList    | 0      | train
+2 | futr_cat_embeddings | ModuleList    | 0      | train
+3 | stat_cat_embeddings | ModuleList    | 0      | train
+4 | padder_train        | ConstantPad1d | 0      | train
+5 | scaler              | TemporalNorm  | 0      | train
+6 | decomp              | SeriesDecomp  | 0      | train
+7 | linear_trend        | Linear        | 98.8 K | train
+8 | linear_season       | Linear        | 98.8 K | train
+--------------------------------------------------------------
+197 K     Trainable params
+9         Non-trainable params
+197 K     Total params
+0.791     Total estimated model params size (MB)
+11        Modules in train mode
+0         Modules in eval mode
+[rank: 0] Received SIGTERM: 15
+Seed set to 0
+Seed set to 0
+Seed set to 0
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type          | Params | Mode 
+--------------------------------------------------------------
+0 | loss                | MQLoss        | 9      | train
+1 | hist_cat_embeddings | ModuleList    | 0      | train
+2 | futr_cat_embeddings | ModuleList    | 0      | train
+3 | stat_cat_embeddings | ModuleList    | 0      | train
+4 | padder_train        | ConstantPad1d | 0      | train
+5 | scaler              | TemporalNorm  | 0      | train
+6 | blocks              | ModuleList    | 3.5 M  | train
+--------------------------------------------------------------
+3.5 M     Trainable params
+9         Non-trainable params
+3.5 M     Total params
+14.166    Total estimated model params size (MB)
+37        Modules in train mode
+0         Modules in eval mode
+`Trainer.fit` stopped: `max_steps=1000` reached.
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type          | Params | Mode 
+--------------------------------------------------------------
+0 | loss                | MQLoss        | 9      | train
+1 | hist_cat_embeddings | ModuleList    | 0      | train
+2 | futr_cat_embeddings | ModuleList    | 0      | train
+3 | stat_cat_embeddings | ModuleList    | 0      | train
+4 | padder_train        | ConstantPad1d | 0      | train
+5 | scaler              | TemporalNorm  | 0      | train
+6 | decomp              | SeriesDecomp  | 0      | train
+7 | linear_trend        | Linear        | 98.8 K | train
+8 | linear_season       | Linear        | 98.8 K | train
+--------------------------------------------------------------
+197 K     Trainable params
+9         Non-trainable params
+197 K     Total params
+0.791     Total estimated model params size (MB)
+11        Modules in train mode
+0         Modules in eval mode
+`Trainer.fit` stopped: `max_steps=1000` reached.
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type              | Params | Mode 
+------------------------------------------------------------------
+0 | loss                | MQLoss            | 9      | train
+1 | hist_cat_embeddings | ModuleList        | 0      | train
+2 | futr_cat_embeddings | ModuleList        | 0      | train
+3 | stat_cat_embeddings | ModuleList        | 0      | train
+4 | padder_train        | ConstantPad1d     | 0      | train
+5 | scaler              | TemporalNorm      | 0      | train
+6 | model               | PatchTST_backbone | 2.0 M  | train
+------------------------------------------------------------------
+2.0 M     Trainable params
+12        Non-trainable params
+2.0 M     Total params
+7.843     Total estimated model params size (MB)
+93        Modules in train mode
+0         Modules in eval mode
+`Trainer.fit` stopped: `max_steps=1000` reached.
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+NHITS,DLinear,PatchTST bmd                          Rainfall            14412 windows  1380.6s
+Seed set to 0
+Seed set to 0
+Seed set to 0
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type          | Params | Mode 
+--------------------------------------------------------------
+0 | loss                | MQLoss        | 9      | train
+1 | hist_cat_embeddings | ModuleList    | 0      | train
+2 | futr_cat_embeddings | ModuleList    | 0      | train
+3 | stat_cat_embeddings | ModuleList    | 0      | train
+4 | padder_train        | ConstantPad1d | 0      | train
+5 | scaler              | TemporalNorm  | 0      | train
+6 | blocks              | ModuleList    | 3.5 M  | train
+--------------------------------------------------------------
+3.5 M     Trainable params
+9         Non-trainable params
+3.5 M     Total params
+14.166    Total estimated model params size (MB)
+37        Modules in train mode
+0         Modules in eval mode
+`Trainer.fit` stopped: `max_steps=1000` reached.
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type          | Params | Mode 
+--------------------------------------------------------------
+0 | loss                | MQLoss        | 9      | train
+1 | hist_cat_embeddings | ModuleList    | 0      | train
+2 | futr_cat_embeddings | ModuleList    | 0      | train
+3 | stat_cat_embeddings | ModuleList    | 0      | train
+4 | padder_train        | ConstantPad1d | 0      | train
+5 | scaler              | TemporalNorm  | 0      | train
+6 | decomp              | SeriesDecomp  | 0      | train
+7 | linear_trend        | Linear        | 98.8 K | train
+8 | linear_season       | Linear        | 98.8 K | train
+--------------------------------------------------------------
+197 K     Trainable params
+9         Non-trainable params
+197 K     Total params
+0.791     Total estimated model params size (MB)
+11        Modules in train mode
+0         Modules in eval mode
+`Trainer.fit` stopped: `max_steps=1000` reached.
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type              | Params | Mode 
+------------------------------------------------------------------
+0 | loss                | MQLoss            | 9      | train
+1 | hist_cat_embeddings | ModuleList        | 0      | train
+2 | futr_cat_embeddings | ModuleList        | 0      | train
+3 | stat_cat_embeddings | ModuleList        | 0      | train
+4 | padder_train        | ConstantPad1d     | 0      | train
+5 | scaler              | TemporalNorm      | 0      | train
+6 | model               | PatchTST_backbone | 2.0 M  | train
+------------------------------------------------------------------
+2.0 M     Trainable params
+12        Non-trainable params
+2.0 M     Total params
+7.843     Total estimated model params size (MB)
+93        Modules in train mode
+0         Modules in eval mode
+`Trainer.fit` stopped: `max_steps=1000` reached.
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+NHITS,DLinear,PatchTST bmd                          Temperature         13461 windows   980.3s
+Seed set to 0
+Seed set to 0
+Seed set to 0
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type          | Params | Mode 
+--------------------------------------------------------------
+0 | loss                | MQLoss        | 9      | train
+1 | hist_cat_embeddings | ModuleList    | 0      | train
+2 | futr_cat_embeddings | ModuleList    | 0      | train
+3 | stat_cat_embeddings | ModuleList    | 0      | train
+4 | padder_train        | ConstantPad1d | 0      | train
+5 | scaler              | TemporalNorm  | 0      | train
+6 | blocks              | ModuleList    | 3.5 M  | train
+--------------------------------------------------------------
+3.5 M     Trainable params
+9         Non-trainable params
+3.5 M     Total params
+14.166    Total estimated model params size (MB)
+37        Modules in train mode
+0         Modules in eval mode
+`Trainer.fit` stopped: `max_steps=1000` reached.
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+
+  | Name                | Type          | Params | Mode 
+--------------------------------------------------------------
+0 | loss                | MQLoss        | 9      | train
+1 | hist_cat_embeddings | ModuleList    | 0      | train
+2 | futr_cat_embeddings | ModuleList    | 0      | train
+3 | stat_cat_embeddings | ModuleList    | 0      | train
+4 | padder_train        | ConstantPad1d | 0      | train
+5 | scaler              | TemporalNorm  | 0      | train
+6 | decomp              | SeriesDecomp  | 0      | train
+7 | linear_trend        | Linear        | 98.8 K | train
+8 | linear_season       | Linear        | 98.8 K | train
+--------------------------------------------------------------
+197 K     Trainable params
+9         Non-trainable params
+197 K     Total params
+0.791     Total estimated model params size (MB)
+11        Modules in train mode
+0         Modules in eval mode

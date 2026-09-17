@@ -1,0 +1,4 @@
+{"model": "timesfm25_ctx36", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 196.1, "context": 36, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 4180.6, "gpu": "Tesla T4", "params": 231289280}
+{"model": "timesfm25_ctx72", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 198.2, "context": 72, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 4180.6, "gpu": "Tesla T4", "params": 231289280}
+{"model": "timesfm25", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 199.2, "context": 144, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 4180.6, "gpu": "Tesla T4", "params": 231289280}
+{"model": "timesfm25_ctx1024", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 211.6, "context": 1024, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 4180.6, "gpu": "Tesla T4", "params": 231289280}

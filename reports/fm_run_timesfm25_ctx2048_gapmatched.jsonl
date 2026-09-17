@@ -1,0 +1,2 @@
+{"model": "timesfm25_ctx2048_gapmatched", "track": "ghcn_temperate", "var": "Rainfall", "windows": 9855, "seconds": 238.4, "context": 2048, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 7227.0, "gpu": "Tesla T4", "params": 231289280}
+{"model": "timesfm25_ctx2048_gapmatched", "track": "ghcn_temperate", "var": "Tavg", "windows": 12918, "seconds": 311.2, "context": 2048, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 7226.0, "gpu": "Tesla T4", "params": 231289280}

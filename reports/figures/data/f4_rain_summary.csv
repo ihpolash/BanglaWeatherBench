@@ -1,0 +1,7 @@
+stat,value
+dry_day_share(<0.1mm),0.675
+wet_day_share(>=1mm),0.325
+wet_median_mm,10.0
+wet_p95_mm,77.0
+wet_p99_mm,144.0
+max_mm,590.0

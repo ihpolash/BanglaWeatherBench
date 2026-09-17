@@ -1,0 +1,2 @@
+{"model": "timesfm25_gapmatched", "track": "ghcn_temperate", "var": "Rainfall", "windows": 9855, "seconds": 128.2, "context": 1024, "nan_policy": "interpolate"}
+{"model": "timesfm25_gapmatched", "track": "ghcn_temperate", "var": "Tavg", "windows": 12918, "seconds": 168.5, "context": 1024, "nan_policy": "interpolate"}

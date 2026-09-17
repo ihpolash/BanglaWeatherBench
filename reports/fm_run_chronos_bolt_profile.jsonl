@@ -1,0 +1,4 @@
+{"model": "chronos_bolt_profile", "track": "bmd", "var": "Rainfall", "windows": 4096, "seconds": 17.2, "context": 1024, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 2182.1, "gpu": "Tesla T4", "params": 205292928}
+{"model": "chronos_bolt_profile", "track": "bmd", "var": "Temperature", "windows": 4096, "seconds": 16.8, "context": 1024, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 2182.1, "gpu": "Tesla T4", "params": 205292928}
+{"model": "chronos_bolt_profile", "track": "bmd", "var": "Humidity", "windows": 4096, "seconds": 17.4, "context": 1024, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 2182.1, "gpu": "Tesla T4", "params": 205292928}
+{"model": "chronos_bolt_profile", "track": "bmd", "var": "Sunshine", "windows": 4096, "seconds": 18.2, "context": 1024, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 2182.1, "gpu": "Tesla T4", "params": 205292928}

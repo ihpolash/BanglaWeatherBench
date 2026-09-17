@@ -1,0 +1,16 @@
+{"model": "chronos_bolt", "track": "bmd", "var": "Rainfall", "windows": 14412, "seconds": 69.7, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "bmd", "var": "Temperature", "windows": 13461, "seconds": 65.6, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "bmd", "var": "Humidity", "windows": 11103, "seconds": 59.3, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "bmd", "var": "Sunshine", "windows": 13454, "seconds": 70.2, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "ghcn_bangladesh", "var": "Rainfall", "windows": 1154, "seconds": 6.2, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "ghcn_bangladesh", "var": "Tavg", "windows": 1478, "seconds": 7.8, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "ghcn_temperate", "var": "Rainfall", "windows": 9855, "seconds": 50.8, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "ghcn_temperate", "var": "Tavg", "windows": 12918, "seconds": 66.2, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "nasa_power_bmd", "var": "PRECTOTCORR", "windows": 14490, "seconds": 74.0, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "nasa_power_bmd", "var": "T2M", "windows": 14490, "seconds": 73.6, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "nasa_power_bmd", "var": "RH2M", "windows": 14490, "seconds": 73.7, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "nasa_power_bmd", "var": "ALLSKY_SFC_SW_DWN", "windows": 14490, "seconds": 73.9, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "nasa_power_ghcn_bangladesh", "var": "PRECTOTCORR", "windows": 4140, "seconds": 21.0, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "nasa_power_ghcn_bangladesh", "var": "T2M", "windows": 4140, "seconds": 21.0, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "nasa_power_ghcn_temperate", "var": "PRECTOTCORR", "windows": 13248, "seconds": 67.1, "context": 1024, "nan_policy": "native"}
+{"model": "chronos_bolt", "track": "nasa_power_ghcn_temperate", "var": "T2M", "windows": 13248, "seconds": 67.6, "context": 1024, "nan_policy": "native"}

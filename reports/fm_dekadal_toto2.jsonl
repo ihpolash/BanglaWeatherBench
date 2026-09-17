@@ -1,0 +1,4 @@
+{"model": "toto2_ctx36", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 14.1, "context": 36, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 1387.2, "gpu": "Tesla T4", "params": 312684608}
+{"model": "toto2_ctx72", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 17.1, "context": 72, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 1404.4, "gpu": "Tesla T4", "params": 312684608}
+{"model": "toto2", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 24.8, "context": 144, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 1439.0, "gpu": "Tesla T4", "params": 312684608}
+{"model": "toto2_ctx1024", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 128.7, "context": 1024, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 1960.0, "gpu": "Tesla T4", "params": 312684608}

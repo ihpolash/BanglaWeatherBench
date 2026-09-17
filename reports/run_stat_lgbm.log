@@ -1,0 +1,38 @@
+python3(86230) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python3(86231) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python3(86232) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python3(86233) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python3(86234) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python3(86235) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python3(86236) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python3(86237) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+chain: naive baselines finished Tue Sep 15 03:11:29 +06 2026
+AutoETS,AutoTheta      bmd                          Rainfall            14412 windows  1120.5s
+lightgbm               bmd                          Rainfall            14412 windows     4.2s (best_iter=9)
+AutoETS,AutoTheta      bmd                          Temperature         13461 windows   840.2s
+lightgbm               bmd                          Temperature         13461 windows     7.0s (best_iter=49)
+AutoETS,AutoTheta      bmd                          Humidity            11103 windows  1076.3s
+lightgbm               bmd                          Humidity            11103 windows    10.9s (best_iter=171)
+AutoETS,AutoTheta      bmd                          Sunshine            13454 windows  1255.9s
+lightgbm               bmd                          Sunshine            13454 windows     8.8s (best_iter=80)
+AutoETS,AutoTheta      ghcn_temperate               Rainfall             9855 windows   763.0s
+lightgbm               ghcn_temperate               Rainfall             9855 windows     7.5s (best_iter=32)
+AutoETS,AutoTheta      ghcn_temperate               Tavg                12918 windows   447.3s
+lightgbm               ghcn_temperate               Tavg                12918 windows    15.3s (best_iter=102)
+AutoETS,AutoTheta      nasa_power_bmd               PRECTOTCORR         14490 windows  1408.8s
+lightgbm               nasa_power_bmd               PRECTOTCORR         14490 windows     7.2s (best_iter=60)
+AutoETS,AutoTheta      nasa_power_bmd               T2M                 14490 windows   421.5s
+lightgbm               nasa_power_bmd               T2M                 14490 windows     8.1s (best_iter=60)
+AutoETS,AutoTheta      nasa_power_bmd               RH2M                14490 windows   635.7s
+lightgbm               nasa_power_bmd               RH2M                14490 windows     8.8s (best_iter=66)
+AutoETS,AutoTheta      nasa_power_bmd               ALLSKY_SFC_SW_DWN   14490 windows  1440.8s
+lightgbm               nasa_power_bmd               ALLSKY_SFC_SW_DWN   14490 windows     6.9s (best_iter=39)
+AutoETS,AutoTheta      nasa_power_ghcn_bangladesh   PRECTOTCORR          4140 windows   405.5s
+lightgbm               nasa_power_ghcn_bangladesh   PRECTOTCORR          4140 windows     3.2s (best_iter=58)
+AutoETS,AutoTheta      nasa_power_ghcn_bangladesh   T2M                  4140 windows   127.4s
+lightgbm               nasa_power_ghcn_bangladesh   T2M                  4140 windows     3.1s (best_iter=78)
+AutoETS,AutoTheta      nasa_power_ghcn_temperate    PRECTOTCORR         13248 windows  1063.9s
+lightgbm               nasa_power_ghcn_temperate    PRECTOTCORR         13248 windows     5.5s (best_iter=40)
+AutoETS,AutoTheta      nasa_power_ghcn_temperate    T2M                 13248 windows   437.4s
+lightgbm               nasa_power_ghcn_temperate    T2M                 13248 windows    10.1s (best_iter=53)
+chain: stat+lgbm exited with 0 Tue Sep 15 06:24:07 +06 2026 windows done

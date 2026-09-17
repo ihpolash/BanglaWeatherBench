@@ -1,0 +1,45 @@
+# Temporal splits (dates inclusive, local calendar days).
+# Leakage rule: anything estimated from data — normalisation, climatology, percentile thresholds,
+# monsoon active/break reference cycle, model fitting — uses `train` only (baselines may refit on train+val
+# after hyperparameter selection). Forecast *context* windows may reach back into train/val; scored *targets*
+# must lie entirely inside the evaluated split.
+
+daily:
+  train: {start: null, end: "2010-12-31"}        # per-station start: 1961 (5 stations) ... 2008 (Ambagan)
+  val: {start: "2011-01-01", end: "2015-12-31"}
+  test: {start: "2016-01-01", end: "2023-12-31"}  # common to all tracks; BMD ends 2023-12-31
+  test_extension:                                  # post-BMD, reported separately
+    start: "2024-01-01"
+    end: "2025-08-24"
+    tracks: [ghcn_bangladesh, ghcn_temperate, nasa_power]
+
+dekadal:  # CHIRPS rfh
+  train: {start: "1981-01-01", end: "2010-12-21"}
+  val: {start: "2011-01-01", end: "2015-12-21"}
+  test: {start: "2016-01-01", end: "2023-12-21"}
+  test_extension: {start: "2024-01-01", end: "2026-08-21"}
+
+rolling_origin:
+  daily:
+    stride_days: 7
+    horizons_days: [1, 3, 7, 14, 30]
+    context_lengths: [512, 1024, 2048]   # capped per model at its max context
+  dekadal:
+    stride_dekads: 1
+    horizons_dekads: [1, 2, 3, 6]
+    context_lengths: [36, 72, 144]
+  # Scoring rule (identical in every track): the H-day target must be fully observed and unflagged, and the
+  # series must have >= min_history_days of history before the origin. Context is NOT required to be complete:
+  # a >=90%-complete-context rule leaves 0 GHCN-Bangladesh rainfall windows (reports/window_feasibility.csv).
+  # Models receive contexts with their real gaps (NaN); each window records ctx_obs_frac_365 so skill can be
+  # stratified by context completeness, and a gap-matched ablation imposes Bangladesh-like gaps on temperate contexts.
+  require_complete_target: true
+  require_complete_context: false
+  min_history_days: 365
+
+tracks:
+  bmd: {source: "data/processed/bmd_daily.parquet", variables: [Rainfall, Temperature, Humidity, Sunshine]}
+  ghcn_bangladesh: {source: "data/processed/ghcn_daily.parquet", region: bangladesh, variables: [Rainfall, Tavg]}
+  ghcn_temperate: {source: "data/processed/ghcn_daily.parquet", region: temperate, variables: [Rainfall, Tavg]}
+  nasa_power: {source: "data/processed/nasa_power_points.parquet", variables: [PRECTOTCORR, T2M, RH2M, ALLSKY_SFC_SW_DWN]}
+  chirps: {source: "data/processed/chirps_dekadal_adm2.parquet", variables: [rfh]}

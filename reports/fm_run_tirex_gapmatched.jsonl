@@ -1,0 +1,2 @@
+{"model": "tirex_gapmatched", "track": "ghcn_temperate", "var": "Rainfall", "windows": 9855, "seconds": 70.5, "context": 1024, "nan_policy": "interpolate"}
+{"model": "tirex_gapmatched", "track": "ghcn_temperate", "var": "Tavg", "windows": 12918, "seconds": 91.4, "context": 1024, "nan_policy": "interpolate"}

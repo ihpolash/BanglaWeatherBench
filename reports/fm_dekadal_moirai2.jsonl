@@ -1,0 +1,4 @@
+{"model": "moirai2_ctx36", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 20.7, "context": 36, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 72.2, "gpu": "Tesla T4", "params": 45548832}
+{"model": "moirai2_ctx72", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 14.4, "context": 72, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 126.3, "gpu": "Tesla T4", "params": 45548832}
+{"model": "moirai2", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 13.6, "context": 144, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 189.0, "gpu": "Tesla T4", "params": 45548832}
+{"model": "moirai2_ctx1024", "track": "chirps", "var": "rfh", "windows": 18112, "seconds": 21.4, "context": 1024, "nan_policy": "native", "batch_size": 256, "peak_vram_mb": 501.5, "gpu": "Tesla T4", "params": 45548832}

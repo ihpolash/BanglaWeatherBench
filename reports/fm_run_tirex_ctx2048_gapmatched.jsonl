@@ -1,0 +1,2 @@
+{"model": "tirex_ctx2048_gapmatched", "track": "ghcn_temperate", "var": "Rainfall", "windows": 9855, "seconds": 73.6, "context": 2048, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 566.8, "gpu": "Tesla T4", "params": 35291200}
+{"model": "tirex_ctx2048_gapmatched", "track": "ghcn_temperate", "var": "Tavg", "windows": 12918, "seconds": 110.1, "context": 2048, "nan_policy": "interpolate", "batch_size": 256, "peak_vram_mb": 565.8, "gpu": "Tesla T4", "params": 35291200}

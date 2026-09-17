@@ -1,0 +1,29 @@
+.venv/
+envs/*/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+.ipynb_checkpoints/
+
+# Data: raw/external downloads and caches are not committed
+data/external/
+data/interim/
+data/processed/
+data/predictions_cache/
+*.parquet
+
+# Regenerable score caches: reports/ is 4.1 GB, almost all of it these two trees.
+# Everything else in reports/ (markdown, CSV summaries, figures, run records) is committed - it is the
+# provenance trail for the paper's numbers.
+reports/scores/
+reports/ablation/scores/
+
+# Third-party papers: ~340 MB of copyrighted PDFs, not ours to redistribute, and recoverable from the arXiv IDs
+# recorded in NOVELTY_LOG.md and the bibliography.
+Papers/
+
+# Raw source downloads kept at the data/ root (fetch code ships instead; see DATASHEET.md)
+data/*.csv
+data/*.xls
+data/*.geojson
