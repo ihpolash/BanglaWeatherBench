@@ -1,0 +1,18 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We built a benchmark for daily weather forecasting on tropical-monsoon station observations, with the controls
+needed to interpret a tropical result: a same-network temperate reference, a reanalysis track at identical
+coordinates, and a gap-matched context control applied to models and baselines alike. Evaluating 8 zero-shot
+time-series foundation models against 10 trained and statistical baselines over 170{,}571 rolling-origin windows,
+under a significance protocol that treats the forecast origin as the unit of resampling, the picture is mixed:
+foundation models are the strongest family, but on station observations most of their advantage is not
+statistically separable, nothing beats a day-of-year climatology on tropical rainfall beyond a one-day lead,
+reanalysis flatters every model relative to the stations it represents, skill reverses between monsoon break and
+active spells, and the long-lead tropical temperature deficit that half the roster shows is mostly --- though not
+entirely --- a consequence of sparser station context rather than of the tropics.
+
+For practitioners in data-sparse regions the practical reading is that zero-shot models are already affordable and
+already competitive on smooth variables, and that for rainfall a well-built climatology remains the thing to beat.
+For benchmark builders it is that scoring target, regime stratification and context availability are not
+implementation details: each one changed a conclusion in this study.

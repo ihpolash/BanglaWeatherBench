@@ -1,0 +1,15 @@
+Time-series foundation models are presented as zero-shot forecasters for arbitrary series, but the evidence is drawn
+overwhelmingly from mid-latitude, data-rich and frequently reanalysis-derived sources. We introduce
+BanglaWeatherBench, a benchmark of daily weather forecasting on tropical-monsoon station observations: 16 tasks and
+170{,}571 rolling-origin windows over 35 Bangladesh Meteorological Department stations, 10 co-located GHCN-Daily
+stations, 32 European GHCN-Daily stations as a temperate reference, and NASA POWER reanalysis at all 77 station
+coordinates, with an independent CHIRPS dekadal rainfall task. We score 8 zero-shot foundation models against 10
+trained and statistical baselines, resampling by forecast origin with Diebold--Mariano tests and Holm correction
+across 48 comparisons. Foundation models are the strongest family, yet the best one separates from the best
+baseline in only 14 of 48 comparisons, loses 5, and is indistinguishable in 29; on station observations it wins 3 of
+24, all at a one-day lead, against 11 of 24 on reanalysis at the same coordinates. No model beats a day-of-year
+climatology on rainfall at the 35 stations beyond a one-day lead, or on dekadal rainfall at any horizon. Reanalysis
+looks more predictable than the stations it represents in 78 of 108 comparisons. At a 30-day lead, 4 of 8 models
+lose significantly more temperature skill in Bangladesh than a gap-matched trained control, with roughly
+\SI{60}{\percent} of that penalty attributable to sparser station context rather than to climate. Skill also
+reverses by monsoon regime, and the full leaderboard reproduces in 4.16 GPU-hours on a free GPU.

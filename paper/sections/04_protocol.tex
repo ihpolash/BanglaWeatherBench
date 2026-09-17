@@ -1,0 +1,61 @@
+\section{Evaluation protocol}
+\label{sec:protocol}
+
+\subsection{Splits and windows}
+
+Temporal splits are fixed for every track: training up to 2010-12-31, validation 2011--2015, and a 2016--2023 test
+period common to all tracks. Anything estimated from data --- climatologies, percentile thresholds, the spell
+reference cycle, and model fitting --- uses the training split only.
+
+Evaluation is rolling-origin with a 7-day stride and horizons of 1, 3, 7, 14 and 30 days. A window is scored when
+its 30-day target lies entirely inside the test split, is complete and unflagged, and at least 365 days of history
+precede the origin. Context is deliberately \emph{not} required to be complete: a 90\%-complete-context rule leaves
+zero admissible GHCN-Bangladesh rainfall windows, which would silently delete the sparsest --- and most
+representative --- part of the problem. Models therefore receive contexts containing real gaps, and each window
+records its context completeness so that skill can be stratified by it. This yields 170{,}571 daily windows and
+18{,}112 dekadal windows.
+
+\subsection{Metrics}
+
+The headline metric is the continuous ranked probability score, computed from nine predictive quantiles as twice
+the mean pinball loss. Point errors use each model's predictive \emph{median} and squared errors its mean; mixing
+the two is not neutral on zero-inflated rainfall, where scoring climatology on its mean rather than its median
+changed its MASE at a 30-day lead from 0.58 to 0.82 and made a quantile-loss network appear \SI{25}{\percent}
+better than it is. Interval calibration is reported as coverage of the central \SI{80}{\percent} interval.
+
+Because scaled errors differ systematically between tracks, all cross-track comparisons use skill relative to the
+\emph{same track's} day-of-year climatology, estimated on the training split. A score of zero is climatology.
+
+\subsection{Significance}
+
+Neighbouring origins overlap heavily, so treating windows as independent samples would overstate confidence
+substantially; none of the reference forecasting benchmarks reports significance tests at all. We therefore make
+the forecast origin the unit of resampling, averaging stations within an origin so that cross-sectional
+correlation is absorbed rather than counted as extra samples.
+
+Pairwise comparisons use Diebold--Mariano on the paired loss differential, with a Newey--West HAC variance at lag
+$h-1$ and the Harvey--Leybourne--Newbold small-sample correction, referred to a $t$ distribution. Interval
+estimates come from a moving-block bootstrap over origins (block 8 origins, 2{,}000 resamples); paired series --- a
+model, its climatology reference and the control baseline --- are resampled with the same blocks, so a
+difference-in-differences interval carries the control's uncertainty rather than treating it as fixed. Rankings use
+Friedman with the Nemenyi critical difference from the studentized range. All 48 task-and-lead comparisons are
+Holm--Bonferroni corrected, and we report the corrected values.
+
+\subsection{Controls}
+
+\paragraph{Gap-matched contexts.} Bangladeshi contexts are 82--86\% observed over the year preceding an origin,
+against 99--100\% for the temperate reference. To separate climate from data availability we draw real missingness
+patterns from GHCN-Bangladesh windows and impose them, right-aligned and deterministically, on temperate contexts.
+Masking moves the temperate observed share to 0.808 for rainfall (Bangladesh reference 0.819) and 0.863 for mean
+temperature (reference 0.863). Crucially the mask is applied to the trained baselines as well as to the foundation
+models, so the control is like-for-like; masking only the model understates the remaining effect.
+
+\paragraph{Leakage audit.} Every model's pretraining corpus was checked against its technical report rather than
+its model card. No corpus names GHCN-Daily, BMD or any Bangladesh source. The station corpora that do appear ---
+USHCN and SubseasonalClimateUSA --- are United States only, and our temperate reference is entirely European, so
+neither side of the tropical-versus-temperate contrast is contaminated. Leakage-free zero-shot evaluation is not
+itself novel \citep{qiao2026time}; what matters here is that it is a precondition for reading a geographic
+contrast as a geographic effect.
+
+\paragraph{Context length.} Because a sparse context is also a shorter effective context, the tropical contrast is
+repeated with 2{,}048 days of history in place of 1{,}024, with the control masked identically.

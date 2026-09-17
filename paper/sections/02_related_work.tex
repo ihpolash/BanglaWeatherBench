@@ -1,0 +1,47 @@
+\section{Related work}
+\label{sec:related}
+
+\paragraph{General time-series benchmarks.} Monash \citep{godahewa2021monash}, GIFT-Eval \citep{aksu2024gifteval},
+TFB \citep{qiu2024tfb} and TSFM-Bench \citep{li2025tsfmbench} evaluate across many domains and report aggregate
+ranks. Weather appears as one domain among dozens, drawn mostly from mid-latitude sources, and none stratifies by
+climatic regime or geography. TIME \citep{qiao2026time} adds a strict leakage-free protocol over 50 fresh datasets
+and 12 foundation models, and likewise applies no geographic or climatic strata. Recent work has begun to document
+that aggregate metrics conceal regime-dependent failure \citep{wang2026regime} and that benchmark construction
+itself is a source of leakage \citep{meyer2026leakage}; our design follows both warnings.
+
+\paragraph{Weather benchmarks.} WeatherBench 2 \citep{rasp2024weatherbench2} and ChaosBench
+\citep{nathaniel2024chaosbench} score against reanalysis; ExtremeWeatherBench \citep{mcgovern2026ewb} scores
+against event catalogues; WeatherReal \citep{jin2024weatherreal} and WEATHER-5K \citep{han2026weather5k} score against
+station observations. WEATHER-5K is the closest in spirit --- thousands of global stations, hourly --- but carries
+neither precipitation nor humidity, which are the variables at issue here, and reports global aggregates rather
+than climatic strata. None of these evaluates time-series foundation models on a tropical station network.
+
+\paragraph{Geographic disparity in AI forecasting.} SAFE \citep{masi2025safe} stratifies AI weather-prediction
+models by country, subregion and income group, finding disparities across every attribute, but works on ERA5 at
+\ang{1.5} resolution for upper-air fields only. \citet{mozaffari2026inequality} argue qualitatively that AI risks
+amplifying a North--South divide without supplying measurements. \citet{rowell2026brazil} stratify GraphCast by
+climatic sub-region over Brazil against operational IFS analysis for \(T_{850}\), \(Q_{850}\) and \(Z_{500}\),
+excluding precipitation. Ours is the corresponding measurement for time-series foundation models, on station
+observations, including rainfall.
+
+\paragraph{South Asian monsoon and AI models.} \citet{gupta2026mausam} assess seven global AI weather-prediction
+models against South Asian observations during the monsoon, reporting errors 15--45\% larger than against
+reanalysis --- the precedent for our observation-versus-reanalysis contrast, transferred here to a different model
+class. \citet{luitel2026ism} evaluate GraphCast over the Indian summer monsoon against ERA5 and IMERG, and
+\citet{aitken2026monsoon} build decision-oriented probabilistic onset forecasts for Indian farmers from AI weather
+models. All three concern gridded NWP-style emulators and onset or seasonal-mean skill rather than zero-shot
+station forecasting.
+
+\paragraph{Precipitation-specific evaluation.} A recent benchmark evaluates 17 supervised architectures for 0--6\,hour
+GNSS-based precipitation nowcasting \citep{zhang2025rainfallbench}. The task, horizon and model class all differ from
+ours, but it is the closest existing precipitation-focused time-series benchmark.
+
+\paragraph{Bangladesh forecasting.} The applied literature is substantial but uses per-station supervised models
+and releases no shared tasks: \citet{joy2026bangladesh} is representative, training attention-enhanced LSTMs for
+temperature and rainfall. No published work evaluates pretrained foundation models on Bangladeshi station data, and
+no Bangladesh weather benchmark with fixed splits and a leaderboard exists.
+
+\paragraph{Position.} The intersection --- current time-series foundation models, on tropical station observations
+including precipitation, stratified by monsoon regime, with a matched temperate control and a significance protocol
+--- is, to our knowledge, unoccupied. We claim novelty only at that intersection, and cite the neighbours above for
+each component individually.

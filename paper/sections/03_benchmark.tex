@@ -1,0 +1,52 @@
+\section{BanglaWeatherBench}
+\label{sec:benchmark}
+
+The benchmark is built around one observational target and three controls, each answering a confound that would
+otherwise make a tropical result unreadable.
+
+\subsection{Data tracks}
+
+\paragraph{BMD stations (target).} Daily observations from 35 Bangladesh Meteorological Department stations,
+1961--2023, covering rainfall (\si{\milli\metre}), temperature (\si{\celsius}), relative humidity (\%) and bright
+sunshine (hours), released under CC-BY-4.0 \citep{zubair2024bmd}. The published
+record was already imputed by its authors using forward/backward filling, interpolation and manual edits, so we
+detect and flag suspect values rather than trusting the file: constant runs, perfectly linear runs, and values
+lying off the recording grid. Over the test period, flagged shares are \SI{0.08}{\percent} (rainfall),
+\SI{1.26}{\percent} (temperature), \SI{1.75}{\percent} (sunshine) and \SI{4.44}{\percent} (humidity); the worst
+single station-variable is \SI{14.1}{\percent}, and only 11 of 140 station-variables exceed \SI{5}{\percent}. A
+window is scored only if its target is complete \emph{and} unflagged, so flagged values never enter a score.
+
+\paragraph{GHCN-Daily Bangladesh (cross-check).} Ten stations from the WMO-derived network, co-located with BMD
+sites, giving an independently curated view of the same weather. Over 2016--2023 these are about
+\SI{65}{\percent} complete, with 2021 almost entirely absent. GHCN labels a rainfall total by the day the
+24-hour accumulation begins and BMD by the day it ends; we correct the one-day offset only for cross-source
+comparison, never for per-track forecasting.
+
+\paragraph{GHCN-Daily temperate (reference).} Thirty-two mid-latitude European stations from the same network,
+selected for record length and completeness (about \SI{99}{\percent} over the test period). Holding the instrument
+network, variables, protocol and scoring fixed isolates climatic regime from everything else. All 32 are European;
+none is in the United States, which matters for the leakage audit (\S\ref{sec:protocol}).
+
+\paragraph{NASA POWER (reanalysis).} Reanalysis sampled at all 77 station coordinates, so that observation and
+reanalysis can be compared at identical places and dates rather than across different domains.
+
+\paragraph{CHIRPS dekadal (independent source).} Ten-day rainfall totals for 64 districts, 1981--2026, from a
+satellite-gauge product. Two administrative units are split across polygons sharing one identifier; we merge them
+with pixel-count weights rather than dropping either.
+
+\subsection{Tasks}
+
+Sixteen daily tasks are defined as the cross of tracks and variables: four BMD variables, two GHCN-Bangladesh
+(rainfall, mean temperature), two GHCN-temperate, and the four NASA POWER analogues at each of the three station
+sets. A seventeenth task covers CHIRPS dekadal rainfall at a six-dekad horizon. Tasks are evaluated separately;
+we never pool across tracks, because scaled errors are not comparable between a smooth reanalysis grid and a
+sparse station record.
+
+\subsection{Evaluation strata}
+
+Scoring is stratified by physically defined, externally validated regimes rather than by empirical clusters.
+Monsoon phases (pre-monsoon, onset, peak, withdrawal, dry) follow published Bangladeshi climatology, and
+active/break spells follow \citet{ferdoushi2023spells}: runs of at least three days in
+July--August where daily rainfall on the all-station mean series sits above or below half a standard deviation of
+the daily climatological cycle. Our labels reproduce that paper's counts to within a few percent. Strata are
+derived from the training period only and are used for scoring alone; they are never model inputs.

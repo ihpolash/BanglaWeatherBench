@@ -1,0 +1,61 @@
+% BanglaWeatherBench --- arXiv preprint (cs.AI primary; cs.LG, physics.ao-ph cross-list)
+% Build: pdflatex main && bibtex main && pdflatex main && pdflatex main
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+% Four full-width floats compete for space and LaTeX deferred them all to the end; loosen the float
+% parameters so figures sit near the text that discusses them.
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\usepackage{xcolor}
+
+% Drafting aid: \tk{...} marks a value or decision that must come from an artefact or the author.
+% Nothing with a \tk may survive into a submitted version --- grep for it before building the final PDF.
+\newcommand{\tk}[1]{\textcolor{red}{[TK: #1]}}
+
+\graphicspath{{figures/}{../reports/figures/}}
+\sisetup{detect-weight=true,detect-family=true}
+
+% Working title. Alternatives, pick one before submission:
+%   "Zero-Shot, But Not Everywhere: Foundation Models on Tropical-Monsoon Station Observations"
+%   "BanglaWeatherBench: What Zero-Shot Forecasting Buys on a Sparse Tropical Station Network"
+\title{BanglaWeatherBench: Monsoon-Stratified Evaluation of\\
+Zero-Shot Time-Series Foundation Models on Station Observations}
+\author{Ismail Hossain Polash\thanks{\tk{affiliation, contact email}}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{sections/00_abstract}
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_benchmark}
+\input{sections/04_protocol}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_limitations}
+\input{sections/08_conclusion}
+\input{sections/09_availability}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

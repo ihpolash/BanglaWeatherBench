@@ -1,0 +1,19 @@
+\section*{Data and code availability}
+
+The benchmark definition, evaluation harness, cached forecasts, significance code and figure scripts are available
+at \url{https://github.com/ihpolash/BanglaWeatherBench} \tk{add the tagged release and Zenodo DOI once minted}.
+Source data are redistributed only where licensing permits: the BMD station record is CC-BY-4.0 \citep{zubair2024bmd}; GHCN-Daily and NASA POWER are public domain; CHIRPS is open \citep{funk2015chirps}. Derived tracks are rebuilt by the released pipeline rather than shipped.
+
+\section*{Reproducibility}
+
+Model inference runs in per-model isolated environments; every forecast file is verified for row counts, window
+identity, lead coverage, missing values, quantile monotonicity and non-negativity before it enters a leaderboard.
+The headline numbers in this paper are recomputed from released artefacts by \texttt{scripts/audit\_claims.py}.
+
+\section*{Declaration on the use of generative AI}
+
+\tk{Confirm this describes what you actually did, and check the current arXiv and institutional policies before
+submission.} The author used an AI assistant for drafting and editing assistance and for implementation support.
+It was not used to generate results or to select or produce references. All claims, numbers and citations were
+verified by the author against released artefacts and primary sources, and the author takes full responsibility
+for the content of the paper.
