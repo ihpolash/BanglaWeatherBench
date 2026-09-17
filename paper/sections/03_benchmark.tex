@@ -4,6 +4,16 @@
 The benchmark is built around one observational target and three controls, each answering a confound that would
 otherwise make a tropical result unreadable.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{F1_study_area.pdf}
+  \caption{The three station networks. Left: 35 BMD stations across Bangladesh (the forecast target), with the
+  10 co-located GHCN-Daily Bangladesh stations marked. Right: the 32 mid-latitude European GHCN-Daily stations
+  that form the temperate reference. Both station sets are drawn from instrument networks reporting to the same
+  WMO standards, which is what allows climatic regime to be varied while the observing protocol is held fixed.}
+  \label{fig:study-area}
+\end{figure}
+
 \subsection{Data tracks}
 
 \paragraph{BMD stations (target).} Daily observations from 35 Bangladesh Meteorological Department stations,
@@ -34,6 +44,17 @@ reanalysis can be compared at identical places and dates rather than across diff
 satellite-gauge product. Two administrative units are split across polygons sharing one identifier; we merge them
 with pixel-count weights rather than dropping either.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.84\linewidth]{F3_coverage.pdf}
+  \caption{Usable observations per station-year, for the three station tracks. The 2016--2023 test period is
+  outlined. The BMD target record is dense; the GHCN-Daily Bangladesh track is roughly \SI{65}{\percent} complete
+  over the test period with 2021 almost entirely absent, against \SI{99}{\percent} for the temperate reference.
+  This gap is a property of the observing system rather than of the climate, and it is what the gap-matched
+  control in \S\ref{sec:protocol} exists to neutralise.}
+  \label{fig:coverage}
+\end{figure}
+
 \subsection{Tasks}
 
 Sixteen daily tasks are defined as the cross of tracks and variables: four BMD variables, two GHCN-Bangladesh
@@ -50,3 +71,16 @@ active/break spells follow \citet{ferdoushi2023spells}: runs of at least three d
 July--August where daily rainfall on the all-station mean series sits above or below half a standard deviation of
 the daily climatological cycle. Our labels reproduce that paper's counts to within a few percent. Strata are
 derived from the training period only and are used for scoring alone; they are never model inputs.
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[height=6.6cm]{F2_seasonal_cycle.pdf}\hfill
+  \includegraphics[height=6.6cm]{F4_rainfall_distribution.pdf}
+  \caption{Two properties of the target record that shape the results. Left: the annual cycle of rainfall and
+  temperature across the 35 BMD stations over the training period, showing the monsoon window the phase strata
+  partition. Right: daily rainfall on wet days, log--log. Two thirds of station-days are dry and the wet tail
+  runs past \SI{500}{\milli\metre}, so a rainfall forecast is mostly a forecast of occurrence; this is the
+  distribution against which climatology proves hard to beat (\S\ref{sec:results}).}
+  \label{fig:target-record}
+\end{figure}
