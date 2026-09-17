@@ -27,3 +27,9 @@ Papers/
 data/*.csv
 data/*.xls
 data/*.geojson
+paper/arxiv-submission.tar.gz
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.out
+paper/*.log
