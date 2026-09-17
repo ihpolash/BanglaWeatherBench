@@ -17,8 +17,8 @@ records its context completeness so that skill can be stratified by it. This yie
 
 \subsection{Metrics}
 
-The headline metric is the continuous ranked probability score, computed from nine predictive quantiles as twice
-the mean pinball loss. Point errors use each model's predictive \emph{median} and squared errors its mean; mixing
+The headline metric is the continuous ranked probability score, a strictly proper scoring rule
+\citep{gneiting2007scoring}, computed here from nine predictive quantiles as twice the mean pinball loss. Point errors use each model's predictive \emph{median} and squared errors its mean; mixing
 the two is not neutral on zero-inflated rainfall, where scoring climatology on its mean rather than its median
 changed its MASE at a 30-day lead from 0.58 to 0.82 and made a quantile-loss network appear \SI{25}{\percent}
 better than it is. Interval calibration is reported as coverage of the central \SI{80}{\percent} interval.
