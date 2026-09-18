@@ -23,7 +23,7 @@ Endorsement is per archive, so request the cross-lists after announcement rather
 at submission. That way you only need standing in cs.AI.
 
 ## Comments field
-18 pages, 7 figures, 2 tables. Code and benchmark: https://github.com/ihpolash/BanglaWeatherBench ; archived release: https://doi.org/10.5281/zenodo.22825164
+18 pages, 7 figures, 2 tables. Code and benchmark: https://github.com/ihpolash/BanglaWeatherBench ; archived release: https://doi.org/10.5281/zenodo.22825319
 
 ## License
 CC BY 4.0 is the consistent choice: the BMD source record is CC-BY-4.0 and the repository
@@ -40,4 +40,4 @@ roughly three to five years prior.
 - Read section "Declaration on the use of generative AI" and confirm it describes your
   own practice. It is your declaration.
 - Re-check arXiv's current policy on generative AI; it has changed more than once.
-- The Zenodo DOI is in the paper (10.5281/zenodo.22825164); no replacement version is needed for it.
+- The Zenodo DOI is in the paper (10.5281/zenodo.22825319); no replacement version is needed for it.
