@@ -48,7 +48,7 @@ for ax in axes:  # the shaded band marks ranks within one critical difference of
     ax.text(ax.patches[0].get_width() + ranks.cd.iloc[0] / 2, -0.85, "not separable from the best",
             color=MUTED, fontsize=6.5, ha="center", va="center")
     ax.set_ylim(len(ranks[ranks.lead == 1]) - 0.4, -1.3)  # headroom for the band label
-fig.suptitle("F6  Critical-difference ranking: foundation models (blue) vs baselines (grey)", x=0.01, ha="left",
+fig.suptitle("Critical-difference ranking: foundation models (blue) vs baselines (grey)", x=0.01, ha="left",
              fontsize=10, fontweight="semibold", color=INK)
 fig.tight_layout()
 save(fig, "F6_critical_difference")
@@ -80,7 +80,7 @@ for ax, (title, df) in zip(axes, panels):
 axes[0].set_ylabel("CRPSS vs climatology")
 axes[0].legend(fontsize=7, ncol=2, loc="upper right")
 axes[2].legend(fontsize=7, loc="lower left")
-fig.suptitle("F7  Skill against climatology falls to zero on tropical rainfall at every horizon", x=0.01, ha="left",
+fig.suptitle("Skill against climatology falls to zero on tropical rainfall at every horizon", x=0.01, ha="left",
              fontsize=10, fontweight="semibold", color=INK)
 fig.tight_layout()
 save(fig, "F7_skill_vs_lead")
@@ -109,7 +109,7 @@ for ax, (var, lead) in zip(axes, [("Tavg", 7), ("Tavg", 30)]):
     ax.grid(axis="x")
 handles, labels = axes[0].get_legend_handles_labels()  # legend outside the axes: three series per row crowd them
 fig.legend(handles, labels, fontsize=7, ncol=3, loc="lower center", bbox_to_anchor=(0.5, -0.02), frameon=False)
-fig.suptitle("F8  Tropical temperature penalty, and how much of it is missing context", x=0.01, ha="left",
+fig.suptitle("Tropical temperature penalty, and how much of it is missing context", x=0.01, ha="left",
              fontsize=10, fontweight="semibold", color=INK)
 fig.tight_layout(rect=[0, 0.05, 1, 1])
 save(fig, "F8_equity_did")
@@ -148,7 +148,7 @@ axes[1].set_ylabel("temperate − Bangladesh skill")
 axes[1].set_title("tropical gap vs history (control unmasked)")
 axes[1].legend(fontsize=7)
 axes[1].grid(axis="y")
-fig.suptitle("F9  How much history a zero-shot model needs", x=0.01, ha="left", fontsize=10,
+fig.suptitle("How much history a zero-shot model needs", x=0.01, ha="left", fontsize=10,
              fontweight="semibold", color=INK)
 fig.text(0.01, -0.02, "Right panel compares unmasked runs; with a gap-matched control the penalty does not shrink "
          "with context (week5 report, S8).", fontsize=6.5, color=MUTED, ha="left")
@@ -188,7 +188,7 @@ axes[1].set_xlabel("CRPSS vs climatology (95% CI, blocked by spell event)")
 axes[1].set_title("July–August active vs break spells")
 axes[1].legend(fontsize=7, loc="lower right")
 axes[1].grid(axis="x")
-fig.suptitle("F10  Skill is regime-dependent: strong in break spells, negative in active spells", x=0.01,
+fig.suptitle("Skill is regime-dependent: strong in break spells, negative in active spells", x=0.01,
              ha="left", fontsize=10, fontweight="semibold", color=INK)
 fig.tight_layout()
 save(fig, "F10_monsoon_regimes")
@@ -216,7 +216,7 @@ ax.set_xscale("log")
 ax.set_xlim(0.35, 320)
 ax.set_xlabel("GPU minutes for all 170,571 daily windows (Tesla T4, log scale)")
 ax.set_ylabel("mean CRPSS, observation tracks, lead 7 d")
-ax.set_title("F11  Compute vs skill (marker area scales with parameter count)", fontsize=9.5)
+ax.set_title("Compute vs skill (marker area scales with parameter count)", fontsize=9.5)
 ax.grid(axis="y")
 fig.tight_layout()
 save(fig, "F11_compute_pareto")
@@ -236,7 +236,7 @@ for i, lead in enumerate((1, 7, 30)):
 ax.axhline(0, color=INK2, lw=1)
 ax.set_xticks(np.arange(len(vars_)), vars_, fontsize=8)
 ax.set_ylabel("reanalysis − observation CRPSS")
-ax.set_title("F12  Reanalysis looks more predictable than the stations it represents", fontsize=9.5)
+ax.set_title("Reanalysis looks more predictable than the stations it represents", fontsize=9.5)
 ax.legend(fontsize=7)
 ax.grid(axis="y")
 fig.tight_layout()
