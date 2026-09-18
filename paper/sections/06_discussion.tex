@@ -3,9 +3,9 @@
 
 \paragraph{What the nulls mean.} A reader could summarise this paper as ``foundation models mostly tie''. That
 summary is accurate and is the point. The zero-shot claim is usually evidenced on aggregate leaderboards without
-significance testing; when the same models are scored on a tropical station network with the forecast origin as the
-unit of resampling and a correction across 48 comparisons, most margins on observations become indistinguishable
-from a well-built baseline. The models are not weak: six of eight outrank every trained baseline, and 272 of 432
+significance testing. Score the same models on a tropical station network, resample at the forecast origin, and
+correct across 48 comparisons, and most margins on observations become indistinguishable from a well-built
+baseline. The models are not weak: six of eight outrank every trained baseline, and 272 of 432
 skill intervals exclude climatology. But the size of the advantage on real station data is smaller than the
 literature's framing implies.
 
@@ -18,9 +18,9 @@ the operational value of these models would be judged in Bangladesh.
 
 \paragraph{Why regime stratification matters.} The spell result is the clearest argument against aggregate
 reporting. The same models are strongly skilful during break spells and significantly worse than climatology during
-active spells, a reversal that vanishes in a seasonal average. One mechanism would explain this, though we do not test it: a model with a long context window carries the
-persistent warm, dry conditions of a break forward, which is rewarded while the break holds and penalised as soon
-as convection resumes. Whatever the cause, a benchmark that reports only aggregate skill would
+active spells, a reversal that vanishes in a seasonal average. One mechanism would explain this, though we do not test it. A model with a
+long context window carries the persistent warm, dry conditions of a break forward. That is rewarded while the
+break holds, and penalised as soon as convection resumes. Whatever the cause, a benchmark that reports only aggregate skill would
 certify these models as adequate for exactly the situation in which they are least reliable.
 
 \paragraph{Implications for benchmark design.} Three of our results are really statements about how evaluation is

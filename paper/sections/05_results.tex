@@ -11,21 +11,20 @@ Chronos-2 \citep{ansari2026chronos2} and Chronos-Bolt \citep{ansari2024chronos},
 \subsection{Foundation models lead, but most margins are not separable}
 
 Averaged over the 16 daily tasks, six of the eight foundation models outrank every trained baseline. Chronos-2 has
-the best mean rank at leads 7 and 30 (2.77 of 18 models overall), TiRex the best at lead 1, and the strongest
-trained baseline, PatchTST, ranks 6.96 (Table~\ref{tab:leaderboard}). Friedman rejects equality
-decisively at every lead
+the best mean rank at leads 7 and 30, 2.77 of 18 models overall; TiRex is best at lead 1. The strongest trained
+baseline is PatchTST, at 6.96 (Table~\ref{tab:leaderboard}). Friedman rejects equality decisively at every lead
 ($\chi^2 = 220.1$, $215.5$, $209.8$; $p < 10^{-34}$).
 
-That ranking, however, does not license an ordering. The Nemenyi critical difference is 6.58, and the six leading
-foundation models together with PatchTST fall inside one critical difference of the best at leads 7 and 30
+That ranking, however, does not license an ordering. The Nemenyi critical difference is 6.58. At leads 7 and 30, the six
+leading foundation models and PatchTST all fall within one critical difference of the best
 (Figure~\ref{fig:cd}). The group separates clearly from the weaker baselines; positions within it do not.
 
-Pairwise, the picture is more sober still. Comparing the best foundation model with the best baseline for each task
-and lead, and correcting across all 48 comparisons, the foundation model is significantly better in 14, worse in 5,
-and statistically indistinguishable in 29. The 14 wins concentrate at a one-day lead and on the smooth reanalysis
-tracks: partitioned by track type, foundation models win 3 of 24 comparisons on station observations, all at
-lead 1, against 11 of 24 on reanalysis at the same coordinates. Of 432 model-task-lead skill intervals,
-272 exclude climatology.
+Pairwise, the picture is more sober still. We compared the best foundation model with the best baseline for each
+task and lead, correcting across all 48 comparisons. The foundation model is significantly better in 14, worse in
+5, and statistically indistinguishable in 29. Those wins concentrate at a one-day lead and on the smooth reanalysis
+tracks. Partitioned by track type, foundation models take 11 of 24 comparisons on reanalysis and only 3 of 24 on
+the stations themselves, all three of those at lead 1. Of 432 model-task-lead skill intervals, 272 exclude
+climatology.
 
 \input{tables/leaderboard}
 
@@ -40,12 +39,14 @@ lead 1, against 11 of 24 on reanalysis at the same coordinates. Of 432 model-tas
 \subsection{Nothing beats climatology on tropical rainfall}
 
 All five baseline wins are a day-of-year climatology on rainfall at 7- and 30-day leads. On the 35-station BMD
-record no foundation model exceeds climatology beyond a one-day lead (best $-0.004$ CRPSS at lead 30), and on the
-independent CHIRPS dekadal task none beats it at any horizon: the best result, Chronos-2 given 28 years of context,
-is to match climatology to within $0.001$ CRPSS (Table~\ref{tab:dekadal}). The claim needs one scope marker: on the
-smaller 10-station GHCN-Bangladesh track the best foundation model does hold positive point estimates at every lead
-(Toto-2.0 $+0.095$ at day 1; Chronos-2 $+0.019$ at day 30), but none of those margins survives correction
-($p = 0.88$, $1.00$, $1.00$), so they are not separable from climatology either.
+record no foundation model exceeds climatology beyond a one-day lead; the best any manages is $-0.004$ CRPSS at
+lead 30. On the independent CHIRPS dekadal task none beats it at any horizon. The closest is Chronos-2 given 28
+years of context, which matches climatology to within $0.001$ CRPSS (Table~\ref{tab:dekadal}).
+
+The claim needs one scope marker. On the smaller 10-station GHCN-Bangladesh track the best foundation model does
+hold positive point estimates at every lead: Toto-2.0 $+0.095$ at day 1, Chronos-2 $+0.019$ at day 30. None of
+those margins survives correction ($p = 0.88$, $1.00$, $1.00$), so they are not separable from climatology
+either.
 
 \begin{table}[htbp]
   \centering
@@ -71,13 +72,13 @@ smaller 10-station GHCN-Bangladesh track the best foundation model does hold pos
 \subsection{Reanalysis flatters models against the stations it represents}
 
 Scoring the same models on NASA POWER and at the co-located stations, skill is significantly higher on reanalysis
-in 78 of 108 model-variable-lead comparisons (Figure~\ref{fig:obsrean}). The gap is largest for humidity
-(significant at every lead for all nine models tested) and rainfall (all nine at leads 1 and 30), smaller for
-temperature, and weakest for sunshine against radiation, two quantities that are not physically identical, which
-is why we do not lean on that row. The effect holds across model families, so it is a property of the target rather
-than of any architecture. A benchmark built on reanalysis therefore overstates both absolute skill and the margin
-foundation models hold over baselines: at a 7-day lead the best foundation model's advantage over the best trained
-baseline is $+0.026$ on observations and $+0.048$ on reanalysis. This is the time-series counterpart of the
+in 78 of 108 model-variable-lead comparisons (Figure~\ref{fig:obsrean}). The gap is largest for humidity, significant at every lead for all
+nine models tested, and for rainfall, significant for all nine at leads 1 and 30. It is smaller for temperature.
+It is weakest for sunshine against radiation, two quantities that are not physically identical, which is why we
+do not lean on that row. The effect holds across model families, so it is a property of the target rather
+than of any architecture. A benchmark built on reanalysis therefore overstates two things at once: absolute skill, and the
+margin foundation models hold over baselines. At a 7-day lead the best foundation model's advantage over the best
+trained baseline is $+0.026$ on observations, against $+0.048$ on reanalysis. This is the time-series counterpart of the
 critique \citet{gupta2026mausam} make for AI weather-prediction models.
 
 \begin{figure}[htbp]
@@ -92,17 +93,17 @@ critique \citet{gupta2026mausam} make for AI weather-prediction models.
 
 Against a trained-baseline control subjected to the same Bangladesh-like missingness, four of the eight foundation
 models retain a significant temperature penalty at a 30-day lead: TTM r2 ($+0.187$), Chronos-Bolt ($+0.138$),
-Chronos-2 ($+0.060$) and TiRex ($+0.052$). The median penalty across the roster falls from $+0.112$ as observed to
-$+0.043$ once both sides face the same gaps, so roughly \SI{60}{\percent} of the raw effect is attributable to
-sparser station context rather than to the tropics (Figure~\ref{fig:did}). At a one-day lead no model shows a
+Chronos-2 ($+0.060$) and TiRex ($+0.052$). Once both sides face the same gaps, the median penalty across the roster falls from $+0.112$ to
+$+0.043$. Roughly \SI{60}{\percent} of the raw effect is therefore attributable to sparser station context rather
+than to the tropics (Figure~\ref{fig:did}). At a one-day lead no model shows a
 significant penalty.
 
 Two scope markers matter. First, masking only the model, as an ablation applied to the foundation models alone
 would, \emph{understates} the effect, because the control also degrades on gappy contexts; the like-for-like
 comparison raises the median from $+0.022$ to $+0.043$ and returns TiRex to significance. Second, rainfall shows no
-systematic penalty at any lead: where results are significant at lead 1 the sign is reversed, with four models
-performing relatively \emph{better} in Bangladesh than at temperate stations, and the single exception is Toto-2.0
-at lead 7 ($+0.028$, CI $0.005$ to $0.053$).
+systematic penalty at any lead. Where results are significant at lead 1 the sign is reversed, with four models
+performing relatively \emph{better} in Bangladesh than at temperate stations. The single exception is Toto-2.0 at
+lead 7 ($+0.028$, CI $0.005$ to $0.053$).
 
 Longer context does not dissolve what remains. Repeating the contrast with 2{,}048 days of history and the control
 masked identically leaves the median penalty at $+0.052$, unchanged from 1{,}024 days; Chronos-2 ($+0.059$) and
@@ -122,24 +123,25 @@ to $+0.043$ as context doubles. That apparent context effect is mostly the missi
 \subsection{Skill reverses by monsoon regime}
 
 Aggregate leaderboards hide the benchmark's sharpest result. Stratifying July--August targets by spell, and
-blocking intervals by spell \emph{event} rather than station-day, 61 of 72 contrasts are significant. In break spells every model is better than climatology, and the foundation models hold the widest margins:
-Chronos-Bolt reaches
-$+0.440$ on temperature at a 30-day lead against PatchTST's $+0.106$. In active spells the ordering inverts: every model falls below climatology at 7- and 30-day leads, with the
-foundation models losing the most ground, Chronos-Bolt to $-0.989$ against PatchTST's $-0.193$. Humidity repeats the pattern. Forecast quality is therefore lowest during the very episodes that drive flooding, transplanting and
-evacuation decisions.
+blocking intervals by spell \emph{event} rather than station-day, 61 of 72 contrasts are significant. In break spells every model is better than climatology, and the foundation models hold the widest
+margins: Chronos-Bolt reaches $+0.440$ on temperature at a 30-day lead, against PatchTST's $+0.106$. In active
+spells the ordering inverts. Every model falls below climatology at 7- and 30-day leads, and the foundation models
+lose the most ground: Chronos-Bolt drops to $-0.989$, against PatchTST's $-0.193$. Humidity repeats the pattern.
+Forecast quality is therefore lowest during the very episodes that drive flooding, transplanting and evacuation
+decisions.
 
 \subsection{Calibration and compute}
 
 Calibration varies more than accuracy. TimesFM 2.5 (0.831), Toto-2.0 (0.826) and TiRex (0.797) are close to the
 nominal \SI{80}{\percent}; Chronos-2, the most accurate model overall, is sharp on rainfall (0.629); and Sundial is
 severely under-dispersed (0.323). A GPU diagnostic confirms the last is a property of the model rather than of our
-adapter: interval width is flat in the number of sampled trajectories (1.44, 1.56, 1.59 for 20, 100 and 500
-samples), the output shape matches the documented layout, and the trajectory spread of \SI{0.64}{\celsius} sits
+adapter. Interval width is flat in the number of sampled trajectories: 1.44, 1.56 and 1.59 for 20, 100 and 500
+samples. The output shape matches the documented layout. And the trajectory spread of \SI{0.64}{\celsius} sits
 against the model's own RMSE of \SI{1.51}{\celsius}.
 
-The whole zero-shot leaderboard is cheap to reproduce. Every model fits in \SI{4.2}{\gibi\byte} of GPU memory, and
-all 8 models over all 16 tasks cost 4.16 GPU-hours on a free Tesla T4, from 0.6 minutes for TTM r2 to 130
-minutes for Sundial. By contrast AutoARIMA alone costs about 20.7 CPU-hours. Accuracy does not track size: TiRex
+The whole zero-shot leaderboard is cheap to reproduce. Every model fits in \SI{4.2}{\gibi\byte} of GPU memory. All 8 models over
+all 16 tasks cost 4.16 GPU-hours on a free Tesla T4, ranging from 0.6 minutes for TTM r2 to 130 minutes for
+Sundial. By contrast AutoARIMA alone costs about 20.7 CPU-hours. Accuracy does not track size: TiRex
 ranks second overall with 35.3M parameters and \SI{568}{\mebi\byte}, while Toto-2.0 (312.7M) ranks fourth and
 Sundial (128.3M) eleventh (Figure~\ref{fig:pareto}).
 
