@@ -1,5 +1,7 @@
 # BanglaWeatherBench
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22825164.svg)](https://doi.org/10.5281/zenodo.22825164)
+
 A benchmark of time-series foundation models on tropical-monsoon station observations from Bangladesh. Scores are stratified by monsoon phase, with two comparison tracks: a matched temperate reference set of weather stations, and NASA POWER reanalysis at the same locations.
 
 Status: **Week 5 complete** (Week 6 = paper write-up and release):
