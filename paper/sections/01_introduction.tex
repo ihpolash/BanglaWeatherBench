@@ -1,45 +1,46 @@
 \section{Introduction}
 \label{sec:intro}
 
-Time-series foundation models promise a particular kind of generality: pretrain once on a large heterogeneous
-corpus, then forecast an unseen series with no fitting, no feature engineering and no local expertise. If that
-promise holds where forecasting capacity is scarcest, it matters. The places with the thinnest station networks,
-the fewest trained forecasters and the least compute are often the places where a week of warning carries the
-largest consequences, and a model that runs zero-shot on a free GPU is precisely the technology they lack.
+A time-series foundation model is pretrained once on a large heterogeneous corpus, then asked to forecast an
+unseen series with no fitting, no feature engineering and no local expertise. If that promise holds where
+forecasting capacity is scarcest, it matters. Those are the places with the fewest stations, the fewest trained
+forecasters and the least compute, and they are often where a week of warning carries the largest consequences.
+A model that runs zero-shot on a free GPU is precisely the technology they lack.
 
 Whether it holds there is an empirical question current benchmarks do not answer, because the evidence base is
 skewed in two ways at once. Geographically, general time-series suites treat weather as one domain among many and
 draw it overwhelmingly from mid-latitude sources \citep{godahewa2021monash,aksu2024gifteval,qiu2024tfb,li2025tsfmbench};
 across seven widely used benchmark papers, the words ``monsoon'' and ``Bangladesh'' do not appear. Representationally,
 the weather benchmarks that \emph{are} globally comprehensive score against reanalysis
-\citep{rasp2024weatherbench2,nathaniel2024chaosbench}, a physically consistent reconstruction that is smoother
-than the station record it interpolates, and smoothest exactly where stations are sparsest. Observation-based
+\citep{rasp2024weatherbench2,nathaniel2024chaosbench}. Reanalysis is a physically consistent
+reconstruction, smoother than the station record it interpolates; it is smoothest exactly where stations are
+sparsest. Observation-based
 evaluation exists for numerical and AI weather-prediction models \citep{jin2024weatherreal,gupta2026mausam}, but the
 corresponding question for zero-shot time-series models has not been asked.
 
 Bangladesh makes the question concrete. Its weather is governed by the South Asian summer monsoon, whose defining
-feature, the alternation of active and break spells inside the rainy season, has no temperate analogue. In the
-35-station record we build on, median July rainfall reaches \SI{457}{\milli\metre} per station-month against
-\SI{0}{\milli\metre} in January, \SI{67.6}{\percent} of station-days are dry, and the wet-day 99th percentile is
-\SI{143}{\milli\metre}; the 2016--2023 test period alone contains 432 cyclone station-days across 14 storms. The
-record that would support decisions here is thin: over the same period the ten Bangladeshi stations in GHCN-Daily
-are about \SI{65}{\percent} complete, with 2021 almost entirely absent, against \SI{99}{\percent} at the European
-stations we use as a reference. That asymmetry is not only a property of some pretraining corpus: it sits inside
+feature, the alternation of active and break spells inside the rainy season, has no temperate analogue. The 35-station
+record we build on shows the range. Median July rainfall reaches \SI{457}{\milli\metre} per station-month, against
+\SI{0}{\milli\metre} in January. \SI{67.6}{\percent} of station-days are dry, yet the wet-day 99th percentile
+is \SI{143}{\milli\metre}. The 2016--2023 test period alone contains 432 cyclone station-days across 14 storms. The
+record that would support decisions here is thin. Over the same period the ten Bangladeshi stations in GHCN-Daily
+are about \SI{65}{\percent} complete, with 2021 almost entirely absent. The European stations we use as a
+reference are \SI{99}{\percent} complete. That asymmetry is not only a property of some pretraining corpus: it sits inside
 the model's input window at forecast time.
 
 We introduce \textbf{BanglaWeatherBench}, a benchmark designed so that its headline number is not the only thing it
-produces. It defines 16 daily forecasting tasks over 170{,}571 rolling-origin windows across four tracks: 35
-Bangladesh Meteorological Department stations, 10 co-located GHCN-Daily stations, 32 European GHCN-Daily stations
-as a temperate reference, and NASA POWER reanalysis at all 77 station coordinates, plus an independent CHIRPS
-dekadal rainfall task over 64 districts. Three controls answer the confounds that would otherwise make a tropical
-result unreadable: a same-network temperate reference isolating climatic regime, a reanalysis track at identical
-coordinates isolating the effect of the scoring target, and a gap-matched context control, applied to the
-trained baselines as well as the foundation models, isolating data availability from climate. Scoring is
+produces. It defines 16 daily forecasting tasks over 170{,}571 rolling-origin windows across four tracks. The
+forecast target is 35 Bangladesh Meteorological Department stations; beside them sit 10 co-located GHCN-Daily
+stations, 32 European GHCN-Daily stations as a temperate reference, and NASA POWER reanalysis at all 77 station
+coordinates. A seventeenth task covers CHIRPS dekadal rainfall over 64 districts, from an independent source. Three controls answer the confounds that would otherwise make a tropical
+result unreadable. The same-network temperate reference isolates climatic regime; the reanalysis track
+at identical coordinates isolates the effect of the scoring target. The gap-matched context control isolates data
+availability from climate, and we apply it to the trained baselines as well as to the foundation models. Scoring is
 stratified by monsoon phase and by active/break spell.
 
-Two commitments shape what we are willing to claim. First, significance: a 7-day stride with a 30-day horizon
-produces heavily overlapping windows, so we resample at the forecast origin and report Diebold--Mariano tests with
-HAC variances, moving-block bootstrap intervals, Friedman--Nemenyi ranks and Holm correction across 48 comparisons.
+Two commitments shape what we are willing to claim. First, significance. A 7-day stride with a 30-day horizon
+produces heavily overlapping windows, so we resample at the forecast origin. We report Diebold--Mariano tests with
+HAC variances, moving-block bootstrap intervals, Friedman--Nemenyi ranks, and Holm correction across 48 comparisons.
 Many margins that look decisive as point estimates do not survive. Second, leakage: we audit each model's
 pretraining corpus against its technical report. Leakage-free zero-shot evaluation is not itself novel
 \citep{qiao2026time}; here it is a precondition for reading a geographic contrast as a geographic effect.
