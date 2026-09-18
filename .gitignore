@@ -34,3 +34,7 @@ paper/*.blg
 paper/*.out
 paper/*.log
 !data/processed/windows_daily.parquet
+
+# Internal planning documents: kept locally, not published with the benchmark
+BanglaWeatherBench_A_Complete_Week-by-Week_Research_Publication_Plan.md
+High_Novelty_arXiv_Paper_Topics_for_a_Bangladesh_Weather_Climate_Dataset.md
