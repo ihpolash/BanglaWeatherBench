@@ -18,10 +18,10 @@ records its context completeness so that skill can be stratified by it. This yie
 \subsection{Metrics}
 
 The headline metric is the continuous ranked probability score, a strictly proper scoring rule
-\citep{gneiting2007scoring}, computed here from nine predictive quantiles as twice the mean pinball loss. Point errors use each model's predictive \emph{median} and squared errors its mean; mixing
-the two is not neutral on zero-inflated rainfall, where scoring climatology on its mean rather than its median
-changed its MASE at a 30-day lead from 0.58 to 0.82 and made a quantile-loss network appear \SI{25}{\percent}
-better than it is. Interval calibration is reported as coverage of the central \SI{80}{\percent} interval.
+\citep{gneiting2007scoring}, computed here from nine predictive quantiles as twice the mean pinball loss. Point errors use each model's predictive \emph{median} and squared errors its mean.
+Mixing the two is not neutral on zero-inflated rainfall. Scoring climatology on its mean rather than its median
+changed its MASE at a 30-day lead from 0.58 to 0.82. It also made a quantile-loss network appear
+\SI{25}{\percent} better than it is. Interval calibration is reported as coverage of the central \SI{80}{\percent} interval.
 
 Because scaled errors differ systematically between tracks, all cross-track comparisons use skill relative to the
 \emph{same track's} day-of-year climatology, estimated on the training split. A score of zero is climatology.
@@ -35,9 +35,9 @@ correlation is absorbed rather than counted as extra samples.
 
 Pairwise comparisons use Diebold--Mariano on the paired loss differential, with a Newey--West HAC variance at lag
 $h-1$ and the Harvey--Leybourne--Newbold small-sample correction, referred to a $t$ distribution. Interval
-estimates come from a moving-block bootstrap over origins (block 8 origins, 2{,}000 resamples); paired series (a
-model, its climatology reference and the control baseline) are resampled with the same blocks, so a
-difference-in-differences interval carries the control's uncertainty rather than treating it as fixed. Rankings use
+estimates come from a moving-block bootstrap over origins, with blocks of 8 origins and 2{,}000 resamples. Paired
+series (a model, its climatology reference and the control baseline) are resampled with the same blocks. A
+difference-in-differences interval therefore carries the control's uncertainty rather than treating it as fixed. Rankings use
 Friedman with the Nemenyi critical difference from the studentized range. All 48 task-and-lead comparisons are
 Holm--Bonferroni corrected, and we report the corrected values.
 
@@ -59,4 +59,4 @@ itself novel \citep{qiao2026time}; what matters here is that it is a preconditio
 contrast as a geographic effect.
 
 \paragraph{Context length.} Because a sparse context is also a shorter effective context, the tropical contrast is
-repeated with 2{,}048 days of history in place of 1{,}024, with the control masked identically.
+repeated with 2{,}048 days of history in place of 1{,}024. The control is masked identically.
