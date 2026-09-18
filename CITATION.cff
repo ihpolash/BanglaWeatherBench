@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it as below."
+title: "BanglaWeatherBench: Monsoon-Stratified Evaluation of Zero-Shot Time-Series Foundation Models on Station Observations"
+abstract: "A benchmark of daily weather forecasting on tropical-monsoon station observations: 16 tasks and 170,571 rolling-origin windows over 35 Bangladesh Meteorological Department stations, 10 co-located GHCN-Daily stations, 32 European GHCN-Daily stations as a temperate reference, and NASA POWER reanalysis at all 77 station coordinates, with an independent CHIRPS dekadal rainfall task. Eight zero-shot time-series foundation models are scored against ten trained and statistical baselines."
+type: software
+license: Apache-2.0
+repository-code: "https://github.com/ihpolash/BanglaWeatherBench"
+authors:
+  - family-names: Polas
+    given-names: Ismail Hossain
+    affiliation: Jahangirnagar University
+    orcid: "https://orcid.org/0000-0002-2206-4342"
+keywords:
+  - time-series foundation models
+  - zero-shot forecasting
+  - weather forecasting
+  - benchmark
+  - tropical monsoon
+  - Bangladesh

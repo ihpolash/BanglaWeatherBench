@@ -1,0 +1,25 @@
+{
+  "title": "BanglaWeatherBench: Monsoon-Stratified Evaluation of Zero-Shot Time-Series Foundation Models on Station Observations",
+  "description": "<p>Benchmark definition, evaluation harness, cached forecasts, significance code and figure scripts for BanglaWeatherBench: a benchmark of daily weather forecasting on tropical-monsoon station observations.</p><p>16 daily tasks and 170,571 rolling-origin windows over 35 Bangladesh Meteorological Department stations, 10 co-located GHCN-Daily stations, 32 European GHCN-Daily stations as a temperate reference, and NASA POWER reanalysis at all 77 station coordinates, plus an independent CHIRPS dekadal rainfall task. Eight zero-shot time-series foundation models are scored against ten trained and statistical baselines, with resampling by forecast origin, Diebold-Mariano tests and Holm correction across 48 comparisons.</p><p>Code is released under Apache-2.0. Derived data tracks are rebuilt by the released pipeline. Source data licensing is documented in LICENSING.md: the BMD station record is CC-BY-4.0 (Zubair et al. 2024), GHCN-Daily and NASA POWER are public domain, CHIRPS is open, and Bangladesh administrative boundaries are OCHA/HDX Common Operational Datasets under CC BY-IGO.</p>",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "Apache-2.0",
+  "creators": [
+    {
+      "name": "Polas, Ismail Hossain",
+      "affiliation": "Jahangirnagar University",
+      "orcid": "0000-0002-2206-4342"
+    }
+  ],
+  "keywords": [
+    "time-series foundation models",
+    "zero-shot forecasting",
+    "weather forecasting",
+    "benchmark",
+    "tropical monsoon",
+    "Bangladesh",
+    "station observations",
+    "precipitation",
+    "significance testing"
+  ]
+}
