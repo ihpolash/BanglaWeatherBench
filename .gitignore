@@ -33,3 +33,4 @@ paper/*.bbl
 paper/*.blg
 paper/*.out
 paper/*.log
+!data/processed/windows_daily.parquet
