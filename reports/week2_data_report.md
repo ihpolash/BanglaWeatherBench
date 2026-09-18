@@ -1,4 +1,4 @@
-# Week 2 — Data pipeline and EDA report
+# Week 2, Data pipeline and EDA report
 
 Date: 2026-09-15. Rebuild everything with `bash scripts/run_all.sh`. Composition and limitations are in `DATASHEET.md`.
 
@@ -6,7 +6,7 @@ Date: 2026-09-15. Rebuild everything with `bash scripts/run_all.sh`. Composition
 | Planned (Week 2) | Status | Where |
 |---|---|---|
 | Ingest all sources | Done: BMD, GHCN (Bangladesh + temperate), NASA POWER (77 points, with precipitation), CHIRPS, IBTrACS, ONI/DMI, boundaries | `data/processed/*.parquet` |
-| District ↔ station ↔ grid crosswalk | Done: 83 locations mapped to admin1/admin2 PCODE (all inside a polygon; BMD covers 27/64 districts) | `data/processed/crosswalk_spatial.csv` |
+| District  and  station  and  grid crosswalk | Done: 83 locations mapped to admin1/admin2 PCODE (all inside a polygon; BMD covers 27/64 districts) | `data/processed/crosswalk_spatial.csv` |
 | QC + imputation masks | Done: flags per variable. Detectors calibrated against placebo tests | `bmd_daily.parquet`, `reports/bmd_imputation_audit.csv` |
 | Leakage-safe splits | Done: train ≤2010 / val 2011–15 / test 2016–23 / extension 2024–25; complete-window scoring | `configs/splits.yaml`, `tests/test_splits.py` |
 | Monsoon strata + extremes | Done: phases, active/break spells (validated vs literature), extremes, cyclone days | `bmd_labels.parquet`, `national_spells.parquet` |
@@ -24,7 +24,7 @@ Date: 2026-09-15. Rebuild everything with `bash scripts/run_all.sh`. Composition
    This motivates the reanalysis-vs-observation contribution.
 3. **Two independent rainfall sources are offset by one day relative to BMD.** BMD labels a 24-h total by its end day, while GHCN (best lag +1 at all 10 stations) and NASA POWER (+1 at 31/35) label it by its start day. Cross-source comparisons must align dates. Forecasting each track on its own calendar is unaffected.
 4. **Rainfall is zero-inflated and heavy-tailed.** 67.5% of station-days are dry (Tamim et al. 2026 report 68% on the same data). The wet-day 95th and 99th percentiles are 77 mm and 144 mm; the maximum is 590 mm. Probabilistic metrics (CRPS) and MASE must handle the zeros; sMAPE is unsuitable.
-5. **Seasonality dominates.** Median monthly rainfall peaks at 454 mm in July against 7 mm in January. Temperature is flat at ~28 °C from April to September. Seasonal-naive and climatology baselines will be strong — expect a hard bar for zero-shot foundation models.
+5. **Seasonality dominates.** Median monthly rainfall peaks at 454 mm in July against 7 mm in January. Temperature is flat at ~28 °C from April to September. Seasonal-naive and climatology baselines will be strong, expect a hard bar for zero-shot foundation models.
 6. **ENSO/IOD links to national monsoon rainfall are weak.** All lead correlations are |r| ≤ 0.16 for 1961–2010, below the p < 0.05 threshold of 0.29. Teleconnection covariates should enter as an ablation, not a core input.
 7. **The test period has a small but usable extreme subset.** Heavy-rain days 1.41%; very-heavy 0.30%; hot days 11.98%; cyclone station-days 432 across 14 storms (e.g. Amphan, Bulbul, Mocha).
 8. **Data completeness diverges between tracks.** Over 2016–2023, the GHCN Bangladesh stations are ~65% complete (2021 is nearly empty) and the temperate stations ~99% complete (F3). Complete-window scoring keeps this from biasing skill; the gap itself is reported as data-divide evidence.

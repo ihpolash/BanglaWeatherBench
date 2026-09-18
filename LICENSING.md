@@ -9,7 +9,7 @@ Apache-2.0.
 
 | Source | License / terms | Redistribute? | Required attribution |
 |---|---|---|---|
-| BMD 35-station daily observations, Zubair et al. 2024 — Mendeley Data, DOI 10.17632/tbrhznpwg9.1 | CC-BY-4.0 | Yes | Cite Zubair et al. (2024), *Data in Brief*, DOI 10.1016/j.dib.2024.111156, and the Mendeley DOI |
+| BMD 35-station daily observations, Zubair et al. 2024, Mendeley Data, DOI 10.17632/tbrhznpwg9.1 | CC-BY-4.0 | Yes | Cite Zubair et al. (2024), *Data in Brief*, DOI 10.1016/j.dib.2024.111156, and the Mendeley DOI |
 | NASA POWER (MERRA-2-based) | Public domain / open, attribution requested | Yes | "Data obtained from the NASA Langley Research Center POWER Project" |
 | CHIRPS (via WFP/HDX subnational dekadal rainfall) | Open; cite Funk et al. 2015 | Yes | Funk et al. (2015), *Scientific Data*; HDX dataset page |
 | GHCN-Daily (temperate reference track) | Public domain (NOAA NCEI) | Yes | Menne et al. (2012), GHCN-Daily |

@@ -19,7 +19,7 @@ Date: 2026-09-15. Code: `src/bwb/data/ghcn.py`, `scripts/select_temperate_refere
 
 All come from the WMO/GSOD-derived network (ID character 3 = `M`, source flag `S`). QC failure rate is 0.01–0.03%.
 
-### Coverage — sparse
+### Coverage, sparse
 - **2016–2023 completeness:**
   - PRCP ≈ 65% (Chittagong 70%)
   - TAVG ≈ 67% (Chittagong 99%)
@@ -28,7 +28,7 @@ All come from the WMO/GSOD-derived network (ID character 3 = `M`, source flag `S
 - **Gap years:** 2011–2013 are half-empty, 2019 has ~220 days, **2021 only ~25 days**, and 2022 ~100 days.
 - **Past BMD's 2023 cutoff:** PRCP runs to 2024-05-30 at Bogra, 2024-12-31 at Rangpur, Feni and Barisal, and 2025-08-24 at the other six. That is 137–577 extra days per station.
 
-### Date convention — rainfall is shifted by one day
+### Date convention, rainfall is shifted by one day
 GHCN labels a 24-h rainfall total by its start day; BMD labels it by its end day. Daily correlation with BMD (2000–2023):
 
 | Pairing | r range |
@@ -79,4 +79,4 @@ Monthly-total correlation is 0.80–0.99, and the GHCN/BMD total-rainfall ratio 
 1. **Completeness asymmetry is a finding, not noise.** Over 2016–2023, the Bangladesh GHCN stations are ~65% complete and the temperate stations ~99%. Report it as data-divide evidence.
 2. **Fair skill contrast:** score only rolling-origin windows whose context and target are both complete, in every track. As a sensitivity ablation, impose Bangladesh-like gap masks on the temperate series.
 3. **Three observational views of Bangladesh:** BMD national network (primary), GHCN/GSOD (second track), and NASA POWER reanalysis. The same models run on each give a direct measurement of how the data source changes apparent foundation-model skill.
-4. **The equity contrast uses GHCN vs GHCN** — Bangladesh `M` stations against temperate `M` stations — so the difference cannot be explained by data source. BMD vs temperate is reported as a secondary comparison.
+4. **The equity contrast uses GHCN vs GHCN**, Bangladesh `M` stations against temperate `M` stations, so the difference cannot be explained by data source. BMD vs temperate is reported as a secondary comparison.

@@ -1,4 +1,4 @@
-# Week 4 — Zero-shot time-series foundation models
+# Week 4, Zero-shot time-series foundation models
 
 Date: 2026-09-16. Status: **Week 4 complete.** All 8 foundation models ran on the 16 daily tasks, the gap-matched ablation, the compute-cost profile, the context-length ablation and the CHIRPS dekadal task, and the AutoARIMA baseline finished the Week-3 roster. Every forecast file passed verification before install.
 
@@ -12,7 +12,7 @@ Results R1–R5 cover the main daily run; R6–R9 the completion runs. All numbe
 - **Physical constraint.** Rainfall, sunshine and radiation forecasts are clipped at 0, as for the baselines.
 - **Compute.** Kaggle, 2× Tesla T4, one isolated virtual environment per model (`kaggle/fm_kernel/kernel.py`), two model groups in parallel. The private dataset `ipolas/bwb-bundle` holds the code and processed tracks.
 - **Code.**
-  - `src/bwb/models/fm_base.py`: common interface `predict_batch(contexts, horizon) → (mean [B,H], quantiles [B,9,H])` and the gap helpers; 5 unit tests.
+  - `src/bwb/models/fm_base.py`: common interface `predict_batch(contexts, horizon)  to  (mean [B,H], quantiles [B,9,H])` and the gap helpers; 5 unit tests.
   - `src/bwb/models/fm_adapters.py`: the 8 adapters.
   - `scripts/run_fm_zero_shot.py`: runner writing the shared prediction cache.
 
@@ -26,7 +26,7 @@ Results R1–R5 cover the main daily run; R6–R9 the completion runs. All numbe
 | TiRex | `NX-AI/TiRex` (NX-AI community license) | 1,024 | interpolated | quantiles + mean; `backend="torch"` | README + `load_model` source |
 | Moirai-2.0 | `Salesforce/moirai-2.0-R-small` (CC-BY-NC-4.0) | 1,024 (model allows 1,680) | native (GluonTS) | quantiles via GluonTS forecast objects | uni2ts README |
 | TTM r2 | `ibm-granite/granite-timeseries-ttm-r2` (Apache-2.0) | **512** (daily limit) | interpolated | **point only** | HF repo refs + `get_model` source |
-| Sundial | `thuml/sundial-base-128m` (Apache-2.0) | 1,024 (model allows 2,880) | interpolated | 100 sampled paths → quantiles and mean | HF model card code |
+| Sundial | `thuml/sundial-base-128m` (Apache-2.0) | 1,024 (model allows 2,880) | interpolated | 100 sampled paths  to  quantiles and mean | HF model card code |
 
 ## Model-specific constraints that affect comparability
 - **TTM r2 cannot use the common 1,024-day context on daily data.** The only daily-capable variants are release r2.1 (`512-96`, `512-48`, `360-60`, `180-60`, `90-30`, `52-16`). `get_model(freq="D")` selects the 512-day model and truncates its output to 30 days. TTM therefore runs at 512 days, which is flagged in every table.
@@ -356,7 +356,7 @@ Median over the 8 foundation models (control = best trained baseline per track, 
 - **Sundial is severely under-dispersed.**
   - Its mean 80% interval width on BMD Temperature at lead 1 is 0.78 °C, against 2.5–3.0 °C for the other foundation models.
   - On rainfall it is 9.0 mm, against 14–18 mm.
-  - The adapter follows the model card: `generate(..., num_samples=100)` → quantiles over samples.
+  - The adapter follows the model card: `generate(..., num_samples=100)`  to  quantiles over samples.
   - **Diagnosed on a GPU (notebook `ipolas/bwb-sundial-check`, 512 BMD temperature windows, context 1,024): the under-dispersion is the model, not the adapter.**
 
     | Samples | Raw output shape | Mean 80% width (°C) | 80% coverage | Trajectory spread (°C) | RMSE of sample mean (°C) |
@@ -378,7 +378,7 @@ Median over the 8 foundation models (control = best trained baseline per track, 
 2. **Gap-matched control.** Re-run the trained baselines (at least NHITS and PatchTST on Kaggle; LightGBM and ETS locally) on the gap-matched temperate contexts, so the DiD compares like with like.
 3. **Pretraining-overlap audit.** Check each model's published corpus for GHCN-Daily, NASA POWER and ERA5-derived series. BMD station data is unlikely to overlap; the temperate GHCN track is the risk.
 4. **Sundial dispersion check** (R5): compare sample spread against an official Sundial evaluation wrapper before the paper. TTM r2 keeps its footnote in every table: 512-day context, point only.
-5. **Gap-matched runs at 2,048 days.** R7 shows the long-lead tropical temperature deficit nearly disappears with longer context, but the gap-matched ablation has so far run only at 1,024, so the two explanations — short context and gappy context — are not yet separated.
+5. **Gap-matched runs at 2,048 days.** R7 shows the long-lead tropical temperature deficit nearly disappears with longer context, but the gap-matched ablation has so far run only at 1,024, so the two explanations, short context and gappy context, are not yet separated.
 
 Week-4 ablations are complete: compute cost (R6), context length (R7), CHIRPS dekadal (R8) and AutoARIMA (R9). The highest-value Week-5 target is the active/break-spell reversal in R4, blocked by spell event rather than station-day.
 
@@ -459,9 +459,9 @@ Mean CRPSS over the 16 daily tasks. 1,024 days is the main run; all runs use ide
 | | **1,024** | 0.304 | 0.073 | 0.045 |
 | | 2,048 | 0.306 | 0.083 | 0.058 |
 
-- **At lead 1 context barely matters** (Chronos-2: 0.267 → 0.298 across a 43× range of context).
+- **At lead 1 context barely matters** (Chronos-2: 0.267  to  0.298 across a 43× range of context).
 - **At lead 30 it decides everything.** With 96 days of history all three models are far worse than climatology (−0.43 to −0.50); they only reach climatology-level skill at 512–1,024 days. A model must see at least one full annual cycle before a monthly forecast is worth anything, which is a concrete requirement for station records in data-sparse regions.
-- **Returns saturate.** 1,024 → 2,048 days adds about +0.01; Chronos-2's 2,048 → 4,096 adds +0.001. Per task, 2,048 is best in 15–16 of 16 tasks for TimesFM and TiRex; for Chronos-2, 4,096 wins 8–11 of 16.
+- **Returns saturate.** 1,024  to  2,048 days adds about +0.01; Chronos-2's 2,048  to  4,096 adds +0.001. Per task, 2,048 is best in 15–16 of 16 tasks for TimesFM and TiRex; for Chronos-2, 4,096 wins 8–11 of 16.
 - **The main run's 1,024 days is therefore slightly conservative but near-optimal**, and the ranking in R1 is not an artefact of context choice.
 - **This changes how R3 should be read.** The tropical-vs-temperate Tavg gap at lead 30 depends strongly on context length:
 

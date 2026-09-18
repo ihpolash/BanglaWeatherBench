@@ -15,9 +15,9 @@ Week 5 adds significance testing (Diebold–Mariano with HAC, moving-block boots
 
 Headline results, after correction:
 - Zero-shot foundation models are the strongest family, but on station observations most margins beyond day 1 are not statistically separable, and the top six sit within one critical difference.
-- **No model beats climatology on tropical rainfall** — on the 35-station BMD record beyond a few days, and on 10-day CHIRPS rainfall at any horizon (on the 10-station GHCN-Bangladesh track point estimates are positive but never statistically separable).
+- **No model beats climatology on tropical rainfall**, on the 35-station BMD record beyond a few days, and on 10-day CHIRPS rainfall at any horizon (on the 10-station GHCN-Bangladesh track point estimates are positive but never statistically separable).
 - **Reanalysis looks markedly more predictable than the stations it represents** (78 of 108 comparisons significant), so reanalysis-only benchmarks overstate skill.
-- A long-lead tropical **temperature** penalty holds for half the roster; ~60% is explained by sparser station context, and for Chronos-2 and TiRex a residual survives even at 2,048 days of history. Rainfall shows no systematic penalty — at day 1 the significant results run the other way.
+- A long-lead tropical **temperature** penalty holds for half the roster; ~60% is explained by sparser station context, and for Chronos-2 and TiRex a residual survives even at 2,048 days of history. Rainfall shows no systematic penalty, at day 1 the significant results run the other way.
 - Skill is strongly **regime-dependent**: strong in monsoon break spells, significantly worse than climatology in active spells.
 - The benchmark is **leakage-free on both sides** of the tropical-vs-temperate contrast, and reproducible in ~4 GPU-hours on free hardware.
 

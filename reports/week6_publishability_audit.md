@@ -1,8 +1,8 @@
-# Week 6 — Verification: are these results worth publishing?
+# Week 6, Verification: are these results worth publishing?
 
 Date: 2026-09-17. Written before drafting the paper, because if the results do not hold the writing is wasted.
 
-## 1. Do the numbers reproduce? Yes — 19 of 19
+## 1. Do the numbers reproduce? Yes, 19 of 19
 
 Every headline claim was recomputed from the artefacts and compared with what the reports assert
 (`/tmp/audit_claims.py`, rerunnable):
@@ -24,10 +24,10 @@ Every headline claim was recomputed from the artefacts and compared with what th
 **Two overstatements were found in my own reports and corrected**, both now scoped in `week5_significance_report.md`
 and `README.md`:
 
-- *"No model beats climatology on tropical rainfall"* — true for the 35-station BMD record and CHIRPS, but on the
+- *"No model beats climatology on tropical rainfall"*, true for the 35-station BMD record and CHIRPS, but on the
   10-station GHCN-Bangladesh track the best model holds positive point estimates at every lead (Toto-2.0 +0.095 at
   day 1; Chronos-2 +0.019 at day 30), none significant (Holm p = 0.88, 1.00, 1.00).
-- *"Rainfall shows no tropical penalty at any lead, in any variant"* — four models at lead 1 are significant in the
+- *"Rainfall shows no tropical penalty at any lead, in any variant"*, four models at lead 1 are significant in the
   *opposite* direction, and Toto-2.0 at lead 7 is significant *with* a penalty (+0.028, CI 0.005–0.053). The honest
   statement is "no systematic penalty", with that exception named.
 
@@ -53,11 +53,11 @@ complete **and unflagged** target, so flagged values are excluded from scoring r
 
 Both papers the claim is scoped against were verified from primary sources, and one turned out weaker than assumed:
 
-- **TIME** (ICML 2026): 50 fresh datasets, 98 tasks, 12 foundation models, leakage-free by construction — no
+- **TIME** (ICML 2026): 50 fresh datasets, 98 tasks, 12 foundation models, leakage-free by construction, no
   station, tropical or precipitation stratification. Confirms we must not claim leakage-free evaluation as novel.
 - **Brazil / GraphCast** (2606.06348): GraphCast vs IFS HRES over four Brazilian sub-regions, ground truth is
   operational IFS *analysis*, variables T850/Q850/Z500, **precipitation excluded**. Not station-based, no
-  precipitation — our scoped claim is comfortably distinct.
+  precipitation, our scoped claim is comfortably distinct.
 - Near misses checked and cleared: Indian monsoon **onset** forecasting (2603.07893, AIWP + Bayesian farmer model,
   operational); **RainfallBench** (2509.25263, 0–6 h GNSS nowcasting, supervised architectures).
 
@@ -70,16 +70,16 @@ No work found at the intersection: TSFMs × station observations including preci
 | "Most of your results are null" | Fair, and it is the point | Nulls are the contribution: a boundary on the zero-shot claim, established with a significance protocol none of the seven reference benchmarks runs. Frame as mixed, mechanism-led |
 | "Only 10 GHCN-Bangladesh stations carry the equity claim" | **Strongest objection** | Honest limitation. Mitigations in hand: the BMD 35-station track is the primary spine; the equity contrast uses a same-network temperate control, a gap-matched control on both sides, and a 2,048-day context test. State the n explicitly next to every equity number |
 | "One country" | Fair | Scope the title and claims to Bangladesh/South Asia; the protocol is the transferable contribution |
-| "Zero-shot only — why no fine-tuning?" | Fair | Scope is zero-shot; say so, and note few-shot is the obvious extension |
+| "Zero-shot only, why no fine-tuning?" | Fair | Scope is zero-shot; say so, and note few-shot is the obvious extension |
 | "Model roster will age" | Fair for any benchmark | Released harness + cache; adding a model is one run |
 | "CHIRPS dekadal is coarse" | Minor | It is an independent-source check, not a headline |
-| "Imputation in the published BMD data" | Minor, now quantified | §2: ≤4.4% flagged, excluded from scoring |
+| "Imputation in the published BMD data" | Minor, now quantified | Section 2: ≤4.4% flagged, excluded from scoring |
 | "Sunshine vs radiation are not the same quantity" | Minor | Already flagged in the report; do not lean on that row |
 
 ## 5. Verdict
 
 **GO.** The evidence is reproducible, the data spine is sound, the gap is open at the stated intersection, and the
-claims survive multiplicity correction once scoped. The paper's strength is not a leaderboard win — it is that the
+claims survive multiplicity correction once scoped. The paper's strength is not a leaderboard win, it is that the
 negative and mechanism results are defensible: nothing beats climatology on tropical rainfall; reanalysis flatters
 models against the stations they represent; skill reverses by monsoon regime; and the tropical temperature deficit
 is mostly a data-availability effect with a residual for two models.
@@ -90,6 +90,6 @@ significance protocol and the controls are what make it more than a regional lea
 ## 6. Blockers to clear before submission
 
 1. **Citations.** 25 arXiv IDs are cited across the reports; only 10 are held as PDFs. Every reference must be
-   opened and verified before it enters the bibliography — no exceptions.
+   opened and verified before it enters the bibliography, no exceptions.
 2. **Provenance.** The repository had zero commits until today; the manuscript must be committed incrementally.
 3. **Similarity check** runs *before* posting the preprint, not after.

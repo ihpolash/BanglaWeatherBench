@@ -1,11 +1,11 @@
-# Week 3 — Evaluation harness and baselines
+# Week 3, Evaluation harness and baselines
 
 Date: 2026-09-15. Status: **complete**. 9 baselines × 16 daily tasks, plus the CHIRPS dekadal task. Numbers are from `reports/leaderboard_daily.csv`, `reports/leaderboard_bmd_phase.csv` and `reports/leaderboard_dekadal.csv`. These are preliminary: significance testing is Week 5, and foundation models are Week 4.
 
 ## What was built
 | Component | File | Notes |
 |---|---|---|
-| Unified series store | `src/bwb/data/store.py` | 6 daily tracks → `{(variable, series_id): daily series}`; flagged BMD values masked |
+| Unified series store | `src/bwb/data/store.py` | 6 daily tracks  to  `{(variable, series_id): daily series}`; flagged BMD values masked |
 | Rolling-origin windows | `src/bwb/eval/windows.py` | 30-day horizon, 7-day stride, test 2016–2023; `validate_windows` rejects targets outside the split |
 | Harness + metrics | `src/bwb/eval/harness.py` | Forecast cache per model/track/variable; MASE (median point, training-split seasonal-naive scale, m = 365), quantile CRPS, RMSE (mean), 80% coverage |
 | Naive baselines | `src/bwb/models/baselines.py` | Persistence, seasonal-naive (lag 365, climatology fallback), climatology (training day-of-year ±15 days) |
@@ -65,7 +65,7 @@ Model families:
 - **AutoETS and AutoTheta** match persistence at lead 1 for smooth variables (BMD temperature ≈ +0.31) but degrade badly at long leads: on non-rainfall tasks, CRPSS at 30 days runs from −0.27 (sunshine) to −0.78 (temperate Tavg), as anomaly extrapolation drifts.
 - **Persistence and seasonal-naive** are never competitive beyond lead 1.
 
-### Preliminary contrast 1 — observations vs reanalysis (same 35 BMD stations; best CRPSS)
+### Preliminary contrast 1, observations vs reanalysis (same 35 BMD stations; best CRPSS)
 | Variable | Day 1: BMD | Day 1: NASA POWER | Day 7: BMD | Day 7: NASA POWER | Day 30: BMD | Day 30: NASA POWER |
 |---|---|---|---|---|---|---|
 | Rainfall | +0.017 | **+0.270** | −0.022 | **+0.070** | −0.030 | **+0.053** |
@@ -75,7 +75,7 @@ Model families:
 
 **Reanalysis looks consistently more predictable than the observations it represents**, strongly for rainfall and humidity. A model developed and scored on NASA POWER would overstate real forecast skill at Bangladesh stations. This supports contribution #5, pending Week-5 significance tests.
 
-### Preliminary contrast 2 — tropical vs temperate (GHCN vs GHCN; best CRPSS vs same-track climatology)
+### Preliminary contrast 2, tropical vs temperate (GHCN vs GHCN; best CRPSS vs same-track climatology)
 | Variable | Day 1: Bangladesh | Day 1: temperate | Day 7: Bangladesh | Day 7: temperate | Day 30: Bangladesh | Day 30: temperate |
 |---|---|---|---|---|---|---|
 | Rainfall | +0.060 | +0.016 | +0.009 | −0.026 | −0.022 | −0.037 |

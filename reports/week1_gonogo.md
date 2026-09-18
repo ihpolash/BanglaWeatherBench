@@ -1,4 +1,4 @@
-# Week 1 — Go/No-Go memo
+# Week 1, Go/No-Go memo
 
 Date: 2026-09-15. Scope: novelty lock + data feasibility for BanglaWeatherBench.
 
@@ -6,24 +6,24 @@ Date: 2026-09-15. Scope: novelty lock + data feasibility for BanglaWeatherBench.
 
 Both gates pass.
 
-### Gate 1 — Novelty: GO
+### Gate 1, Novelty: GO
 Full evidence in `NOVELTY_LOG.md` and the Week 1 plan. In short:
 - **Open:** a released Bangladesh weather forecasting benchmark; time-series foundation models (TSFMs) on any South Asian weather data; monsoon-phase-stratified TSFM evaluation; the reanalysis-vs-observation skill gap for TSFMs.
 - **Narrowed:** geographic disparity. SAFE (arXiv 2510.26099) already measured it for gridded AI weather models on ERA5. Our version is TSFMs × station observations × precipitation × monsoon regime, against a temperate reference track.
 - **Narrowed:** monsoon benchmarking. Masiwal et al. (arXiv 2602.03767) benchmark monsoon onset for AI weather models over India.
 
-### Gate 2 — Is the BMD observational spine usable? GO
+### Gate 2, Is the BMD observational spine usable? GO
 Source: Zubair et al. 2024, Mendeley 10.17632/tbrhznpwg9.1. All 36 files downloaded, and every SHA-256 matches the Mendeley metadata (`scripts/download_bmd_mendeley.py`).
 
 | Check | Result |
 |---|---|
-| Rows / stations | 543,839 / 35 — matches the publication |
+| Rows / stations | 543,839 / 35, matches the publication |
 | Invalid dates, duplicate (station, date) | 0 / 0 |
 | Calendar gaps, nulls | 0 / 0. Every station runs daily to 2023-12-31, so gaps were filled upstream |
 | Start years | 1961 ×5 (Bogra, Chittagong, Cox's Bazar, Dhaka, Sylhet); 1985 ×8; latest start 2008 (Ambagan) |
 | Every station has 2016–2023 data | Yes (2,922 days each) |
 
-**Imputation audit** (`scripts/audit_bmd_imputation.py` → `reports/bmd_imputation_audit.csv`). Share of 2016–2023 days flagged by constant-run (≥5 days) or linear-run (≥5 days) detectors, median / max across the 35 stations:
+**Imputation audit** (`scripts/audit_bmd_imputation.py`  to  `reports/bmd_imputation_audit.csv`). Share of 2016–2023 days flagged by constant-run (≥5 days) or linear-run (≥5 days) detectors, median / max across the 35 stations:
 
 | Variable | Median | Max |
 |---|---|---|
@@ -43,7 +43,7 @@ Source: Zubair et al. 2024, Mendeley 10.17632/tbrhznpwg9.1. All 36 files downloa
 | Plan item | Result |
 |---|---|
 | uv Python 3.12 env on M1 | OK (pandas 3.0.5, numpy 2.5.3, statsmodels, pdfplumber) |
-| Station join: Mendeley ↔ BMD normals PDFs | 35/35 humidity normals; 34/35 rainfall + daily Tmin normals. Only Ambaganctg is missing from the 34-station PDFs |
+| Station join: Mendeley  and  BMD normals PDFs | 35/35 humidity normals; 34/35 rainfall + daily Tmin normals. Only Ambaganctg is missing from the 34-station PDFs |
 | PDF extraction | `pdfplumber.extract_table()` handles the ruled tables directly, and the feared baseline-jitter problem does not occur. Extracted values match rendered crops (`reports/verify_*.png`) |
 | CHIRPS duplicate PCODEs | They are **split polygons, not duplicates**. BD10 = 55 + 345 px = 400 px, which equals the sum over its districts. Merged with pixel weights in `bwb.data.chirps`; the panel is 64 × 1,644, with unique keys |
 | Chronos-2 smoke test | Runs on **M1 CPU**: load 45 s; 30-day forecast 1.2 s; Dhaka Jan-2016 MAE 1.29 °C. Writes the prediction cache, which reads back from the main env. The Kaggle GPU run itself still needs the user's account |
@@ -57,7 +57,7 @@ Source: Zubair et al. 2024, Mendeley 10.17632/tbrhznpwg9.1. All 36 files downloa
    - test data beyond BMD's 2023 cutoff.
 3. **Correction to the Week 1 plan:** FoundTS is an earlier title of TSFM-Bench under the **same arXiv ID (2410.11802)**, so `FoundTS.pdf` being identical to `TFB-TSFM-Bench.pdf` is expected. Only TFB (arXiv 2403.20150) was genuinely missing; it is now in `Papers/`.
 
-## Still open — needs the user
+## Still open, needs the user
 - **arXiv endorser** for cs.AI: identify and contact one.
 - **Kaggle/Colab account** for the GPU run of the larger models (TimesFM 2.5, Toto-2.0 313M, Sundial).
 - Decide whether to add GHCN Bangladesh stations as a second observational track (recommended).

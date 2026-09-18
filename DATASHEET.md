@@ -3,7 +3,7 @@
 Status: Week 2 draft (2026-09-15), following Gebru et al., *Datasheets for Datasets*. Numbers refer to the files in `data/processed/`, rebuilt by `scripts/run_all.sh`.
 
 ## Motivation
-- **Purpose:** benchmark time-series foundation models on tropical-monsoon station observations, stratified by monsoon regime. The comparison tracks — a GHCN temperate reference and NASA POWER reanalysis — let the benchmark measure (a) tropical-vs-temperate skill gaps and (b) observation-vs-reanalysis skill gaps.
+- **Purpose:** benchmark time-series foundation models on tropical-monsoon station observations, stratified by monsoon regime. The comparison tracks, a GHCN temperate reference and NASA POWER reanalysis, let the benchmark measure (a) tropical-vs-temperate skill gaps and (b) observation-vs-reanalysis skill gaps.
 - **Gap filled:** no existing Bangladesh weather dataset defines forecasting tasks, splits or strata (see `NOVELTY_LOG.md`).
 
 ## Composition
