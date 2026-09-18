@@ -12,7 +12,8 @@ Chronos-2 \citep{ansari2026chronos2} and Chronos-Bolt \citep{ansari2024chronos},
 
 Averaged over the 16 daily tasks, six of the eight foundation models outrank every trained baseline. Chronos-2 has
 the best mean rank at leads 7 and 30 (2.77 of 18 models overall), TiRex the best at lead 1, and the strongest
-trained baseline, PatchTST, ranks 6.96. Friedman rejects equality decisively at every lead
+trained baseline, PatchTST, ranks 6.96 (Table~\ref{tab:leaderboard}). Friedman rejects equality
+decisively at every lead
 ($\chi^2 = 220.1$, $215.5$, $209.8$; $p < 10^{-34}$).
 
 That ranking, however, does not license an ordering. The Nemenyi critical difference is 6.58, and the six leading
@@ -25,6 +26,8 @@ and statistically indistinguishable in 29. The 14 wins concentrate at a one-day 
 tracks: partitioned by track type, foundation models win 3 of 24 comparisons on station observations, all at
 lead 1, against 11 of 24 on reanalysis at the same coordinates. Of 432 model-task-lead skill intervals,
 272 exclude climatology.
+
+\input{tables/leaderboard}
 
 \begin{figure}[htbp]
   \centering

@@ -23,7 +23,7 @@ Endorsement is per archive, so request the cross-lists after announcement rather
 at submission. That way you only need standing in cs.AI.
 
 ## Comments field
-18 pages, 7 figures, 1 tables. Code, benchmark definition and cached forecasts: https://github.com/ihpolash/BanglaWeatherBench
+18 pages, 7 figures, 2 tables. Code, benchmark definition and cached forecasts: https://github.com/ihpolash/BanglaWeatherBench
 
 ## License
 CC BY 4.0 is the consistent choice: the BMD source record is CC-BY-4.0 and the repository
