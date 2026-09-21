@@ -3,21 +3,24 @@
 
 \paragraph{What the nulls mean.} A reader could summarise this paper as ``foundation models mostly tie''. That
 summary is accurate and is the point. The zero-shot claim is usually evidenced on aggregate leaderboards without
-significance testing. Score the same models on a tropical station network, resample at the forecast origin, and
+significance testing \citep{godahewa2021monash,aksu2024gifteval,qiu2024tfb,li2025tsfmbench}. Score the same models on a tropical station network, resample at the forecast origin, and
 correct across 48 comparisons, and most margins on observations become indistinguishable from a well-built
 baseline. The models are not weak: six of eight outrank every trained baseline, and 272 of 432
 skill intervals exclude climatology. But the size of the advantage on real station data is smaller than the
-literature's framing implies.
+framing in that literature implies.
 
 \paragraph{Why rainfall is different.} The rainfall result is not a modelling failure so much as a property of the
 target. Daily tropical rainfall is zero-inflated (\SI{67.6}{\percent} dry station-days) and convective, so beyond a
 day the predictable signal is largely the seasonal cycle, which a day-of-year climatology already encodes. A
 forecast that reproduces the climatological distribution is close to the achievable ceiling, and no model in our
 roster exceeded it beyond a one-day lead. This is worth stating plainly because rainfall is the variable on which
-the operational value of these models would be judged in Bangladesh.
+the operational value of these models would be judged in Bangladesh, and because precipitation is difficult
+enough to warrant benchmarks of its own \citep{zhang2025rainfallbench}.
 
 \paragraph{Why regime stratification matters.} The spell result is the clearest argument against aggregate
-reporting. The same models are strongly skilful during break spells and significantly worse than climatology during
+reporting. That aggregates can hide regime-dependent failure has been shown for empirically defined regimes in
+road traffic \citep{wang2026regime}; here the regimes are physically defined and externally validated
+\citep{ferdoushi2023spells}, and the failure is a sign reversal rather than a degradation. The same models are strongly skilful during break spells and significantly worse than climatology during
 active spells, a reversal that vanishes in a seasonal average. One mechanism would explain this, though we do not test it. A model with a
 long context window carries the persistent warm, dry conditions of a break forward. That is rewarded while the
 break holds, and penalised as soon as convection resumes. Whatever the cause, a benchmark that reports only aggregate skill would
@@ -25,10 +28,14 @@ certify these models as adequate for exactly the situation in which they are lea
 
 \paragraph{Implications for benchmark design.} Three of our results are really statements about how evaluation is
 done. Scoring against reanalysis inflates apparent skill and, more subtly, inflates the \emph{margin} between model
-classes, so reanalysis-only benchmarks are not a neutral convenience. Stratifying by a physically defined regime
+classes, so reanalysis-only benchmarks \citep{rasp2024weatherbench2,nathaniel2024chaosbench} are not a neutral
+convenience. \citet{gupta2026mausam} reach the same conclusion for AI weather-prediction models over South Asia;
+our result transfers it to zero-shot time-series models. Stratifying by a physically defined regime
 exposes failures that aggregates hide. And a context-availability control changes the interpretation of a
 geographic gap: without masking the trained baseline identically, our own earlier reading, that longer context
-dissolves the tropical deficit, did not survive.
+dissolves the tropical deficit, did not survive. This matters for how a North--South divide in forecast skill
+\citep{mozaffari2026inequality,masi2025safe} should be read, because part of what looks geographic is an
+observing-system gap that sits inside the model's input window.
 
 \paragraph{Affordability.} The entire zero-shot leaderboard reproduces in 4.16 GPU-hours on a single GPU, and the
 strongest classical baseline we ran costs about five times that in CPU time. For the research communities this
