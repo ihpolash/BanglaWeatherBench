@@ -5,7 +5,7 @@ A time-series foundation model is pretrained once on a large heterogeneous corpu
 unseen series with no fitting, no feature engineering and no local expertise. If that promise holds where
 forecasting capacity is scarcest, it matters. Those are the places with the fewest stations, the fewest trained
 forecasters and the least compute, and they are often where a week of warning carries the largest consequences.
-A model that runs zero-shot on a free GPU is precisely the technology they lack.
+A model that runs zero-shot on a single GPU is precisely the technology they lack.
 
 Whether it holds there is an empirical question current benchmarks do not answer, because the evidence base is
 skewed in two ways at once. Geographically, general time-series suites treat weather as one domain among many and
@@ -75,4 +75,4 @@ temperate reference, a reanalysis track at identical coordinates, and a gap-matc
 baselines alike. (iii) A significance protocol matched to overlapping rolling-origin panels, applied uniformly.
 (iv) To our knowledge the first evaluation of current zero-shot time-series foundation models on South Asian
 station observations including precipitation, stratified by monsoon phase, with a pretraining-overlap audit.
-(v) Reproducibility at the compute scale of the places the benchmark is about: 4.16 GPU-hours on a free Tesla T4.
+(v) Reproducibility at the compute scale of the places the benchmark is about: 4.16 GPU-hours on a Tesla T4.

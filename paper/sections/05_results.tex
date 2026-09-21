@@ -140,7 +140,7 @@ samples. The output shape matches the documented layout. And the trajectory spre
 against the model's own RMSE of \SI{1.51}{\celsius}.
 
 The whole zero-shot leaderboard is cheap to reproduce. Every model fits in \SI{4.2}{\gibi\byte} of GPU memory. All 8 models over
-all 16 tasks cost 4.16 GPU-hours on a free Tesla T4, ranging from 0.6 minutes for TTM r2 to 130 minutes for
+all 16 tasks cost 4.16 GPU-hours on a Tesla T4, ranging from 0.6 minutes for TTM r2 to 130 minutes for
 Sundial. By contrast AutoARIMA alone costs about 20.7 CPU-hours. Accuracy does not track size: TiRex
 ranks second overall with 35.3M parameters and \SI{568}{\mebi\byte}, while Toto-2.0 (312.7M) ranks fourth and
 Sundial (128.3M) eleventh (Figure~\ref{fig:pareto}).
@@ -149,6 +149,6 @@ Sundial (128.3M) eleventh (Figure~\ref{fig:pareto}).
   \centering
   \includegraphics[width=0.68\linewidth]{F11_compute_pareto.pdf}
   \caption{Compute against skill on the observation tracks at a 7-day lead; marker area scales with parameter
-  count. The full leaderboard is reproducible in roughly four GPU-hours on free hardware.}
+  count. The full leaderboard is reproducible in roughly four GPU-hours on a single GPU.}
   \label{fig:pareto}
 \end{figure}
