@@ -13,9 +13,9 @@ framing in that literature implies.
 target. Daily tropical rainfall is zero-inflated (\SI{67.6}{\percent} dry station-days) and convective, so beyond a
 day the predictable signal is largely the seasonal cycle, which a day-of-year climatology already encodes. A
 forecast that reproduces the climatological distribution is close to the achievable ceiling, and no model in our
-roster exceeded it beyond a one-day lead. This is worth stating plainly because rainfall is the variable on which
-the operational value of these models would be judged in Bangladesh, and because precipitation is difficult
-enough to warrant benchmarks of its own \citep{zhang2025rainfallbench}.
+roster exceeded it beyond a one-day lead. This is worth stating plainly: rainfall is the variable on which
+the operational value of these models would be judged in Bangladesh. It is also difficult enough to warrant
+benchmarks of its own \citep{zhang2025rainfallbench}.
 
 \paragraph{Why regime stratification matters.} The spell result is the clearest argument against aggregate
 reporting. That aggregates can hide regime-dependent failure has been shown for empirically defined regimes in
@@ -34,8 +34,8 @@ our result transfers it to zero-shot time-series models. Stratifying by a physic
 exposes failures that aggregates hide. And a context-availability control changes the interpretation of a
 geographic gap: without masking the trained baseline identically, our own earlier reading, that longer context
 dissolves the tropical deficit, did not survive. This matters for how a North--South divide in forecast skill
-\citep{mozaffari2026inequality,masi2025safe} should be read, because part of what looks geographic is an
-observing-system gap that sits inside the model's input window.
+\citep{mozaffari2026inequality,masi2025safe} should be read: part of what looks geographic is an
+observing-system gap, and it sits inside the model's input window.
 
 \paragraph{Affordability.} The entire zero-shot leaderboard reproduces in 4.16 GPU-hours on a single GPU, and the
 strongest classical baseline we ran costs about five times that in CPU time. For the research communities this
