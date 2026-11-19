@@ -9,6 +9,7 @@
 \usepackage{siunitx}
 \usepackage{microtype}
 \usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -50,5 +51,14 @@ Jahangirnagar University\\
 
 \bibliographystyle{plainnat}
 \bibliography{references}
+
+\appendix
+\section{The primary comparisons}
+\label{app:comparators}
+
+Table~\ref{tab:comparators} lists the 48 comparisons behind the 17/5/26 count, with the model selected on each side and
+the outcome when both sides are chosen on the test windows instead.
+
+\input{tables/comparators}
 
 \end{document}

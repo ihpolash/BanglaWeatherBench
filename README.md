@@ -14,12 +14,12 @@ above). The release contains:
 
 It also includes significance testing (Diebold–Mariano with HAC, moving-block bootstrap over forecast origins, Friedman–Nemenyi, Holm correction), result figures F6–F12, a pretraining-overlap audit, a like-for-like gap-matched control, and a 2,048-day context test.
 
-Headline results, after correction:
+Headline results. Only the 48 best-model comparisons are Holm-corrected, with both comparators chosen on the 2011–2015 validation years and frozen before testing (17 foundation-model wins, 5 baseline wins, 26 indistinguishable); the other counts are unadjusted 95% intervals, and the baselines are untuned fixed configurations (see the paper's Limitations):
 - Zero-shot foundation models are the strongest family, but on station observations most margins beyond day 1 are not statistically separable, and the top six sit within one critical difference.
 - **No model beats climatology on tropical rainfall**, on the 35-station BMD record beyond a one-day lead, and on 10-day CHIRPS rainfall at any horizon (on the 10-station GHCN-Bangladesh track point estimates are positive but never statistically separable).
-- **Reanalysis looks markedly more predictable than the stations it represents** (78 of 108 comparisons significant), so reanalysis-only benchmarks overstate skill.
-- A long-lead tropical **temperature** penalty holds for half the roster; ~60% is explained by sparser station context, and for Chronos-2 and TiRex a residual survives even at 2,048 days of history. Rainfall shows no systematic penalty, at day 1 the significant results run the other way.
-- Skill is strongly **regime-dependent**: strong in monsoon break spells, significantly worse than climatology in active spells.
+- **Reanalysis looks markedly more predictable than the stations it represents** (for rainfall, temperature and humidity, 67 of 81 intervals favour reanalysis and 2 favour the stations; sunshine against shortwave radiation is mostly inconclusive), so reanalysis-only benchmarks overstate skill.
+- A long-lead tropical **temperature** penalty holds for half the roster; ~60% is explained by sparser station context, and for Chronos-2 and TiRex a residual survives even at 2,048 days of history. Rainfall shows no systematic penalty, at day 1 the intervals that exclude zero run the other way. This contrast rests on ten GHCN-Bangladesh stations.
+- Skill is strongly **regime-dependent**: strong in monsoon break spells, worse than climatology in active spells (61 of 72 intervals exclude zero, blocked by spell event, over 11-12 active and 18-21 break events).
 - The benchmark is **leakage-free on both sides** of the tropical-vs-temperate contrast, and reproducible in ~4 GPU-hours on free hardware.
 
 Results: `reports/week3_baselines_report.md`, `reports/week4_fm_report.md`, `reports/week5_significance_report.md`,

@@ -100,7 +100,7 @@ save(fig, "F2_seasonal_cycle")
 cov = pd.read_csv(f"{DATA}/f3_coverage_station_year.csv")
 panels = [("BMD", "a  BMD national network (clean daily rainfall)"), ("GHCN bangladesh", "b  GHCN-Daily, Bangladesh"), ("GHCN temperate", "c  GHCN-Daily, temperate reference")]
 heights = [cov[cov.track == t].station_id.nunique() for t, _ in panels]
-fig, axes = plt.subplots(3, 1, figsize=(7.2, 11.5), gridspec_kw={"height_ratios": heights, "hspace": 0.22})
+fig, axes = plt.subplots(3, 1, figsize=(6.27, 8.6), gridspec_kw={"height_ratios": heights, "hspace": 0.25})  # A4 text width, placed at 1:1
 names = pd.read_csv("reports/temperate_reference_stations.csv").set_index("id").name.str.title().to_dict()
 from bwb.data.ghcn import BG_TO_BMD
 names.update({k: f"{v} (GHCN)" for k, v in BG_TO_BMD.items()})
@@ -113,7 +113,7 @@ for ax, (track, title) in zip(axes, panels):
     d.index = [names.get(i, i) for i in d.index]
     im = ax.imshow(d.to_numpy(), aspect="auto", cmap=SEQ, vmin=0, vmax=100, interpolation="nearest")
     ax.set_facecolor(NEUTRAL_1)
-    ax.set_yticks(range(len(d))); ax.set_yticklabels(d.index, fontsize=6)
+    ax.set_yticks(range(len(d))); ax.set_yticklabels(d.index, fontsize=5.8)
     ticks = [i for i, y in enumerate(years) if y % 10 == 0]
     ax.set_xticks(ticks); ax.set_xticklabels([years[i] for i in ticks])
     ax.axvspan(years.tolist().index(2016) - 0.5, years.tolist().index(2023) + 0.5, fill=False, edgecolor=INK2, linewidth=0.8)

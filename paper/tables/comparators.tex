@@ -1,0 +1,61 @@
+\begin{table}[htbp]
+  \centering
+  \scriptsize
+  \setlength{\tabcolsep}{2.5pt}
+  \caption{The 48 primary comparisons. For each task and lead the best foundation model and the best baseline (trained, statistical or naive) are the models with the lowest mean scaled CRPS on the 2011--2015 validation windows; the pair is then frozen and tested on the 2016--2023 test windows. $\Delta$ is the mean per-origin test scaled-CRPS difference, foundation model minus baseline, so a negative value favours the foundation model. $p$ is the Diebold--Mariano $p$-value with HAC variance and the Harvey--Leybourne--Newbold correction, Holm-adjusted across all 48 rows. The last column (Test-sel.) gives the outcome when both comparators are instead chosen on the test windows. GHCN-Temp.\ is the European temperate reference; POWER is NASA POWER reanalysis at the named station set.}
+  \label{tab:comparators}
+  \begin{tabular}{llrllrrll}
+    \toprule
+    Track & Variable & Lead & Foundation model & Baseline & $\Delta$ & Holm $p$ & Outcome & Test-sel. \\
+    \midrule
+    BMD & Humidity & 1 & TimesFM 2.5 & AutoARIMA & \num{-0.0033} & \num{0.715} & tie & tie \\
+    BMD & Humidity & 7 & Chronos-2 & LightGBM & \num{-0.0068} & \num{1.000} & tie & tie \\
+    BMD & Humidity & 30 & Chronos-2 & LightGBM & \num{-0.0074} & \num{1.000} & tie & tie \\
+    BMD & Rainfall & 1 & Chronos-2 & NHITS & \num{-0.0029} & \num{1.000} & tie & tie \\
+    BMD & Rainfall & 7 & Chronos-2 & Climatology & \num{+0.0091} & \num{0.001} & baseline & baseline \\
+    BMD & Rainfall & 30 & Toto-2.0 & Climatology & \num{+0.0059} & \num{0.601} & tie & tie \\
+    BMD & Sunshine & 1 & TiRex & NHITS & \num{-0.0087} & \num{0.645} & tie & tie \\
+    BMD & Sunshine & 7 & Chronos-2 & LightGBM & \num{-0.0076} & \num{1.000} & tie & tie \\
+    BMD & Sunshine & 30 & Chronos-2 & LightGBM & \num{-0.0084} & \num{1.000} & tie & tie \\
+    BMD & Temperature & 1 & TiRex & AutoARIMA & \num{-0.0086} & \num{0.017} & FM & FM \\
+    BMD & Temperature & 7 & Chronos-2 & PatchTST & \num{+0.0051} & \num{1.000} & tie & tie \\
+    BMD & Temperature & 30 & Chronos-2 & LightGBM & \num{-0.0123} & \num{1.000} & tie & tie \\
+    GHCN-BD & Rainfall & 1 & TiRex & PatchTST & \num{-0.0437} & \num{0.645} & tie & tie \\
+    GHCN-BD & Rainfall & 7 & TiRex & NHITS & \num{+0.0272} & \num{1.000} & tie & tie \\
+    GHCN-BD & Rainfall & 30 & Chronos-2 & NHITS & \num{-0.0507} & \num{0.212} & tie & tie \\
+    GHCN-BD & Mean temp. & 1 & Chronos-2 & AutoARIMA & \num{+0.0013} & \num{1.000} & tie & tie \\
+    GHCN-BD & Mean temp. & 7 & TimesFM 2.5 & Climatology & \num{-0.0943} & \num{0.002} & FM & tie \\
+    GHCN-BD & Mean temp. & 30 & Chronos-2 & Climatology & \num{-0.0604} & \num{0.645} & tie & tie \\
+    GHCN-Temp. & Rainfall & 1 & TiRex & NHITS & \num{-0.0076} & $<\num{0.001}$ & FM & FM \\
+    GHCN-Temp. & Rainfall & 7 & TiRex & Climatology & \num{+0.0053} & \num{0.009} & baseline & baseline \\
+    GHCN-Temp. & Rainfall & 30 & TiRex & Climatology & \num{+0.0045} & \num{0.006} & baseline & baseline \\
+    GHCN-Temp. & Mean temp. & 1 & TiRex & AutoARIMA & \num{-0.0039} & $<\num{0.001}$ & FM & FM \\
+    GHCN-Temp. & Mean temp. & 7 & Chronos-2 & PatchTST & \num{-0.0080} & \num{0.148} & tie & tie \\
+    GHCN-Temp. & Mean temp. & 30 & Chronos-Bolt & Climatology & \num{-0.0331} & \num{0.003} & FM & tie \\
+    POWER at BMD & Shortwave & 1 & Toto-2.0 & NHITS & \num{-0.0407} & $<\num{0.001}$ & FM & FM \\
+    POWER at BMD & Shortwave & 7 & Chronos-2 & PatchTST & \num{+0.0003} & \num{1.000} & tie & tie \\
+    POWER at BMD & Shortwave & 30 & Chronos-2 & PatchTST & \num{-0.0122} & \num{0.715} & tie & tie \\
+    POWER at BMD & Rainfall & 1 & Toto-2.0 & NHITS & \num{-0.0789} & \num{0.002} & FM & FM \\
+    POWER at BMD & Rainfall & 7 & Chronos-2 & Climatology & \num{-0.1514} & \num{0.024} & FM & tie \\
+    POWER at BMD & Rainfall & 30 & Chronos-2 & Climatology & \num{-0.1755} & \num{0.020} & FM & FM \\
+    POWER at BMD & Humidity & 1 & Toto-2.0 & PatchTST & \num{-0.0099} & $<\num{0.001}$ & FM & FM \\
+    POWER at BMD & Humidity & 7 & TimesFM 2.5 & PatchTST & \num{-0.0232} & \num{0.036} & FM & tie \\
+    POWER at BMD & Humidity & 30 & TimesFM 2.5 & PatchTST & \num{-0.0443} & \num{0.108} & tie & tie \\
+    POWER at BMD & Temperature & 1 & Toto-2.0 & AutoARIMA & \num{-0.0072} & \num{0.018} & FM & FM \\
+    POWER at BMD & Temperature & 7 & Chronos-2 & LightGBM & \num{-0.0317} & \num{0.251} & tie & FM \\
+    POWER at BMD & Temperature & 30 & Chronos-2 & PatchTST & \num{-0.0276} & \num{1.000} & tie & tie \\
+    POWER at GHCN-BD & Rainfall & 1 & Toto-2.0 & PatchTST & \num{-0.0353} & $<\num{0.001}$ & FM & FM \\
+    POWER at GHCN-BD & Rainfall & 7 & Chronos-2 & Climatology & \num{-0.1112} & \num{0.070} & tie & FM \\
+    POWER at GHCN-BD & Rainfall & 30 & Toto-2.0 & Climatology & \num{-0.1414} & \num{0.007} & FM & FM \\
+    POWER at GHCN-BD & Temperature & 1 & Toto-2.0 & AutoARIMA & \num{-0.0057} & \num{0.194} & tie & tie \\
+    POWER at GHCN-BD & Temperature & 7 & Chronos-2 & LightGBM & \num{-0.0277} & \num{0.406} & tie & tie \\
+    POWER at GHCN-BD & Temperature & 30 & Chronos-2 & PatchTST & \num{-0.0334} & \num{1.000} & tie & tie \\
+    POWER at GHCN-Temp. & Rainfall & 1 & TiRex & NHITS & \num{-0.0070} & $<\num{0.001}$ & FM & FM \\
+    POWER at GHCN-Temp. & Rainfall & 7 & TiRex & Climatology & \num{+0.0055} & \num{0.003} & baseline & baseline \\
+    POWER at GHCN-Temp. & Rainfall & 30 & TiRex & Climatology & \num{+0.0076} & $<\num{0.001}$ & baseline & baseline \\
+    POWER at GHCN-Temp. & Temperature & 1 & TiRex & AutoARIMA & \num{-0.0038} & $<\num{0.001}$ & FM & FM \\
+    POWER at GHCN-Temp. & Temperature & 7 & TiRex & PatchTST & \num{-0.0072} & \num{0.500} & tie & tie \\
+    POWER at GHCN-Temp. & Temperature & 30 & Chronos-2 & Climatology & \num{-0.0324} & \num{0.044} & FM & tie \\
+    \bottomrule
+  \end{tabular}
+\end{table}

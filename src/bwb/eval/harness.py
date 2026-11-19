@@ -2,10 +2,15 @@
 
 Prediction cache: data/predictions_cache/<model>/<track>__<var>.parquet with columns
 window_id, lead, mean, q0.1 ... q0.9. Scoring reads only the cache, so models never need to coexist.
+
+The evaluated split is set by the environment variable BWB_SPLIT: "test" (default, the published benchmark) or
+"val" (2011-2015 origins, used only to choose comparators). Each split has its own window index and cache, so a
+validation run can never overwrite a test artefact.
 """
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Callable
 
@@ -16,7 +21,13 @@ from bwb.eval.windows import slice_window
 from bwb.models.baselines import QUANTILES
 
 QCOLS = [f"q{q:g}" for q in QUANTILES]
-CACHE = Path(__file__).resolve().parents[3] / "data" / "predictions_cache"
+ROOT = Path(__file__).resolve().parents[3]
+SPLIT = os.environ.get("BWB_SPLIT", "test")
+if SPLIT not in ("test", "val"):
+    raise ValueError(f"BWB_SPLIT must be 'test' or 'val', got {SPLIT!r}")
+_SUFFIX = "" if SPLIT == "test" else "_val"
+CACHE = ROOT / "data" / f"predictions_cache{_SUFFIX}"
+WINDOWS = ROOT / "data" / "processed" / f"windows_daily{_SUFFIX}.parquet"
 
 
 def cache_path(model: str, track: str, var: str, cache_dir: Path | None = None) -> Path:

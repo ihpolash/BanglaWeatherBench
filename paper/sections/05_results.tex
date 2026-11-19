@@ -19,12 +19,28 @@ That ranking, however, does not license an ordering. The Nemenyi critical differ
 leading foundation models and PatchTST all fall within one critical difference of the best
 (Figure~\ref{fig:cd}). The group separates clearly from the weaker baselines; positions within it do not.
 
-Pairwise, the picture is more sober still. We compared the best foundation model with the best baseline for each
-task and lead, correcting across all 48 comparisons. The foundation model is significantly better in 14, worse in
-5, and statistically indistinguishable in 29. Those wins concentrate at a one-day lead and on the smooth reanalysis
-tracks. Partitioned by track type, foundation models take 11 of 24 comparisons on reanalysis and only 3 of 24 on
-the stations themselves, all three of those at lead 1. Of 432 model-task-lead skill intervals, 272 exclude
-climatology.
+Pairwise, the picture is more sober still. For each task and lead we froze the best foundation model and the best
+baseline on the 2011--2015 validation windows, then compared them on the test windows, correcting across all 48
+comparisons. The foundation model is significantly better in 17, worse in 5, and statistically indistinguishable
+in 26. Those wins concentrate at a one-day lead and on the smooth reanalysis tracks. Partitioned by track type,
+foundation models take 12 of 24 comparisons on reanalysis and 5 of 24 on the stations themselves. Three of the
+five station wins are at lead 1; the other two are for mean temperature at the GHCN stations, at leads 7 and 30.
+All five baseline wins go to climatology, on rainfall. Table~\ref{tab:comparators} gives every comparison with the
+model selected on each side.
+
+How the comparators are chosen changes which comparisons reach significance, but never the direction of a
+verdict. Excluding LightGBM from the selection gives 18, 5
+and 25. Choosing both sides on the test windows gives 14, 5 and 29, although the two
+procedures pick the same pair in only 17 of 48 cases. All 5 baseline
+wins and 12 of the 14 test-chosen foundation-model wins recur, and 5 test-chosen ties become foundation-model
+wins. Of the two wins that do not recur, one returns when LightGBM is excluded. Selecting on the test windows
+therefore did not raise the foundation models' count; it lowered it by three. A split-sample check within the
+test period agrees. With each pair chosen on 2016--2019 and tested on 2020--2023, all 19 comparisons decided with
+test-chosen pairs keep their direction, and 5 remain separable after correction, all in favour of the foundation
+model. The test-chosen pair, tested on the same origins, gives 4.
+
+Outside the primary family, 272 of 432 unadjusted model-task-lead skill intervals lie
+entirely above climatology and 76 entirely below it.
 
 \input{tables/leaderboard}
 
@@ -38,7 +54,9 @@ climatology.
 
 \subsection{Nothing beats climatology on tropical rainfall}
 
-All five baseline wins are a day-of-year climatology on rainfall at 7- and 30-day leads. On the 35-station BMD
+All five baseline wins are a day-of-year climatology on rainfall at 7- and 30-day leads. Only one of them is
+tropical (BMD at lead 7); the other four are on the temperate reference and on reanalysis at its coordinates, so
+the strength of climatology on rainfall is not a tropical peculiarity. On the 35-station BMD
 record no foundation model exceeds climatology beyond a one-day lead; the best any manages is $-0.004$ CRPSS at
 lead 30. On the independent CHIRPS dekadal task none beats it at any horizon. The closest is Chronos-2 given 28
 years of context, which matches climatology to within $0.001$ CRPSS (Table~\ref{tab:dekadal}).
@@ -69,14 +87,18 @@ either.
   \end{tabular}
 \end{table}
 
-\subsection{Reanalysis flatters models against the stations it represents}
+\subsection{Reanalysis overstates skill against the stations it represents}
 
-Scoring the same models on NASA POWER and at the co-located stations, skill is significantly higher on reanalysis
-in 78 of 108 model-variable-lead comparisons (Figure~\ref{fig:obsrean}). The gap is largest for humidity, significant at every lead for all
-nine models tested, and for rainfall, significant for all nine at leads 1 and 30. It is smaller for temperature.
-It is weakest for sunshine against radiation, two quantities that are not physically identical, which is why we
-do not lean on that row. The effect holds across model families, so it is a property of the target rather
-than of any architecture. A benchmark built on reanalysis therefore overstates two things at once: absolute skill, and the
+We scored nine models, six foundation models and three trained baselines, on NASA POWER and at the co-located
+stations. Reanalysis skill is higher, with an unadjusted interval excluding zero, in 74 of 108 model-variable-lead
+comparisons; 4 go the other way, and 30 include zero (Figure~\ref{fig:obsrean}). The like-for-like rows carry
+the result. For rainfall, temperature and humidity, which are measured the same way on both sides, 67 of 81
+intervals favour reanalysis and 2 favour the stations. The gap is consistent for
+humidity, where all nine models favour reanalysis at every lead, and for rainfall, where all nine do at leads 1 and
+30. Temperature favours reanalysis at short leads but not at 30 days, where no model does and AutoARIMA and NHITS
+favour the stations. Sunshine against radiation, two quantities that are not physically identical, is the weakest
+row (7 of 27 favour reanalysis), and we do not lean on it. Where the effect appears, it appears for foundation models and baselines alike, so
+it is a property of the target rather than of any architecture. A benchmark built on reanalysis therefore overstates two things at once: absolute skill, and the
 margin foundation models hold over baselines. At a 7-day lead the best foundation model's advantage over the best
 trained baseline is $+0.026$ on observations, against $+0.048$ on reanalysis. This is the time-series counterpart of the
 critique \citet{gupta2026mausam} make for AI weather-prediction models.
@@ -85,50 +107,56 @@ critique \citet{gupta2026mausam} make for AI weather-prediction models.
   \centering
   \includegraphics[width=0.72\linewidth]{F12_obs_vs_reanalysis.pdf}
   \caption{Skill on NASA POWER minus skill at co-located stations, with 95\% moving-block intervals. Positive
-  values mean the reanalysis looks more predictable than the observations it represents.}
+  values mean the reanalysis looks more predictable than the observations it represents. Intervals are not
+  adjusted for multiplicity; one that excludes zero is not a significance claim after correction.}
   \label{fig:obsrean}
 \end{figure}
 
 \subsection{A long-lead tropical temperature deficit, mostly explained by sparse context}
 
-Against a trained-baseline control subjected to the same Bangladesh-like missingness, four of the eight foundation
-models retain a significant temperature penalty at a 30-day lead: TTM r2 ($+0.187$), Chronos-Bolt ($+0.138$),
+Against a trained-baseline control (AutoARIMA) subjected to the same Bangladesh-like missingness, four of the
+eight foundation models retain a temperature penalty at a 30-day lead whose unadjusted interval excludes zero: TTM r2 ($+0.187$), Chronos-Bolt ($+0.138$),
 Chronos-2 ($+0.060$) and TiRex ($+0.052$). Once both sides face the same gaps, the median penalty across the roster falls from $+0.112$ to
-$+0.043$. Roughly \SI{60}{\percent} of the raw effect is therefore attributable to sparser station context rather
-than to the tropics (Figure~\ref{fig:did}). At a one-day lead no model shows a
-significant penalty.
+$+0.043$. The absolute reduction is 0.069 CRPSS, so roughly \SI{60}{\percent} of the raw effect is attributable to sparser station context rather
+than to the tropics (Figure~\ref{fig:did}). At a one-day lead no model's interval excludes zero. All of these
+estimates rest on 1{,}478 temperature windows from ten stations.
 
 Two scope markers matter. First, masking only the model, as an ablation applied to the foundation models alone
 would, \emph{understates} the effect, because the control also degrades on gappy contexts; the like-for-like
-comparison raises the median from $+0.022$ to $+0.043$ and returns TiRex to significance. Second, rainfall shows no
-systematic penalty at any lead. Where results are significant at lead 1 the sign is reversed, with four models
+comparison raises the median from $+0.022$ to $+0.043$ and moves TiRex's interval clear of zero. Second, rainfall
+shows no systematic penalty at any lead. Where intervals exclude zero at lead 1 the sign is reversed, with four models
 performing relatively \emph{better} in Bangladesh than at temperate stations. The single exception is Toto-2.0 at
 lead 7 ($+0.028$, CI $0.005$ to $0.053$).
 
 Longer context does not dissolve what remains. Repeating the contrast with 2{,}048 days of history and the control
-masked identically leaves the median penalty at $+0.052$, unchanged from 1{,}024 days; Chronos-2 ($+0.059$) and
-TiRex ($+0.052$) stay significant, while TimesFM's penalty, which was genuinely context-related, disappears.
+masked identically leaves the median penalty of the three models rerun at $+0.052$, unchanged from 1{,}024 days;
+the intervals of Chronos-2 ($+0.059$) and TiRex ($+0.052$) still exclude zero, while TimesFM's penalty, which was genuinely context-related, disappears.
 An unmasked comparison would have suggested the opposite, because without masking the median halves from $+0.080$
 to $+0.043$ as context doubles. That apparent context effect is mostly the missingness effect in disguise.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.92\linewidth]{F8_equity_did.pdf}
-  \caption{Difference-in-differences against the trained-baseline control, with 95\% intervals. Positive values
-  mean the model loses more skill in the tropics than the control does. Masking the control as well as the model is
-  the like-for-like comparison.}
+  \caption{Difference-in-differences against the trained-baseline control, with 95\% moving-block intervals
+  that are not adjusted for multiplicity. Positive values mean the model loses more skill in the tropics than the
+  control does. Masking the control as well as the model is the like-for-like comparison. Ten GHCN-Bangladesh
+  stations.}
   \label{fig:did}
 \end{figure}
 
 \subsection{Skill reverses by monsoon regime}
 
-Aggregate leaderboards hide the benchmark's sharpest result. Stratifying July--August targets by spell, and
-blocking intervals by spell \emph{event} rather than station-day, 61 of 72 contrasts are significant. In break spells every model is better than climatology, and the foundation models hold the widest
+Aggregate leaderboards hide the benchmark's sharpest result. Spell labels come from the all-station mean rainfall
+observed on the target days; they sort the scores after the fact, and no model sees them. Stratifying July--August targets by spell, and
+blocking intervals by spell \emph{event} rather than station-day, 61 of 72 unadjusted intervals exclude zero. The
+effective sample is small: 11 or 12 active-spell events and 18 to 21 break-spell events, depending on variable and
+lead. In break spells every model is better than climatology, and the foundation models hold the widest
 margins: Chronos-Bolt reaches $+0.440$ on temperature at a 30-day lead, against PatchTST's $+0.106$. In active
 spells the ordering inverts. Every model falls below climatology at 7- and 30-day leads, and the foundation models
 lose the most ground: Chronos-Bolt drops to $-0.989$, against PatchTST's $-0.193$. Humidity repeats the pattern.
-Forecast quality is therefore lowest during the very episodes that drive flooding, transplanting and evacuation
-decisions.
+In these events, forecast quality is lowest during the very episodes that drive flooding, transplanting and
+evacuation decisions. With about 30 events from one network, that is a pattern to test on other monsoon records,
+not an established operational failure.
 
 \subsection{Calibration and compute}
 

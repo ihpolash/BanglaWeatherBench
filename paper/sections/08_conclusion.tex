@@ -7,19 +7,23 @@ coordinates, and a gap-matched context control applied to models and baselines a
 time-series foundation models against 10 trained and statistical baselines over 170{,}571 rolling-origin windows,
 treating the forecast origin as the unit of resampling.
 
-The picture is mixed. Foundation models are the strongest family, but on station observations most of their
-advantage is not statistically separable. Nothing beats a day-of-year climatology on tropical rainfall beyond a
-one-day lead; reanalysis flatters every model relative to the stations it represents; and skill reverses between
-monsoon break and active spells. The long-lead tropical temperature deficit that half the roster shows is mostly,
-though not entirely, a consequence of sparser station context rather than of the tropics.
+The picture is mixed. Foundation models generally rank above the fixed-configuration baselines we evaluated. On
+station observations, though, most of that advantage is not statistically separable: with comparators chosen on
+earlier years, the best foundation model wins 5 of 24 station comparisons. Nothing beats a day-of-year
+climatology on tropical rainfall beyond a one-day lead. For rainfall, temperature and humidity, reanalysis produces more
+favourable apparent skill than the stations it represents, though not for temperature at a 30-day lead. Across
+about 30 spell events, skill reverses between monsoon break and active spells. The long-lead tropical temperature deficit that half the roster shows is mostly, though not
+entirely, a consequence of sparser station context rather than of the tropics; it is also the least certain of
+these findings, resting on ten stations.
 
 For practitioners in data-sparse regions the practical reading is twofold. Zero-shot models are already
 affordable and already competitive on smooth variables; for rainfall, a well-built climatology remains the thing
 to beat. For benchmark builders the reading is that scoring target, regime stratification and context availability
-are not implementation details: each one changed a conclusion in this study.
+are not implementation details: each one changed a conclusion in this study. All of these numbers come from one
+country's stations, and only the protocol is known to transfer.
 
-Two extensions would sharpen the picture. Few-shot adaptation is cheap for several models in the roster and would
-test whether the gaps we report are properties of zero-shot use or of the models themselves. Running the same
-protocol on a second tropical network would show whether the long-lead temperature deficit is Bangladeshi or
-tropical. The harness, splits and cached scores are released so that either is a single run against unchanged
-windows.
+Three extensions would sharpen the picture. Tuned baselines would test whether the margins we report hold against the strongest available baseline. Few-shot adaptation is cheap for
+several models in the roster and would test whether the gaps are properties of zero-shot use or of the models
+themselves. Running the same protocol on a second tropical network would show whether the long-lead temperature
+deficit is Bangladeshi or tropical. The harness, splits and aggregated score tables are released so that each is a
+run against unchanged windows.

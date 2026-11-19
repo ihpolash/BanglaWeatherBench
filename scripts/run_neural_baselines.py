@@ -18,7 +18,7 @@ import yaml
 
 from bwb.data.store import NON_NEGATIVE, TRACK_VARIABLES, load_track
 from bwb.eval.gap_matching import apply_mask, assign_donors, donor_masks
-from bwb.eval.harness import cache_path
+from bwb.eval.harness import WINDOWS, cache_path
 from bwb.models.baselines import QUANTILES, Climatology, doy_noleap
 
 CFG = yaml.safe_load(open("configs/splits.yaml"))
@@ -87,7 +87,7 @@ def main():
     from neuralforecast import NeuralForecast
 
     names = args.models.split(",")
-    windows = pd.read_parquet("data/processed/windows_daily.parquet")
+    windows = pd.read_parquet(WINDOWS)
     tracks = args.tracks.split(",")
     suffix, bd_series, bd_windows = "", None, None
     if args.gap_matched:

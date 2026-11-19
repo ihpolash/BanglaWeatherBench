@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+  \centering
+  \footnotesize
+  \caption{Evidence status of each kind of statistical statement in the paper. Rows above the rule are the primary analyses, corrected for multiplicity. Rows below it are per-comparison 95\% moving-block bootstrap intervals with no multiplicity adjustment: they are reported descriptively, and an interval that excludes zero is not a significance claim after correction. Ordered from strongest to weakest evidence within each block.}
+  \label{tab:evidence}
+  \begin{tabular}{p{0.27\linewidth}p{0.29\linewidth}p{0.36\linewidth}}
+    \toprule
+    Finding & Test and scope & Result \\
+    \midrule
+    Best foundation model vs best baseline (pair chosen on 2011--2015, tested on 2016--2023) & DM, HAC + HLN; Holm over 48 & 17 favour the foundation model, 5 the baseline, 26 ties; LightGBM excluded from selection: 18, 5, 25 \\
+    Same, pair chosen on the test windows & DM, HAC + HLN; Holm over 48 & 14 favour the foundation model, 5 the baseline, 29 ties \\
+    Same, pair chosen on 2016--2019, tested on 2020--2023 & DM, HAC + HLN; Holm over 48 & 5 favour the foundation model, 0 the baseline; the test-chosen pair on the same origins: 4 and 0 \\
+    Rank equality across 18 models & Friedman, 16 tasks, per lead & rejected at every lead ($p < 10^{-34}$); Nemenyi CD 6.58 \\
+    \midrule
+    Reanalysis vs co-located stations & 108 block-bootstrap 95\% CIs; unadjusted & 74 favour reanalysis, 4 the stations, 30 include zero; rainfall, temperature, humidity: 67 of 81 and 2 \\
+    Active vs break spells (BMD) & 72 CIs blocked by spell event; unadjusted & 61 exclude zero; 11--12 active and 18--21 break events \\
+    Skill against climatology & 432 block-bootstrap 95\% CIs; unadjusted & 272 above zero, 76 below \\
+    Tropical temperature deficit, lead 30 & 8 DiD CIs, control masked; unadjusted & 4 exclude zero; 10 GHCN-BD stations \\
+    Same, with 2{,}048-day context & 3 DiD CIs; unadjusted & 2 exclude zero; median +0.052 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

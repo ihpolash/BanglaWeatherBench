@@ -48,7 +48,7 @@ with pixel-count weights rather than dropping either.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.84\linewidth]{F3_coverage.pdf}
+  \includegraphics[width=\linewidth]{F3_coverage.pdf}
   \caption{Usable observations per station-year, for the three station tracks. The 2016--2023 test period is
   outlined. The BMD target record is dense; the GHCN-Daily Bangladesh track is roughly \SI{65}{\percent} complete
   over the test period with 2021 almost entirely absent, against \SI{99}{\percent} for the temperate reference.
@@ -59,9 +59,12 @@ with pixel-count weights rather than dropping either.
 
 \subsection{Tasks}
 
-Sixteen daily tasks are defined as the cross of tracks and variables: four BMD variables, two GHCN-Bangladesh
-(rainfall, mean temperature), two GHCN-temperate, and the four NASA POWER analogues at each of the three station
-sets. A seventeenth task covers CHIRPS dekadal rainfall at a six-dekad horizon. Tasks are evaluated separately;
+A task is one variable on one track. There are sixteen daily tasks, eight on station observations and eight on
+reanalysis. The observation tasks are the four BMD variables (rainfall, mean temperature, humidity and sunshine),
+rainfall and mean temperature on GHCN-Bangladesh, and the same two on GHCN-temperate. The reanalysis tasks are the
+NASA POWER analogue of each: all four variables at the BMD coordinates (precipitation, \SI{2}{\metre} temperature,
+relative humidity and surface shortwave radiation), and precipitation and \SI{2}{\metre} temperature at each of the
+two GHCN station sets. A seventeenth task covers CHIRPS dekadal rainfall at a six-dekad horizon. Tasks are evaluated separately;
 we never pool across tracks, because scaled errors are not comparable between a smooth reanalysis grid and a
 sparse station record.
 
@@ -71,8 +74,9 @@ Scoring is stratified by physically defined, externally validated regimes rather
 Monsoon phases (pre-monsoon, onset, peak, withdrawal, dry) follow published Bangladeshi climatology, and
 active/break spells follow \citet{ferdoushi2023spells}: runs of at least three days in
 July--August where daily rainfall on the all-station mean series sits above or below half a standard deviation of
-the daily climatological cycle. Our labels reproduce that paper's counts to within a few percent. Strata are
-derived from the training period only and are used for scoring alone; they are never model inputs.
+the daily climatological cycle. Our labels reproduce that paper's counts to within a few percent. The spell
+reference cycle and thresholds come from the training period only. The label for a test day uses the rainfall
+observed on that day, so it is known only after the fact. Strata sort the scores; they are never model inputs.
 
 
 \begin{figure}[htbp]

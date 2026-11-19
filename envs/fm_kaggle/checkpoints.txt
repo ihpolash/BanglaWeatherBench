@@ -1,0 +1,13 @@
+# Hugging Face checkpoints used by the zero-shot runs (2026-09-15 to 2026-09-16).
+# The adapters in src/bwb/models/fm_adapters.py load each repository without a pinned revision. The hashes below are
+# the commits current at run time, read from the Hugging Face API on 2026-11-18: seven repositories have not changed
+# since before the runs; TiRex's only later commit (43ebaaff, 2026-11-13) edits the model card.
+# repository                                commit                                    commit date
+amazon/chronos-2                            29ec3766d36d6f73f0696f85560a422f50e8498c  2026-06-05
+amazon/chronos-bolt-base                    5d9f166d69f47aef3401367a7b842e78fe97b121  2025-11-21
+google/timesfm-2.5-200m-pytorch             1d952420fba87f3c6dee4f240de0f1a0fbc790e3  2025-10-02
+Datadog/Toto-2.0-313m                       a7bab288f5e95f8606f8306f86659357e1c001ef  2026-06-04
+NX-AI/TiRex                                 63c740922493f5fbe60b277609ec62babfba2762  2026-02-05
+Salesforce/moirai-2.0-R-small               30f43ff08c8494f4943ae1521e9d4e94a0fbb389  2026-01-29
+ibm-granite/granite-timeseries-ttm-r2       d6a79570cac0f33d526601cd3a0fc7c80a8f9a2f  2025-02-26
+thuml/sundial-base-128m                     3212e42564493f520593e5414af4367fc4b49226  2026-03-09

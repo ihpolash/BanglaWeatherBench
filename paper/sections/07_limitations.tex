@@ -1,33 +1,47 @@
 \section{Limitations}
 \label{sec:limitations}
 
-\paragraph{The equity contrast rests on ten stations.} The tropical-versus-temperate comparison uses the 10
-GHCN-Daily stations in Bangladesh, giving 1{,}154 rainfall and 1{,}478 temperature windows, an order of
-magnitude fewer than the BMD track. Every equity figure in this paper should be read with that $n$ attached. Three
-design choices limit but do not eliminate the risk: the temperate reference is drawn from the same instrument
-network; the gap-matched control is applied to models and baselines alike; and intervals come from a moving-block
-bootstrap over origins rather than from window counts. We report the contrast because it is the only like-for-like
-comparison available, not because ten stations settle the question.
+The limits below are ordered by how much each restricts the paper's main claims, and each names what it prevents
+us from concluding.
 
-\paragraph{One country, one climate.} Findings are specific to Bangladesh's monsoon regime. The protocol, controls
-and significance machinery transfer; the numbers do not. Whether the long-lead temperature deficit appears in other
-tropical networks is open.
+\begin{enumerate}
+  \item \textbf{The baselines are untuned, and the comparators are chosen on five years.} Each baseline runs with
+    one fixed configuration, so we cannot claim that foundation models match or beat \emph{tuned} baselines; a
+    tuning budget could close some of the 17 margins they win. The comparators are chosen on the 2011--2015
+    validation years and frozen before testing, so test-period scores do not enter the selection. Five years is a
+    short window for choosing among near-tied models, however. The validation-chosen and test-chosen pairs agree in
+    only 17 of 48 cases. No verdict reverses between the two choices, though 7 of 48 move between significant and indistinguishable.
+    Which model counts as ``best'' for a
+    given task is not, so we do not rank individual models on the strength of these pairs. LightGBM's validation
+    scores are optimistic; excluding it from the selection changes one verdict.
+  \item \textbf{The equity contrast rests on ten stations.} The tropical-versus-temperate comparison uses the 10
+    GHCN-Daily stations in Bangladesh: 1{,}154 rainfall and 1{,}478 temperature windows, an order of magnitude
+    fewer than the BMD track. Its intervals are unadjusted, and its control is a single baseline selected on test
+    data. We therefore cannot claim that the long-lead temperature deficit is established for Bangladesh as a
+    whole, or that it would survive correction. The same-network reference, the like-for-like gap control and
+    origin-level resampling limit the risk; they do not remove it. We report the contrast because it is the only
+    like-for-like comparison available, not because ten stations settle the question.
+  \item \textbf{One country, one climate.} Every number comes from Bangladesh's monsoon regime, so we cannot claim
+    any of them for other tropical networks. The protocol, controls and significance machinery transfer; whether
+    the deficit or the spell reversal appears elsewhere is open.
+  \item \textbf{Secondary analyses are unadjusted.} The reanalysis contrast (108 intervals), the spell contrasts
+    (72) and the skill intervals (432) are per-comparison. Their counts describe a pattern; no single interval in
+    them is a corrected significance result. The spell contrasts also rest on few independent events, 11 or 12
+    active and 18 to 21 break, so they cannot be read as station-day sample sizes.
+  \item \textbf{Zero-shot only.} We evaluate models as shipped. Few-shot adaptation and light fine-tuning are out of
+    scope, so this paper bounds the zero-shot claim, not the models' ceiling.
+  \item \textbf{Imputation in the source record.} The published BMD data was imputed by its authors before release.
+    We flag suspect values and exclude flagged targets, but detection is imperfect: flagged shares over the test
+    period run from \SI{0.08}{\percent} (rainfall) to \SI{4.44}{\percent} (humidity), with one station-variable
+    at \SI{14.1}{\percent}. Undetected imputed values would make targets smoother, so we cannot rule out a small
+    advantage for smooth forecasters on the BMD track.
+  \item \textbf{Two comparisons are weaker than the rest.} Bright sunshine hours and downward shortwave radiation are
+    not the same physical quantity, so that row of the reanalysis contrast is reported but not relied on. The
+    CHIRPS dekadal task is an independent-source check at coarse resolution, not a headline.
+  \item \textbf{Mechanisms are hypothesised, not tested.} We measure the regime reversal and the
+    context-availability effect; we do not identify the architectural cause of either.
+\end{enumerate}
 
-\paragraph{Zero-shot only.} We evaluate models as they are shipped. Few-shot adaptation and light fine-tuning are out of scope; they are the
-obvious next step, and cheap for several models in the roster. This paper therefore bounds the zero-shot claim
-rather than the models' ceiling.
-
-\paragraph{The roster will age.} Eight models current in 2026 will not be current for long. The harness, cached
-forecasts and scoring code are released so that adding a model is a single run against unchanged windows.
-
-\paragraph{Imputation in the source record.} The published BMD data was imputed by its authors before release. We
-detect and flag suspect values and exclude flagged targets from scoring, but detection is imperfect; flagged shares
-over the test period run from \SI{0.08}{\percent} (rainfall) to \SI{4.44}{\percent} (humidity), with one
-station-variable at \SI{14.1}{\percent}.
-
-\paragraph{Two comparisons are weaker than the rest.} Bright sunshine hours and downward shortwave radiation are
-not the same physical quantity, so that row of the observation-versus-reanalysis contrast is reported but not
-relied on. The CHIRPS dekadal task is an independent-source check at coarse resolution, not a headline.
-
-\paragraph{Mechanisms are hypothesised, not tested.} We measure the regime reversal and the context-availability
-effect; we do not identify the architectural cause of either.
+The roster will also age. Eight models current in 2026 will not stay current, and model checkpoints and
+packages change; the versions we used are listed under Reproducibility. The harness and scoring code are released
+so that adding a model is a single run against unchanged windows.

@@ -13,7 +13,7 @@ uv run python - <<'EOF'
 import zipfile, pathlib
 files = [*pathlib.Path("src/bwb").rglob("*.py"), *(pathlib.Path("scripts") / f for f in ("run_neural_baselines.py", "run_fm_zero_shot.py", "run_fm_dekadal.py", "score_fm_runs.py",
                                                 "verify_predictions.py", "run_stat_lgbm.py")), pathlib.Path("configs/splits.yaml"),
-         *(pathlib.Path("data/processed") / f for f in ("windows_daily.parquet", "bmd_daily.parquet", "ghcn_daily.parquet", "nasa_power_points.parquet",
+         *(pathlib.Path("data/processed") / f for f in ("windows_daily.parquet", "windows_daily_val.parquet", "bmd_daily.parquet", "ghcn_daily.parquet", "nasa_power_points.parquet",
                                                        "chirps_dekadal_adm2.parquet", "windows_dekadal.parquet"))]
 with zipfile.ZipFile("data/interim/kaggle_dataset/bwb_bundle.zip", "w", zipfile.ZIP_DEFLATED) as z:
     for f in files:

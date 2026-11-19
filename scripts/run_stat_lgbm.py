@@ -16,7 +16,7 @@ import yaml
 
 from bwb.data.store import NON_NEGATIVE, TRACK_VARIABLES, load_track
 from bwb.eval.gap_matching import assign_donors, donor_masks
-from bwb.eval.harness import cache_path
+from bwb.eval.harness import WINDOWS, cache_path
 from bwb.models.lgbm_baseline import GlobalLGBM
 from bwb.models.stat_baselines import run_stat_models
 
@@ -38,7 +38,7 @@ def main():
     args = ap.parse_args()
     models = args.models.split(",")
     stat_models = [m for m in models if m != "lightgbm"]
-    windows = pd.read_parquet("data/processed/windows_daily.parquet")
+    windows = pd.read_parquet(WINDOWS)
     tracks = args.tracks.split(",")
     suffix, bd_series, bd_windows = "", None, None
     if args.gap_matched:

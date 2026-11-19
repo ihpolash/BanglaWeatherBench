@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 
 from bwb.data.store import NON_NEGATIVE, TRACK_VARIABLES
-from bwb.eval.harness import QCOLS
+from bwb.eval.harness import CACHE, QCOLS, WINDOWS
 
 H = 30
 
@@ -38,10 +38,10 @@ def check(p: pd.DataFrame, w: pd.DataFrame, var: str) -> list[str]:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", required=True)
-    ap.add_argument("--root", default="data/predictions_cache")
+    ap.add_argument("--root", default=str(CACHE))
     ap.add_argument("--tracks", default=None, help="comma list; default = every track (gap-matched runs exist only for ghcn_temperate)")
     args = ap.parse_args()
-    windows = pd.read_parquet("data/processed/windows_daily.parquet")
+    windows = pd.read_parquet(WINDOWS)
     failures, checked, missing = [], 0, []
     for model in args.models.split(","):
         for track, variables in TRACK_VARIABLES.items():

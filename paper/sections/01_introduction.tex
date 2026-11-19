@@ -23,25 +23,38 @@ feature, the alternation of active and break spells inside the rainy season, has
 record we build on shows the range. Median July rainfall reaches \SI{457}{\milli\metre} per station-month, against
 \SI{0}{\milli\metre} in January. \SI{67.6}{\percent} of station-days are dry, yet the wet-day 99th percentile
 is \SI{143}{\milli\metre}. The 2016--2023 test period alone contains 432 cyclone station-days across 14 storms. The
-record that would support decisions here is thin. Over the same period the ten Bangladeshi stations in GHCN-Daily
-are about \SI{65}{\percent} complete, with 2021 almost entirely absent. The European stations we use as a
+BMD record is dense, but the public international record is thin. Over the same period the ten Bangladeshi stations
+in GHCN-Daily are about \SI{65}{\percent} complete, with 2021 almost entirely absent. The European stations we use as a
 reference are \SI{99}{\percent} complete. That asymmetry is not only a property of some pretraining corpus: it sits inside
 the model's input window at forecast time.
 
+The question this paper asks is therefore simple to state. When zero-shot foundation models are scored against
+what stations in a tropical monsoon climate actually recorded, do they still beat conventional forecasting
+methods? Three narrower questions follow. Does scoring against reanalysis instead of stations make the models look
+better than they are? If they do worse in Bangladesh than in Europe, is the cause the climate or the gaps in the
+station record? And does an aggregate score hide failures in particular monsoon regimes, such as the active spells
+that bring the heaviest rain?
+
 We introduce \textbf{BanglaWeatherBench}, a benchmark designed so that its headline number is not the only thing it
-produces. It defines 16 daily forecasting tasks over 170{,}571 rolling-origin windows across four tracks. The
+produces. It defines 16 daily forecasting tasks over 170{,}571 rolling-origin windows: eight score forecasts against
+station observations and eight against reanalysis. The
 forecast target is 35 Bangladesh Meteorological Department stations; beside them sit 10 co-located GHCN-Daily
 stations, 32 European GHCN-Daily stations as a temperate reference, and NASA POWER reanalysis at all 77 station
-coordinates. A seventeenth task covers CHIRPS dekadal rainfall over 64 districts, from an independent source. Three controls answer the confounds that would otherwise make a tropical
-result unreadable. The same-network temperate reference isolates climatic regime; the reanalysis track
-at identical coordinates isolates the effect of the scoring target. The gap-matched context control isolates data
-availability from climate, and we apply it to the trained baselines as well as to the foundation models. Scoring is
-stratified by monsoon phase and by active/break spell.
+coordinates. A seventeenth task covers CHIRPS dekadal rainfall over 64 districts, from an independent source. Three controls separate an effect of climate from effects of the data. The European
+stations come from GHCN-Daily, the same network and quality control as the ten Bangladeshi stations they are
+compared with. A difference between the two is therefore not a difference of network. The reanalysis track sits at the same coordinates as the stations, so comparing the two
+shows what changes when only the scoring target changes. Gap-matched contexts copy Bangladesh's missing-data patterns
+onto the European stations, so a deficit that survives them is not about missing data; we apply them to the
+trained baselines as well as to the foundation models. Scoring is also stratified by monsoon phase and by
+active/break spell.
 
 Two commitments shape what we are willing to claim. First, significance. A 7-day stride with a 30-day horizon
-produces heavily overlapping windows, so we resample at the forecast origin. We report Diebold--Mariano tests with
-HAC variances, moving-block bootstrap intervals, Friedman--Nemenyi ranks, and Holm correction across 48 comparisons.
-Many margins that look decisive as point estimates do not survive. Second, leakage: we audit each model's
+produces heavily overlapping windows, so we resample at the forecast origin. One family of tests is primary. It holds the 48
+comparisons between the best foundation model and the best baseline for each task at leads of 1, 7 and 30 days.
+Both sides are chosen on the 2011--2015 validation years and frozen before the 2016--2023 test. Each comparison
+is tested by Diebold--Mariano with HAC variances, and the family is Holm-corrected. Every other interval in the paper is a
+per-comparison moving-block bootstrap interval, reported as unadjusted. Many margins that look decisive as point estimates do not
+survive the primary test. Second, leakage: we audit each model's
 pretraining corpus against its technical report. Leakage-free zero-shot evaluation is not itself novel
 \citep{qiao2026time}; here it is a precondition for reading a geographic contrast as a geographic effect.
 
@@ -49,30 +62,37 @@ Evaluating 8 zero-shot foundation models against 10 trained and statistical base
 think is more useful than either a triumphal or a dismissive one.
 
 \begin{enumerate}
-  \item \textbf{Foundation models lead, but most of the lead is not separable.} The best model beats the best
-    baseline in 14 of 48 Holm-corrected comparisons, loses 5 and is indistinguishable in 29; on station
-    observations it wins 3 of 24, all at a one-day lead, against 11 of 24 on reanalysis. The six leading models and
-    PatchTST sit within one critical difference.
+  \item \textbf{Foundation models lead, but most of the lead is not separable.} With both comparators chosen on
+    the validation years, the best model beats the best baseline in 17 of 48 Holm-corrected comparisons, loses 5
+    and is indistinguishable in 26. On station observations it wins 5 of 24, three of them at a one-day lead,
+    against 12 of 24 on reanalysis. The six leading models and PatchTST sit within one critical difference.
+    Choosing the comparators on the test windows instead gives 14, 5 and 29; no verdict reverses.
   \item \textbf{Nothing beats climatology on tropical rainfall} beyond a one-day lead at the BMD stations, or at
     any horizon on dekadal rainfall, a concrete boundary on the ``forecast anything'' claim.
-  \item \textbf{Reanalysis flatters models} relative to the stations it represents, in 78 of 108 comparisons.
-  \item \textbf{The tropical temperature deficit is narrow and mostly about data.} At a 30-day lead 4 of 8 models
-    lose significantly more skill than a like-for-like control; about \SI{60}{\percent} of the raw penalty is
-    explained by sparser context, and doubling the context does not remove the remainder.
-  \item \textbf{Skill reverses by regime}: strong in break spells, significantly worse than climatology in active
-    spells, in 61 of 72 tests.
+  \item \textbf{Reanalysis overstates skill} relative to the stations it represents. For rainfall, temperature and
+    humidity, 67 of 81 unadjusted intervals favour reanalysis and 2 favour the stations; sunshine, compared against
+    shortwave radiation, is mostly inconclusive.
+  \item \textbf{The tropical temperature deficit is narrow, mostly about data, and rests on ten stations.} At a 30-day lead, 4 of 8 models
+    lose more skill than a like-for-like control, with unadjusted intervals that exclude zero; about
+    \SI{60}{\percent} of the raw penalty is explained by sparser context, and doubling the context does not remove
+    the remainder.
+  \item \textbf{Skill reverses by regime}: strong in break spells, worse than climatology in active spells; 61 of
+    72 unadjusted intervals, blocked by spell event, exclude zero. The sample is 11 or 12 active and 18 to 21 break
+    events, so this is a pattern to test elsewhere rather than an established operational failure.
 \end{enumerate}
 
 We state finding 4 carefully because it is easy to misreport. The evidence supports a specific claim: for
-temperature at long horizons, half the roster loses significantly more skill on Bangladeshi stations than trained
-baselines do, most of it traceable to sparser context. It does not support a blanket claim that foundation
+temperature at long horizons, half the roster loses more skill on Bangladeshi stations than a trained baseline
+does, most of it traceable to sparser context. Those intervals are not multiplicity-adjusted and rest on ten
+stations. The evidence does not support a blanket claim that foundation
 models fail in the Global South. Stated correctly it is also the more actionable result: much of the deficit is a
 data-availability problem that observation programmes and gap-tolerant architectures can address.
 
 \paragraph{Contributions.} (i) A released, leakage-tested benchmark for a tropical-monsoon climate, with splits,
 strata, a datasheet and per-source licensing. (ii) Controls rather than a leaderboard alone: a same-network
 temperate reference, a reanalysis track at identical coordinates, and a gap-matched control applied to models and
-baselines alike. (iii) A significance protocol matched to overlapping rolling-origin panels, applied uniformly.
+baselines alike. (iii) A significance protocol matched to overlapping rolling-origin panels, with one primary
+family and every other interval labelled as unadjusted.
 (iv) To our knowledge the first evaluation of current zero-shot time-series foundation models on South Asian
 station observations including precipitation, stratified by monsoon phase, with a pretraining-overlap audit.
 (v) Reproducibility at the compute scale of the places the benchmark is about: 4.16 GPU-hours on a Tesla T4.
