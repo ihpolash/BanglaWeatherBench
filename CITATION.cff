@@ -5,7 +5,7 @@ abstract: "A benchmark of daily weather forecasting on tropical-monsoon station 
 type: software
 license: Apache-2.0
 repository-code: "https://github.com/ihpolash/BanglaWeatherBench"
-doi: "10.5281/zenodo.22825319"
+doi: "10.5281/zenodo.24358236"
 version: v1.0.2
 date-released: "2026-11-19"
 authors:
