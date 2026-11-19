@@ -26,29 +26,37 @@ The paper can be reproduced at three depths, from cheapest to complete.
     AutoARIMA, about 20.7 CPU-hours. Setting \path{BWB_SPLIT=val} makes the same runners produce the
     2011--2015 validation forecasts that choose the comparators.
 \end{enumerate}
-Checkpoints and packages change over time, so a rerun may not match to the last digit. We used the Hugging Face
-checkpoints \path{amazon/chronos-2}, \path{amazon/chronos-bolt-base}, \path{google/timesfm-2.5-200m-pytorch},
-\path{Datadog/Toto-2.0-313m}, \path{NX-AI/TiRex}, \path{Salesforce/moirai-2.0-R-small},
-\path{ibm-granite/granite-timeseries-ttm-r2} and \path{thuml/sundial-base-128m}. The local environments lock
-neuralforecast 3.2.2, statsforecast 2.0.1, LightGBM 4.7.0, chronos-forecasting 2.3.2 and PyTorch 2.14.0. The GPU
-runs used the host's PyTorch 2.10.0 and installed each foundation model's package separately: chronos-forecasting
-2.3.2 with transformers 5.17.0 (Chronos-2, Chronos-Bolt), timesfm 3.0.2, toto-2 2.0.0, tirex-ts 1.4.2, uni2ts
-2.0.0, granite-tsfm 0.3.9 with transformers 5.17.0, and transformers 4.40.1 for Sundial. Those runs did not pin
-versions. The figures above come from install logs: those of the same notebook on the day of the main run, and
-those of the later context runs. The main run's own log keeps only Sundial's install record. \path{envs/fm_kaggle/} turns
-those logs into one requirements file per foundation model. Because the adapters load checkpoints without a pinned
-revision, the same folder lists the commit of each repository that was current at run time.
-The validation-period runs, made later on an updated Kaggle image, pin the versions above. Five foundation
-models ran there on Python 3.13 with PyTorch 2.11. Toto-2.0, Moirai-2 and Sundial do not install on that image
-and ran on Python 3.12 with PyTorch 2.10, as on the test split. Both notebooks are in \path{kaggle/}.
+\paragraph{Model versions.} Checkpoints and packages change over time, so a rerun may not match to the last
+digit. We used the Hugging Face checkpoints \path{amazon/chronos-2}, \path{amazon/chronos-bolt-base},
+\path{google/timesfm-2.5-200m-pytorch}, \path{Datadog/Toto-2.0-313m}, \path{NX-AI/TiRex},
+\path{Salesforce/moirai-2.0-R-small}, \path{ibm-granite/granite-timeseries-ttm-r2} and
+\path{thuml/sundial-base-128m}. The adapters load them without a pinned revision, so \path{envs/fm_kaggle/}
+lists the commit of each repository that was current at run time; passing that commit as the revision
+loads each checkpoint as it stood when we ran it.
 
-The GPU runs used Kaggle's Tesla T4 GPUs with PyTorch built for CUDA 12.8. Seven foundation models return
-quantiles directly and involve no sampling. Sundial draws 100 sample paths with
-no fixed seed, so a rerun reproduces its scores only up to sampling noise. The neural baselines, LightGBM and the
-assignment of gap patterns to windows use seed 0. The statistical baselines are deterministic. GPU training is
-still not bitwise reproducible. \path{reports/data_checksums.sha256} records SHA-256 hashes
-of every downloaded source file and processed track as used, so a rebuild can check that it starts from the same
-data. The sources themselves, such as NASA POWER, may be revised after our download.
+\paragraph{Environments.} The local environments lock neuralforecast 3.2.2, statsforecast 2.0.1, LightGBM 4.7.0,
+chronos-forecasting 2.3.2 and PyTorch 2.14.0. The GPU runs on the test split used the host's PyTorch 2.10.0 and
+installed each foundation model's package separately: chronos-forecasting 2.3.2 with transformers 5.17.0
+(Chronos-2, Chronos-Bolt), timesfm 3.0.2, toto-2 2.0.0, tirex-ts 1.4.2, uni2ts 2.0.0, granite-tsfm 0.3.9 with
+transformers 5.17.0, and transformers 4.40.1 for Sundial. Those runs did not pin versions. The versions above come
+from install logs of the same notebook on the day of the main run and of the later context runs, and
+\path{envs/fm_kaggle/} turns them into one requirements file per foundation model.
+
+The validation-period runs, made later on an updated Kaggle image, pin the same package versions. Five foundation
+models ran there on Python 3.13 with PyTorch 2.11. Toto-2.0, Moirai-2 and Sundial do not install on that image
+and ran on Python 3.12 with PyTorch 2.10, as on the test split. Every notebook is in \path{kaggle/}, and the
+original logs of the Kaggle runs, test and validation, are in \path{reports/kaggle_logs/}.
+
+\paragraph{Hardware and randomness.} The GPU runs used Kaggle's Tesla T4 GPUs, with PyTorch built for
+CUDA 12.8; the five validation models on PyTorch 2.11 used its CUDA 13.0 build. Seven foundation models return
+quantiles directly and involve no sampling. Sundial draws 100 sample paths with no fixed seed, so a rerun
+reproduces its scores only up to sampling noise. The neural baselines, LightGBM and the assignment of gap patterns
+to windows use seed 0, and the statistical baselines are deterministic. GPU training is still not bitwise
+reproducible.
+
+\paragraph{Data.} \path{reports/data_checksums.sha256} records SHA-256 hashes of every downloaded source file and
+processed track as used, so a rebuild can check that it starts from the same data. The sources themselves, such as
+NASA POWER, may be revised after our download.
 
 \section*{Declaration on the use of generative AI}
 

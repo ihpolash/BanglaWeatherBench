@@ -12,9 +12,8 @@ skewed in two ways at once. Geographically, general time-series suites treat wea
 draw it overwhelmingly from mid-latitude sources \citep{godahewa2021monash,aksu2024gifteval,qiu2024tfb,li2025tsfmbench};
 across seven widely used benchmark papers, the words ``monsoon'' and ``Bangladesh'' do not appear. Representationally,
 the weather benchmarks that \emph{are} globally comprehensive score against reanalysis
-\citep{rasp2024weatherbench2,nathaniel2024chaosbench}. Reanalysis is a physically consistent
-reconstruction, smoother than the station record it interpolates; it is smoothest exactly where stations are
-sparsest. Observation-based
+\citep{rasp2024weatherbench2,nathaniel2024chaosbench}. Reanalysis provides a spatially and temporally consistent reconstruction of the atmosphere, but it can differ
+from direct station observations, particularly where observational coverage is sparse. Observation-based
 evaluation exists for numerical and AI weather-prediction models \citep{jin2024weatherreal,gupta2026mausam}, but the
 corresponding question for zero-shot time-series models has not been asked.
 
@@ -60,8 +59,8 @@ Many margins that look decisive as point estimates do not survive the primary te
 pretraining corpus against its technical report. Leakage-free zero-shot evaluation is not itself novel
 \citep{qiao2026time}; here it is a precondition for reading a geographic contrast as a geographic effect.
 
-The benchmark's central contribution is this separation of model skill from climate, network, scoring target and
-missing data. With it, a zero-shot score on tropical station data can be read for what it does and does not show. Evaluating 8 zero-shot foundation models against 10
+The benchmark's central contribution is an evaluation design that helps distinguish differences in model
+performance associated with climate, observing network, scoring target and missing data. With it, a zero-shot score on tropical station data can be read for what it does and does not show. Evaluating 8 zero-shot foundation models against 10
 trained and statistical baselines this way yields a mixed result, summarised in five findings.
 
 \begin{enumerate}

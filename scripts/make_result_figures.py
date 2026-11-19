@@ -93,10 +93,10 @@ for ax, (var, lead) in zip(axes, [("Tavg", 7), ("Tavg", 30)]):
     e = eq[(eq["var"] == var) & (eq.lead == lead)].set_index("model").reindex(FMS).dropna(subset=["DiD"])
     y = np.arange(len(e))
     # Third series only exists once the control baselines have gap-matched runs of their own (like-for-like).
-    series = [(S1, "as observed", "DiD", "ci_lo", "ci_hi"),
-              (S2, "model gap-matched", "DiD_gapmatched", "gm_ci_lo", "gm_ci_hi")]
+    series = [(S1, "no masking (raw gap)", "DiD", "ci_lo", "ci_hi"),
+              (S2, "model masked only", "DiD_gapmatched", "gm_ci_lo", "gm_ci_hi")]
     if "DiD_gm_control" in e.columns and e["DiD_gm_control"].notna().any():
-        series.append((CAT[2], "model + control gap-matched", "DiD_gm_control", "gmc_ci_lo", "gmc_ci_hi"))
+        series.append((CAT[2], "model and control masked (like-for-like)", "DiD_gm_control", "gmc_ci_lo", "gmc_ci_hi"))
     for off, (col, lab, pc, lc, hc) in zip(np.linspace(-0.2, 0.2, len(series)), series):
         point, lo, hi = e[pc], e[lc], e[hc]
         ax.errorbar(point, y + off, xerr=[point - lo, hi - point], fmt="o", ms=4, lw=1.6, color=col,
@@ -105,7 +105,8 @@ for ax, (var, lead) in zip(axes, [("Tavg", 7), ("Tavg", 30)]):
     ax.set_yticks(y, [LABEL[m] for m in e.index], fontsize=7.5)
     ax.invert_yaxis()
     ax.set_title(f"temperature, lead {lead} d")
-    ax.set_xlabel("DiD vs trained-baseline control")
+    ax.set_xlabel("DiD vs trained-baseline control\n" r"$\leftarrow$ smaller tropical penalty   larger $\rightarrow$",
+                  fontsize=8)
     ax.grid(axis="x")
 handles, labels = axes[0].get_legend_handles_labels()  # legend outside the axes: three series per row crowd them
 fig.legend(handles, labels, fontsize=7, ncol=3, loc="lower center", bbox_to_anchor=(0.5, -0.02), frameon=False)

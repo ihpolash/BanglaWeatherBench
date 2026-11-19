@@ -139,7 +139,8 @@ to $+0.043$ as context doubles. That apparent context effect is mostly the missi
   \includegraphics[width=0.92\linewidth]{F8_equity_did.pdf}
   \caption{Difference-in-differences against the trained-baseline control, with 95\% moving-block intervals
   that are not adjusted for multiplicity. Positive values mean the model loses more skill in the tropics than the
-  control does. Masking the control as well as the model is the like-for-like comparison. Ten GHCN-Bangladesh
+  control does. Three conditions are shown: no masking; the foundation model's temperate contexts masked with
+  Bangladesh's gap patterns; and the model and the control both masked, which is the like-for-like comparison. Ten GHCN-Bangladesh
   stations.}
   \label{fig:did}
 \end{figure}
@@ -154,8 +155,8 @@ lead. In break spells every model is better than climatology, and the foundation
 margins: Chronos-Bolt reaches $+0.440$ on temperature at a 30-day lead, against PatchTST's $+0.106$. In active
 spells the ordering inverts. Every model falls below climatology at 7- and 30-day leads, and the foundation models
 lose the most ground: Chronos-Bolt drops to $-0.989$, against PatchTST's $-0.193$. Humidity repeats the pattern.
-In these events, forecast quality is lowest during the very episodes that drive flooding, transplanting and
-evacuation decisions. With about 30 events from one network, that is a pattern to test on other monsoon records,
+These results suggest that forecast quality may be lowest during the episodes most relevant to flooding,
+agricultural operations and evacuation decisions. With about 30 events from one network, that is a pattern to test on other monsoon records,
 not an established operational failure.
 
 \subsection{Calibration and compute}

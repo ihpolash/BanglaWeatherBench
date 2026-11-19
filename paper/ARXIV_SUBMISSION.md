@@ -13,7 +13,7 @@ Ismail Hossain Polas
 Jahangirnagar University
 
 ## Abstract (plain text, paste as one paragraph)
-Time-series foundation models promise that you can pretrain once and then forecast any series without fitting. The evidence comes almost entirely from mid-latitude, data-rich places, and often from reanalysis rather than from instruments. BanglaWeatherBench tests that promise in a tropical monsoon climate, against what stations actually recorded. We compare 8 zero-shot foundation models with 10 trained and statistical baselines at 35 stations of the Bangladesh Meteorological Department, using European stations, co-located reanalysis and gap-matched contexts as controls. Foundation models generally rank above the untuned baselines. Yet with the best of each chosen on earlier years, 26 of 48 corrected tests cannot tell them apart. No model beats a day-of-year climatology on tropical rainfall beyond a one-day lead. For rainfall, temperature and humidity, reanalysis looks more predictable than the stations it stands in for, so benchmarks built on it overstate skill. A long-lead temperature deficit at ten Bangladeshi stations is mostly explained by sparser records rather than climate. Across about 30 monsoon spells, skill is strong in breaks and worse than climatology in active spells, when forecasts matter most. The protocol transfers; the numbers, from one country, may not.
+Time-series foundation models promise that you can pretrain once and then forecast any series without fitting. The evidence comes almost entirely from mid-latitude, data-rich places, and often from reanalysis rather than from instruments. BanglaWeatherBench tests that promise in a tropical monsoon climate, against what stations actually recorded. We compare 8 zero-shot foundation models with 10 trained and statistical baselines at 35 stations of the Bangladesh Meteorological Department, using European stations, co-located reanalysis and gap-matched contexts as controls. Foundation models generally rank above the untuned baselines. Yet with the best of each chosen on earlier years, 26 of 48 corrected tests cannot tell them apart. No model beats a day-of-year climatology on tropical rainfall beyond a one-day lead. For rainfall, temperature and humidity, models achieve higher apparent skill against reanalysis than against the stations it represents, so reanalysis-based benchmarks can overstate skill. A long-lead temperature deficit at ten Bangladeshi stations is mostly explained by sparser records rather than climate. Across about 30 monsoon spells, skill is strong in breaks and worse than climatology in active spells, a pattern that needs testing on other records. The protocol transfers; the numbers, from one country, may not.
 
 ## Categories
 - Primary: cs.AI
@@ -23,7 +23,7 @@ Endorsement is per archive, so request the cross-lists after announcement rather
 at submission. That way you only need standing in cs.AI.
 
 ## Comments field
-23 pages, 7 figures, 4 tables. Code and benchmark: https://github.com/ihpolash/BanglaWeatherBench ; archived release: https://doi.org/10.5281/zenodo.24358236
+24 pages, 7 figures, 4 tables. Code and benchmark: https://github.com/ihpolash/BanglaWeatherBench ; archived release: https://doi.org/10.5281/zenodo.24358236
 
 ## License
 CC BY 4.0 is the consistent choice: the BMD source record is CC-BY-4.0 and the repository
