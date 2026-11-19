@@ -23,7 +23,7 @@ Endorsement is per archive, so request the cross-lists after announcement rather
 at submission. That way you only need standing in cs.AI.
 
 ## Comments field
-24 pages, 7 figures, 4 tables. Code and benchmark: https://github.com/ihpolash/BanglaWeatherBench ; archived release: https://doi.org/10.5281/zenodo.24358236
+24 pages, 7 figures, 4 tables. Code and benchmark: https://github.com/ihpolash/BanglaWeatherBench ; archived release: https://doi.org/10.5281/zenodo.24358394
 
 ## License
 CC BY 4.0 is the consistent choice: the BMD source record is CC-BY-4.0 and the repository
@@ -40,6 +40,6 @@ roughly three to five years prior.
 - Read section "Declaration on the use of generative AI" and confirm it describes your
   own practice. It is your declaration.
 - Re-check arXiv's current policy on generative AI; it has changed more than once.
-- The paper cites the v1.0.2 archive (10.5281/zenodo.24358236). If code the paper cites changes
+- The paper cites the v1.0.3 archive (10.5281/zenodo.24358394). If code the paper cites changes
   again before upload, publish a new release and replace that DOI in sections/09_availability.tex
   and CITATION.cff, then rebuild arxiv-submission.tar.gz.
