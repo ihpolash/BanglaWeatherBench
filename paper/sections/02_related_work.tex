@@ -38,10 +38,12 @@ ours, but it is the closest existing precipitation-focused time-series benchmark
 
 \paragraph{Bangladesh forecasting.} The applied literature is substantial but uses per-station supervised models
 and releases no shared tasks: \citet{joy2026bangladesh} is representative, training attention-enhanced LSTMs for
-temperature and rainfall. No published work evaluates pretrained foundation models on Bangladeshi station data, and
-no Bangladesh weather benchmark with fixed splits and a leaderboard exists.
+temperature and rainfall. We found no published evaluation of pretrained foundation models on Bangladeshi
+station data, and no Bangladesh weather benchmark with fixed splits and a leaderboard.
 
-\paragraph{Position.} The intersection is, to our knowledge, unoccupied: current time-series foundation models, on
-tropical station observations including precipitation, stratified by monsoon regime, with a matched temperate
-control and a significance protocol. We claim novelty only at that intersection, and cite the neighbours above for
-each component individually.
+\paragraph{Position.} Each component of our design has a precedent above. What we claim is new is their
+combination in one evaluation, and to our knowledge no published study combines them: current zero-shot
+time-series foundation models, scored on tropical station observations including precipitation, stratified by
+monsoon regime, with a same-network temperate control, a co-located reanalysis control and a corrected
+significance protocol. The novelty is the evaluation design, not the study of Bangladeshi weather, which has a
+substantial applied literature.

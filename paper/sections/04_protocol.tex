@@ -50,16 +50,21 @@ substantially; none of the reference forecasting benchmarks reports significance
 the forecast origin the unit of resampling, averaging stations within an origin so that cross-sectional
 correlation is absorbed rather than counted as extra samples.
 
-Pairwise comparisons use Diebold--Mariano on the paired loss differential, with a Newey--West HAC variance at lag
-$h-1$ and the Harvey--Leybourne--Newbold small-sample correction, referred to a $t$ distribution. Interval
-estimates come from a moving-block bootstrap over origins, with blocks of 8 origins and 2{,}000 resamples. Paired
-series (a model, its climatology reference and the control baseline) are resampled with the same blocks. A
-difference-in-differences interval therefore carries the control's uncertainty rather than treating it as fixed. Rankings use
-Friedman with the Nemenyi critical difference from the studentized range.
+We use three tools. To test whether one model beats another, we apply the Diebold--Mariano test to the paired
+difference in loss. Its variance is a Newey--West HAC estimate at lag $h-1$, with the Harvey--Leybourne--Newbold
+small-sample correction and a $t$ reference distribution.
 
-The primary analysis is one family of 48 comparisons: the best foundation model against the best baseline for each
-of the 16 tasks at leads of 1, 7 and 30 days. The three leads are the shortest horizon we score, one week, and the
-longest; leads 3 and 14 fall between them and appear in the leaderboard and figures as point estimates, with no
+To put an interval around a skill score or a difference, we use a moving-block bootstrap over origins, with blocks
+of 8 origins and 2{,}000 resamples. Series that are compared with each other, such as a model, its climatology
+reference and a control baseline, are resampled with the same blocks. A difference-in-differences interval
+therefore carries the control's uncertainty rather than treating it as fixed.
+
+To rank models across tasks, we use the Friedman test with the Nemenyi critical difference from the studentized
+range.
+
+The primary analysis consists of 48 comparisons. For each of the 16 tasks and each of the leads 1, 7 and 30 days,
+it compares the best foundation model with the best baseline, chosen as described below. The three leads are the
+shortest horizon we score, one week, and the longest; leads 3 and 14 fall between them and appear in the leaderboard and figures as point estimates, with no
 claim resting on them alone. Adding them would enlarge the family to 80 comparisons and make the correction
 stricter for every test, without adding a horizon outside the range the three already span. All 48 comparisons are
 Holm--Bonferroni corrected, and we report the corrected values.
@@ -77,7 +82,9 @@ Two further versions show how much the choice of comparators matters. The first 
 windows themselves; its Diebold--Mariano $p$-values do not account for that selection. The second keeps selection
 and testing apart within the test period: the pair is chosen on origins in 2016--2019 and tested on origins in
 2020--2023 alone, with the same test and correction. As a reference for the loss of power from halving the
-sample, the test-chosen pair is tested on the same 2020--2023 origins. Every other statement of uncertainty in the paper (skill against climatology,
+sample, the test-chosen pair is tested on the same 2020--2023 origins.
+
+Every other statement of uncertainty in the paper (skill against climatology,
 reanalysis against observations, the difference-in-differences and the spell contrasts) is a per-comparison
 \SI{95}{\percent} bootstrap interval without multiplicity adjustment. We describe those as intervals that exclude
 zero, not as significant results. Table~\ref{tab:evidence} lists the status of each.

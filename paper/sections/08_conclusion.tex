@@ -2,19 +2,15 @@
 \label{sec:conclusion}
 
 We built a benchmark for daily weather forecasting on tropical-monsoon station observations, with the controls
-needed to interpret a tropical result: a same-network temperate reference, a reanalysis track at identical
-coordinates, and a gap-matched context control applied to models and baselines alike. We evaluated 8 zero-shot
-time-series foundation models against 10 trained and statistical baselines over 170{,}571 rolling-origin windows,
-treating the forecast origin as the unit of resampling.
+needed to interpret a tropical result. We used it to evaluate 8 zero-shot time-series foundation models against
+10 trained and statistical baselines over 170{,}571 rolling-origin windows.
 
-The picture is mixed. Foundation models generally rank above the fixed-configuration baselines we evaluated. On
-station observations, though, most of that advantage is not statistically separable: with comparators chosen on
-earlier years, the best foundation model wins 5 of 24 station comparisons. Nothing beats a day-of-year
+The picture is mixed. Foundation models generally rank above the fixed-configuration baselines we evaluated, but
+on station observations the best of them wins only 5 of 24 corrected comparisons. Nothing beats a day-of-year
 climatology on tropical rainfall beyond a one-day lead. For rainfall, temperature and humidity, reanalysis produces more
 favourable apparent skill than the stations it represents, though not for temperature at a 30-day lead. Across
-about 30 spell events, skill reverses between monsoon break and active spells. The long-lead tropical temperature deficit that half the roster shows is mostly, though not
-entirely, a consequence of sparser station context rather than of the tropics; it is also the least certain of
-these findings, resting on ten stations.
+about 30 spell events, skill reverses between monsoon break and active spells. The long-lead tropical temperature deficit is mostly a consequence of sparser station context rather than
+of the tropics, and it is the least certain of these findings.
 
 For practitioners in data-sparse regions the practical reading is twofold. Zero-shot models are already
 affordable and already competitive on smooth variables; for rainfall, a well-built climatology remains the thing

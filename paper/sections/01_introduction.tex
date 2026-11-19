@@ -40,26 +40,29 @@ produces. It defines 16 daily forecasting tasks over 170{,}571 rolling-origin wi
 station observations and eight against reanalysis. The
 forecast target is 35 Bangladesh Meteorological Department stations; beside them sit 10 co-located GHCN-Daily
 stations, 32 European GHCN-Daily stations as a temperate reference, and NASA POWER reanalysis at all 77 station
-coordinates. A seventeenth task covers CHIRPS dekadal rainfall over 64 districts, from an independent source. Three controls separate an effect of climate from effects of the data. The European
-stations come from GHCN-Daily, the same network and quality control as the ten Bangladeshi stations they are
-compared with. A difference between the two is therefore not a difference of network. The reanalysis track sits at the same coordinates as the stations, so comparing the two
-shows what changes when only the scoring target changes. Gap-matched contexts copy Bangladesh's missing-data patterns
-onto the European stations, so a deficit that survives them is not about missing data; we apply them to the
-trained baselines as well as to the foundation models. Scoring is also stratified by monsoon phase and by
-active/break spell.
+coordinates. A seventeenth task covers CHIRPS dekadal rainfall over 64 districts, from an independent source.
+Scoring is stratified by monsoon phase and by active/break spell.
 
-Two commitments shape what we are willing to claim. First, significance. A 7-day stride with a 30-day horizon
-produces heavily overlapping windows, so we resample at the forecast origin. One family of tests is primary. It holds the 48
-comparisons between the best foundation model and the best baseline for each task at leads of 1, 7 and 30 days.
-Both sides are chosen on the 2011--2015 validation years and frozen before the 2016--2023 test. Each comparison
-is tested by Diebold--Mariano with HAC variances, and the family is Holm-corrected. Every other interval in the paper is a
-per-comparison moving-block bootstrap interval, reported as unadjusted. Many margins that look decisive as point estimates do not
-survive the primary test. Second, leakage: we audit each model's
+A worse score in Bangladesh than in Europe could come from the climate, from a different observing network, from
+the scoring target or from missing data. Three controls separate these. The European stations come from
+GHCN-Daily, the same network and quality control as the ten Bangladeshi stations they are compared with, so a
+difference between the two is not a difference of network. The reanalysis track sits at the same coordinates as
+the stations, so comparing the two isolates the scoring target. Gap-matched contexts copy Bangladesh's
+missing-data patterns onto the European stations' inputs, for the trained baselines as well as the foundation
+models. A deficit that survives them is therefore not about missing data.
+
+Two commitments shape what we are willing to claim. The first is significance. Forecast windows overlap heavily,
+so we treat the forecast origin, not the window, as the unit of resampling. The primary statistical analysis
+consists of 48 comparisons. For each of the 16 tasks and each of the leads 1, 7 and 30 days, we choose the best
+foundation model and the best baseline on the 2011--2015 validation years. We then compare them on the
+2016--2023 test years. These comparisons are corrected for multiplicity; every other interval in the paper is reported as unadjusted.
+Many margins that look decisive as point estimates do not survive the primary test. The second is leakage: we audit each model's
 pretraining corpus against its technical report. Leakage-free zero-shot evaluation is not itself novel
 \citep{qiao2026time}; here it is a precondition for reading a geographic contrast as a geographic effect.
 
-Evaluating 8 zero-shot foundation models against 10 trained and statistical baselines yields a mixed result that we
-think is more useful than either a triumphal or a dismissive one.
+The benchmark's central contribution is this separation of model skill from climate, network, scoring target and
+missing data. With it, a zero-shot score on tropical station data can be read for what it does and does not show. Evaluating 8 zero-shot foundation models against 10
+trained and statistical baselines this way yields a mixed result, summarised in five findings.
 
 \begin{enumerate}
   \item \textbf{Foundation models lead, but most of the lead is not separable.} With both comparators chosen on
@@ -81,12 +84,9 @@ think is more useful than either a triumphal or a dismissive one.
     events, so this is a pattern to test elsewhere rather than an established operational failure.
 \end{enumerate}
 
-We state finding 4 carefully because it is easy to misreport. The evidence supports a specific claim: for
-temperature at long horizons, half the roster loses more skill on Bangladeshi stations than a trained baseline
-does, most of it traceable to sparser context. Those intervals are not multiplicity-adjusted and rest on ten
-stations. The evidence does not support a blanket claim that foundation
-models fail in the Global South. Stated correctly it is also the more actionable result: much of the deficit is a
-data-availability problem that observation programmes and gap-tolerant architectures can address.
+Finding 4 is easy to misreport. It does not support a blanket claim that foundation models fail in the Global
+South. Stated correctly it is also the more actionable result: much of the deficit is a data-availability problem
+that observation programmes and gap-tolerant architectures can address.
 
 \paragraph{Contributions.} (i) A released, leakage-tested benchmark for a tropical-monsoon climate, with splits,
 strata, a datasheet and per-source licensing. (ii) Controls rather than a leaderboard alone: a same-network
